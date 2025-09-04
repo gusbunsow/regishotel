@@ -417,6 +417,18 @@ header {
     font-size: 1rem;
 }
 
+/*botones xp */
+.xp-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin: bottom 20px;
+}
+
+.xp-btns .btn {
+    width: 48%;
+}
+
 /* Opcional: si quieres mantener el estilo original del botón */
 .map-btn-container .btn {
     padding: 12px 24px;
