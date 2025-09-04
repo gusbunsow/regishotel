@@ -318,9 +318,21 @@ header {
 }
 
 .service-icon {
-    font-size: 3rem;
+    font-size: 2rem;
     color: var(--dark-gray);
     margin-bottom: 20px;
+
+    /* Nuevas propiedades para controlar SVG */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos específicos para imágenes SVG */
+.service-icon img[src$=".svg"] {
+    width: 50%; /* Reduce al 50% del tamaño original */
+    height: auto;
+    max-width: 60px; /* Límite máximo opcional */
 }
 
 .service-card h3 {
