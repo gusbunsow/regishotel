@@ -149,7 +149,7 @@ header {
 }
 
 .reserva-btn {
-    background-color: #4ecdc4; /* Manteniendo tu color original */
+    background-color: #1A213C; /* Manteniendo tu color original */
     color: #0a0a0a; /* Texto negro para máximo contraste */
     padding: 10px 25px; /* Padding ligeramente mayor para mejor apariencia */
     border-radius: 30px; /* Bordes más redondeados */
@@ -207,23 +207,50 @@ header {
     cursor: pointer;
 }
 
-/* Hero */
+/* Hero con video */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://regishotel.com.ar/wp-content/uploads/2023/05/Regis-Hotel-Frente-1.jpg');
-    background-size: cover;
-    background-position: center;
+    position: relative;
     height: 100vh;
     display: flex;
     align-items: center;
     text-align: center;
     color: var(--white);
     margin-top: 80px;
+    overflow: hidden;
 }
 
+/* Video de fondo */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -2; /* Detrás del overlay */
+    object-fit: cover; /* Asegura que cubra todo el espacio */
+}
+
+/* Overlay para oscurecer el video y mejorar legibilidad */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Oscurece el video */
+    z-index: -1; /* Entre el video y el contenido */
+}
+
+/* Contenedor del contenido - debe estar por encima */
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    position: relative; /* Asegura que esté por encima del overlay */
+    z-index: 1;
 }
 
 .hero h1 {
@@ -238,10 +265,9 @@ header {
     margin-bottom: 30px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
-
 /* Habitaciones */
 .rooms {
-    background-color: #f9f9f9;
+    background-color: #CEB98D;
 }
 
 .rooms-grid {
@@ -368,7 +394,7 @@ header {
 
 /* Experiencias */
 .experiences {
-    background-color: #f9f9f9;
+    background-color: #CEB98D;
 }
 
 .experiences-grid {
@@ -487,6 +513,23 @@ botones xp
 .author-info h4 {
     font-size: 1.1rem;
     margin-bottom: 5px;
+}
+
+.author-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    background-color: #e0e0e0;
+    position: relative;
+}
+
+.author-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* Contacto */
