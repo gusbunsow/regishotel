@@ -1,7 +1,7 @@
 /* styles.css */
 /* Variables y reset */
 :root {
-    --black: #3E4B79;
+    --black: #05154d;
     --dark-gray: #333333;
     --medium-gray: #666666;
     --light-gray: #CEB98D;
@@ -81,7 +81,7 @@ section {
 .section-title h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 1px;
     position: relative;
     display: inline-block;
@@ -98,6 +98,109 @@ section {
     height: 3px;
     background-color: var(--dark-gray);
     display: none;
+}
+
+/* ------------------------------------- */
+/* Botones flotantes laterales - Corregido */
+/* ------------------------------------- */
+
+.floating-buttons {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.floating-button {
+    display: flex;
+    align-items: center;
+    background-color: #063358; /* Azul para todos los botones */
+    color: var(--white);
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 5px 0 0 5px;
+    transition: all 0.3s ease;
+    width: 50px;
+    overflow: hidden;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Solo el botón hover se expande - CORRECCIÓN DEFINITIVA */
+.floating-button:hover {
+    width: 180px;
+    z-index: 1001;
+}
+
+.floating-button .icon {
+    min-width: 25px;
+    text-align: center;
+    font-size: 18px;
+    transition: opacity 0.3s ease;
+}
+
+.floating-button .text {
+    white-space: nowrap;
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+    position: absolute;
+    left: 47px;
+}
+
+.floating-button:hover .text {
+    opacity: 1;
+}
+
+/* Responsive: para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .floating-buttons {
+        top: auto;
+        bottom: 100px;
+        transform: none;
+        flex-direction: column;
+        right: 0;
+        left: auto;
+        width: auto;
+    }
+    
+    .floating-button {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 5px 0 0 5px; /* Mantenemos forma cuadrada */
+        margin: 5px 0;
+    }
+    
+    .floating-button:hover {
+        width: 180px;
+        height: 50px;
+        border-radius: 5px 0 0 5px;
+    }
+    
+    .floating-button .text {
+        left: 47px;
+    }
+}
+
+/* Para evitar que los botones se superpongan con el botón de WhatsApp en móviles */
+@media (max-width: 768px) {
+    .whatsapp-btn {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .floating-buttons {
+        bottom: 90px;
+    }
 }
 
 /* Header */
@@ -152,7 +255,7 @@ header {
     background-color: #1A213C; /* Manteniendo tu color original */
     color: #0a0a0a; /* Texto negro para máximo contraste */
     padding: 10px 25px; /* Padding ligeramente mayor para mejor apariencia */
-    border-radius: 30px; /* Bordes más redondeados */
+    border-radius: 0%; /* Bordes más redondeados */
     font-weight: 700; /* Texto más grueso */
     text-transform: uppercase;
     font-size: 0.9rem;
@@ -173,7 +276,7 @@ header {
 }
 
 .reserva-btn:hover {
-    background-color: #3bbbb2; /* Color ligeramente más oscuro en hover */
+    background-color: #CEB98D; /* Color ligeramente más oscuro en hover */
     transform: translateY(-3px); /* Efecto de elevación */
     box-shadow: 
         inset 0 0 0 1px rgba(0, 0, 0, 0.3),
@@ -272,16 +375,24 @@ header {
 
 .rooms-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
 .room-card {
     background-color: var(--white);
-    border-radius: 8px;
+    border-radius: 0%;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+}
+
+/* Mostrar 4 tarjetas por fila en desktop y reducir el espacio entre ellas */
+@media (min-width: 1200px) {
+    .rooms-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px; /* Espacio reducido a la mitad */
+    }
 }
 
 .room-card:hover {
@@ -327,8 +438,8 @@ header {
 /* Servicios */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
 }
 
 .service-card {
@@ -394,7 +505,7 @@ header {
 
 /* Experiencias */
 .experiences {
-    background-color: #CEB98D;
+    background-color: #e6e4e0;
 }
 
 .experiences-grid {
@@ -405,7 +516,7 @@ header {
 
 .experience-card {
     background-color: var(--white);
-    border-radius: 8px;
+    border-radius: 0%;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
