@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regis Hotel - Alojate en el corazón de Buenos Aires</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regis Hotel - Alojate en el corazón de Buenos Aires</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Third-party CSS (antes de tu CSS) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+
+  <!-- TU CSS al final -->
+<link rel="stylesheet" href="assets/css/styles.css">
+
 </head>
+
 <body>
+
     <!-- WhatsApp flotante -->
     <a href="https://wa.me/541143272605" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
@@ -37,33 +47,39 @@
         <span class="text">LinkedIn</span>
     </a>
 </div>
-
-
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <a href="#"><img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel"></a>
-            </div>
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <a href="index.html"><img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel"></a>
             
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <ul class="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="Habitaciones.html">Habitaciones</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#corporativas">Corporativo</a></li>
-                <!--
-                <li><a href="#experiencias">Experiencias</a></li>
-                -->    
-                <li><a href="#testimonios">Testimonios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#" class="reserva-btn">Reservar</a></li>
-            </ul>
         </div>
-    </header>
+        
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-menu">
+            <!--Eliminé el Inicio de la Home
+            <li><a href="index.html">Inicio</a></li>
+            -->
+            <li class="menu-item-has-children">
+                <a href="Habitaciones.html">Habitaciones</a>
+                <ul class="submenu">
+                    <li><a href="habitacion-simple.html">Habitación Simple</a></li>
+                    <li><a href="habitacion-doble.html">Habitación Doble</a></li>
+                    <li><a href="habitacion-triple.html">Habitación Triple</a></li>
+                    <li><a href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
+                </ul>
+            </li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#corporativas">Corporativo</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#"class="reserva-btn">Reservar</a></li>
+        </ul>
+    </div>
+</header>
 
  <!-- Hero Section -->
 <section class="hero">
@@ -78,10 +94,259 @@
         <div class="hero-content">
             <h1>Hotel Regis</h1>
             <p>Alojate en el corazón de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.</p>
-            <a href="#habitaciones" class="btn btn-primary">Ver Habitaciones</a>
         </div>
+    
+    <!-- Motor de reservas -->
+<div id="search_room_box" class="motor-reservas">
+  <form name="formSearch" id="formSearch" action="https://booking.roomcloud.net/be/se1/hotel.jsp" method="post">
+    <div class="rc-row">
+      
+      <!-- Fechas -->
+<div class="rc-col-xs-12 rc-col-sm-6 rc-col-md-3">
+  <div class="rc-input-group">
+    <label for="search_calendar" class="visually-hidden">Fechas</label>
+    <span class="input-group-addon" aria-hidden="true"><i class="fa fa-calendar"></i></span>
+    <input
+      type="text"
+      class="form-control"
+      name="search_calendar"
+      id="search_calendar"
+      placeholder="Seleccionar fechas"
+      readonly
+      autocomplete="off"
+      aria-describedby="search_calendar_desc"
+    />
+    <small id="search_calendar_desc" class="visually-hidden">Seleccioná fecha de entrada y salida</small>
+  </div>
+</div>
+
+
+      <!-- Pasajeros -->
+      <div class="rc-col-xs-12 rc-col-sm-6 rc-col-md-4">
+        <div class="rc-dropdown">
+          <div class="rc-input-group" id="travelers_group">
+            <span class="input-group-addon"><i class="fa fa-male"></i></span>
+            <input type="text" class="form-control" id="travelers" value="2 Adultos, 0 Niños" readonly />
+          </div>
+          <div class="rc-dropdown-menu" id="traveler_details" style="display:none;">
+            <div class="traveler-counter">
+              <label>Adultos</label>
+              <button type="button" class="decrease" data-type="adult">−</button>
+              <span class="count" id="adult_count">2</span>
+              <button type="button" class="increase" data-type="adult">+</button>
+            </div>
+            <div class="traveler-counter">
+              <label>Niños</label>
+              <button type="button" class="decrease" data-type="child">−</button>
+              <span class="count" id="child_count">0</span>
+              <button type="button" class="increase" data-type="child">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón Buscar -->
+      <div class="rc-col-xs-12 rc-col-sm-6 rc-col-md-2">
+        <button type="button" id="btn-search" class="btn btn-primary btn-block">
+          <i class="fa fa-search"></i> Buscar
+        </button>
+      </div>
     </div>
+
+    <!-- Campos ocultos fechas -->
+    <input type="hidden" name="hotel" id="hotel" value="7167">
+    <input type="hidden" name="start_day" id="start_day">
+    <input type="hidden" name="start_month" id="start_month"> 
+    <input type="hidden" name="start_year" id="start_year">
+    <input type="hidden" name="end_day" id="end_day">                                        
+    <input type="hidden" name="end_month" id="end_month">
+    <input type="hidden" name="end_year" id="end_year">
+  </form>
+</div>
+
+<!-- Estilos encapsulados -->
+<style>
+.motor-reservas {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-family: 'Montserrat', sans-serif;
+}
+.motor-reservas .rc-input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.motor-reservas .rc-input-group .input-group-addon {
+  background: #f1f1f1;
+  padding: 8px 10px;
+  border-radius: 4px 0 0 4px;
+  border: 1px solid #ccc;
+}
+.motor-reservas .form-control {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 0 4px 4px 0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.motor-reservas .btn-block {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+}
+.rc-dropdown {
+  position: relative;
+}
+.rc-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  z-index: 10;
+}
+.traveler-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.traveler-counter label {
+  font-weight: 500;
+}
+.traveler-counter button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.traveler-counter .count {
+  margin: 0 10px;
+  min-width: 20px;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .motor-reservas .rc-row {
+    flex-direction: column;
+  }
+  .motor-reservas .rc-col-xs-12,
+  .motor-reservas .rc-col-sm-6,
+  .motor-reservas .rc-col-md-3,
+  .motor-reservas .rc-col-md-4,
+  .motor-reservas .rc-col-md-2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+</style>
+
+<!-- Script Litepicker + pasajeros -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Fechas
+  var today = new Date();
+  var tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+
+  function formatDate(date) {
+    return ('0' + date.getDate()).slice(-2) + '/' +
+           ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
+           date.getFullYear();
+  }
+
+  const picker = new Litepicker({
+    element: document.getElementById('search_calendar'),
+    singleMode: false,
+    format: 'DD/MM/YYYY',
+    lang: 'es-ES',
+    numberOfMonths: 2,
+    numberOfColumns: 2,
+    autoApply: true,
+    minDate: today,
+    setup: (picker) => {
+      picker.on('selected', (start, end) => {
+        if (start && end) {
+          document.getElementById('search_calendar').value = start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY');
+          document.getElementById('start_day').value = start.format('DD');
+          document.getElementById('start_month').value = start.format('MM');
+          document.getElementById('start_year').value = start.format('YYYY');
+          document.getElementById('end_day').value = end.format('DD');
+          document.getElementById('end_month').value = end.format('MM');
+          document.getElementById('end_year').value = end.format('YYYY');
+        }
+      });
+    }
+  });
+  
+  // Pasajeros
+  const travelersInput = document.getElementById('travelers');
+  const dropdown = document.getElementById('traveler_details');
+  const adultCountEl = document.getElementById('adult_count');
+  const childCountEl = document.getElementById('child_count');
+
+  let adults = parseInt(adultCountEl.textContent);
+  let children = parseInt(childCountEl.textContent);
+
+  travelersInput.setAttribute('role','button'); // si no existe
+travelersInput.setAttribute('aria-expanded','false');
+
+travelersInput.addEventListener('click', () => {
+  const isOpen = dropdown.style.display === 'block';
+  dropdown.style.display = isOpen ? 'none' : 'block';
+  travelersInput.setAttribute('aria-expanded', String(!isOpen));
+});
+
+
+  dropdown.querySelectorAll('.increase').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(btn.dataset.type === 'adult') adults++;
+      else children++;
+      updateCounts();
+    });
+  });
+
+  dropdown.querySelectorAll('.decrease').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(btn.dataset.type === 'adult') adults = Math.max(1, adults);
+      else children = Math.max(0, children);
+      updateCounts();
+    });
+  });
+
+  function updateCounts() {
+    adultCountEl.textContent = adults;
+    childCountEl.textContent = children;
+    travelersInput.value = adults + ' Adultos, ' + children + ' Niños';
+  }
+
+  // Cerrar dropdown al hacer clic afuera
+  document.addEventListener('click', function(e){
+    if(!travelersInput.contains(e.target) && !dropdown.contains(e.target)){
+      dropdown.style.display = 'none';
+    }
+  });
+
+  // Buscar
+  document.getElementById('btn-search').addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById('formSearch').submit();
+  });
+});
+</script>
+
+</div>
 </section>
+
+    <!-- Fin motor de reservas -->
+
 
     <!-- Habitaciones -->
     <section id="habitaciones" class="rooms">
@@ -211,7 +476,7 @@
     <section id="corporativas" class="corporate">
         <div class="container">
             <h2>Reservas Corporativas</h2>
-            <p>Ofrecemos <bold>tarifas preferenciales para empresas y grupos</bold>, con beneficios exclusivos diseñados para viajes de trabajo o estadías prolongadas.
+            <p>Ofrecemos <strong>tarifas preferenciales para empresas y grupos</strong>, con beneficios exclusivos diseñados para viajes de trabajo o estadías prolongadas.
                 Contáctenos para obtener más información sobre nuestras <strong>tarifas especiales y condiciones personalizadas</strong>.</p>
                         <p style="margin-top: 30px; font-weight: 600;">Solicitar tarifa corporativa</p>
                 <div class="corporate-btns">
@@ -230,7 +495,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Experiencias Cerca</h2>
-                <p>Desde el <Bold>Hotel Regis</Bold>, viví la ciudad a pocos pasos de sus principales atractivos turísticos, culturales y comerciales. Nuestra ubicación en pleno centro te permite recorrer caminando las zonas más emblemáticas.</p>
+                <p>Desde el <strong>Hotel Regis</strong>, viví la ciudad a pocos pasos de sus principales atractivos turísticos, culturales y comerciales. Nuestra ubicación en pleno centro te permite recorrer caminando las zonas más emblemáticas.</p>
             </div>
                      
             <div class="experiences-grid">
@@ -337,15 +602,12 @@
                         <p>El barrio más moderno y cosmopolita de Buenos Aires, con restaurantes de primer nivel y paseos junto al río. Perfecto para una caminata al atardecer.</p>
                     </div>
                 </div>
-        <div>
-
-        </div>
+            </div>
 <div class="experiences-btn-container"> 
     <a href="#" class="btn btn-primary">Ver en el Mapa</a>
 </div>
 
 </section>
-    </section>
 
     <!-- Testimonios -->
 <section id="testimonios" class="testimonials">
@@ -426,7 +688,7 @@
                     <form action="mailto:reservas@regishotel.com.ar" method="post" enctype="text/plain">
                         <div class="form-group">
                             <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required autocomplete="email">
                         </div>
                         <div class="form-group">
                             <label for="message">Mensaje</label>
@@ -530,5 +792,118 @@
             });
         });
     </script>
+<!-- Scripts (pegá esto justo antes de </body>) -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment-with-locales.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+<!-- Opcional: Bootstrap JS si necesitás componentes JS de Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Fechas
+  var today = new Date();
+  var tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+
+  function formatDate(date) {
+    return ('0' + date.getDate()).slice(-2) + '/' +
+           ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
+           date.getFullYear();
+  }
+
+  // Valores iniciales visibles y ocultos
+  var searchInput = document.getElementById('search_calendar');
+  if (searchInput) {
+    searchInput.value = formatDate(today) + ' - ' + formatDate(tomorrow);
+  }
+  if (document.getElementById('start_day')) {
+    document.getElementById('start_day').value = ('0' + today.getDate()).slice(-2);
+    document.getElementById('start_month').value = ('0' + (today.getMonth() + 1)).slice(-2);
+    document.getElementById('start_year').value = today.getFullYear();
+    document.getElementById('end_day').value = ('0' + tomorrow.getDate()).slice(-2);
+    document.getElementById('end_month').value = ('0' + (tomorrow.getMonth() + 1)).slice(-2);
+    document.getElementById('end_year').value = tomorrow.getFullYear();
+  }
+
+  const picker = new Litepicker({
+    element: document.getElementById('search_calendar'),
+    singleMode: false,
+    format: 'DD/MM/YYYY',
+    lang: 'es-ES',
+    numberOfMonths: 2,
+    numberOfColumns: 2,
+    autoApply: true,
+    minDate: today,
+    minDays: 2,
+    setup: (picker) => {
+      picker.on('selected', (start, end) => {
+        if (start && end) {
+          document.getElementById('search_calendar').value = start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY');
+          document.getElementById('start_day').value = start.format('DD');
+          document.getElementById('start_month').value = start.format('MM');
+          document.getElementById('start_year').value = start.format('YYYY');
+          document.getElementById('end_day').value = end.format('DD');
+          document.getElementById('end_month').value = end.format('MM');
+          document.getElementById('end_year').value = end.format('YYYY');
+        }
+      });
+    }
+  });
+  
+  // Pasajeros
+  const travelersInput = document.getElementById('travelers');
+  const dropdown = document.getElementById('traveler_details');
+  const adultCountEl = document.getElementById('adult_count');
+  const childCountEl = document.getElementById('child_count');
+
+  let adults = parseInt(adultCountEl.textContent, 10) || 2;
+  let children = parseInt(childCountEl.textContent, 10) || 0;
+
+  travelersInput.addEventListener('click', () => {
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+  });
+
+  dropdown.querySelectorAll('.increase').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.type === 'adult') adults++;
+      else children++;
+      updateCounts();
+    });
+  });
+
+  // CORRECCIÓN: ahora DECREASE decrementa correctamente
+  dropdown.querySelectorAll('.decrease').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.type === 'adult') adults = Math.max(1, adults - 1);
+      else children = Math.max(0, children - 1);
+      updateCounts();
+    });
+  });
+
+  function updateCounts() {
+    adultCountEl.textContent = adults;
+    childCountEl.textContent = children;
+    travelersInput.value = adults + ' Adultos, ' + children + ' Niños';
+  }
+
+  // Cerrar dropdown al hacer clic afuera
+  document.addEventListener('click', function(e){
+    if (!travelersInput.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.style.display = 'none';
+    }
+  });
+
+  // Buscar
+  var btnSearch = document.getElementById('btn-search');
+  if (btnSearch) {
+    btnSearch.addEventListener('click', function(e){
+      e.preventDefault();
+      document.getElementById('formSearch').submit();
+    });
+  }
+});
+</script>
+
 </body>
 </html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regis Hotel - Alojate en el corazón de Buenos Aires</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/541143272605" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Botones flotantes laterales - Versión corregida -->
+<div class="floating-buttons">
+    <a href="#contacto" class="floating-button">
+        <div class="icon"><i class="fas fa-envelope"></i></div>
+        <span class="text">Contacto</span>
+    </a>
+    <a href="#ubicacion" class="floating-button">
+        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+        <span class="text">Ubicación</span>
+    </a>
+    <a href="https://facebook.com" target="_blank" class="floating-button">
+        <div class="icon"><i class="fab fa-facebook-f"></i></div>
+        <span class="text">Facebook</span>
+    </a>
+    <a href="https://instagram.com" target="_blank" class="floating-button">
+        <div class="icon"><i class="fab fa-instagram"></i></div>
+        <span class="text">Instagram</span>
+    </a>
+    <a href="https://linkedin.com" target="_blank" class="floating-button">
+        <div class="icon"><i class="fab fa-linkedin-in"></i></div>
+        <span class="text">LinkedIn</span>
+    </a>
+</div>
+        <!-- Header -->
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <a href="index.html"><img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel"></a>
+        </div>
+        
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="menu-item-has-children">
+                <a href="Habitaciones.html">Habitaciones</a>
+                <ul class="submenu">
+                    <li><a href="habitacion-simple.html">Habitación Simple</a></li>
+                    <li><a href="habitacion-doble.html">Habitación Doble</a></li>
+                    <li><a href="habitacion-triple.html">Habitación Triple</a></li>
+                    <li><a href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
+                </ul>
+            </li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#corporativas">Corporativo</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#" class="reserva-btn">Reservar</a></li>
+        </ul>
+    </div>
+</header>
+
+    
+
+    <!-- Breadcrumb 
+    <div class="breadcrumb container">
+        <a href="index.html">Inicio</a> > <a href="habitaciones.html">Habitaciones</a> > Habitación Simple
+    </div>
+-->
+    <!-- Contenido principal -->
+    <main class="container">
+        <!-- Galería de imágenes -->
+        <div class="gallery-container">
+            <div class="gallery-slides">
+                <div class="gallery-slide">
+                    <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-017-scaled-1000x1000.jpg" alt="Habitación Simple - Vista 1">
+                </div>
+                <div class="gallery-slide">
+                    <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-018-scaled-1000x1000.jpg" alt="Habitación Simple - Vista 2">
+                </div>
+                <div class="gallery-slide">
+                    <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-019-scaled-1000x1000.jpg" alt="Habitación Simple - Vista 3">
+                </div>
+                <div class="gallery-slide">
+                    <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-020-scaled-1000x1000.jpg" alt="Habitación Simple - Vista 4">
+                </div>
+            </div>
+            
+            <div class="gallery-controls">
+                <button class="gallery-btn prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-btn next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="gallery-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+            </div>
+        </div>
+
+        <!-- Información de la habitación -->
+        <section class="room-info">
+            <div class="room-header">
+                <h1 class="room-title">Habitación Simple</h1>
+                <div class="room-price">Desde 47,60 US$/noche</div>
+            </div>
+            
+            <p class="room-description">
+                Cómodas habitaciones para alojar hasta 2 pasajeros, con cama doble y baño privado.
+                Todas nuestras habitaciones están totalmente equipadas con cofre de seguridad, minibar, 
+                aire acondicionado/calefacción central, baño privado con secador de pelo, teléfono, 
+                TV color por cable, Internet wi-fi, ventanas con doble vidrio y cortinas blackout.
+            </p>
+            
+            <div class="features">
+                <h2>Servicios de la habitación</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-binoculars"></i></div>
+                        <span>Vistas al exterior</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-snowflake"></i></div>
+                        <span>Aire acondicionado</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-temperature-high"></i></div>
+                        <span>Calefacción</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-bath"></i></div>
+                        <span>Bañera</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-soap"></i></div>
+                        <span>Artículos de aseo</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-shower"></i></div>
+                        <span>Ducha</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-toilet"></i></div>
+                        <span>Bidé</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-wind"></i></div>
+                        <span>Secador de pelo</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-desktop"></i></div>
+                        <span>Escritorio</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-tv"></i></div>
+                        <span>TV</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                        <span>Caja fuerte</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-phone"></i></div>
+                        <span>Teléfono</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de reserva -->
+        <section class="reserve-section">
+            <h2>¿Te gustaría reservar esta habitación?</h2>
+            <p>Consulta disponibilidad y precios para tus fechas de viaje</p>
+            <button class="reserve-btn" id="open-reservation">Reservar ahora</button>
+        </section>
+
+        <!-- Habitaciones relacionadas -->
+        <section class="related-rooms">
+            <div class="section-title">
+                <h2>También te puede interesar</h2>
+            </div>
+            
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <div class="room-img">
+                        <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-026-scaled-1000x1000.jpg" alt="Habitación Doble">
+                    </div>
+                    <div class="room-content">
+                        <h3>Habitación Doble</h3>
+                        <p>Amplia habitación con dos camas individuales o una cama queen, ideal para parejas.</p>
+                        <a href="habitacion-doble.html" class="btn btn-primary">Ver detalles</a>
+                    </div>
+                </div>
+                
+                <div class="room-card">
+                    <div class="room-img">
+                        <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-026-scaled-1000x1000.jpg" alt="Habitación Triple">
+                    </div>
+                    <div class="room-content">
+                        <h3>Habitación Triple</h3>
+                        <p>Espaciosa habitación con tres camas individuales, perfecta para grupos pequeños.</p>
+                        <a href="habitacion-triple.html" class="btn btn-primary">Ver detalles</a>
+                    </div>
+                </div>
+
+                <div class="room-card">
+                    <div class="room-img">
+                        <img src="https://regishotel.com.ar/wp-content/uploads/2022/04/Habitacion-Regis-018-scaled-1000x1000.jpg" alt="Habitación Cuádruple">
+                    </div>
+                    <div class="room-content">
+                        <h3>Habitación Cuádruple</h3>
+                        <p>Nuestra habitación más grande, equipada con cuatro camas individuales.</p>
+                        <a href="habitacion-cuadruple.html" class="btn btn-primary">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de reservas -->
+    <div class="modal" id="reservation-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <iframe id="reservation-frame" src="about:blank"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
+                    </div>
+                    <p>Alojate en el corazón de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Nuestros Hoteles</h4>
+                    <ul class="footer-links">
+                        <li><strong>ARGENTINA</strong></li>
+                        <li><a href="#">Hotel A&B</a></li>
+                        <li><a href="#">Hotel El Cabildo</a></li>
+                        <li><a href="#">Hotel Reina</a></li>
+                        <li><a href="#">Hotel Tritone</a></li>
+                        <li><strong>URUGUAY</strong></li>
+                        <li><a href="#">Hotel Hispano</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> Tel.: +54 11 4327 2605</li>
+                        <li><i class="fas fa-envelope"></i> E-mail: reservas@regishotel.com.ar</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lavalle 813, C1047AAQ, C.A.B.A., Argentina</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <div class="legal-links">
+                        <a href="#">POLÍTICA DE PRIVACIDAD</a>
+                        <a href="#">POLÍTICA DE COOKIES</a>
+                        <a href="#">TÉRMINOS Y CONDICIONES</a>
+                        <a href="#">Libro de quejas</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 - Hotel Regis. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú móvil
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Cerrar menú móvil después de hacer clic
+                document.querySelector('.nav-menu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

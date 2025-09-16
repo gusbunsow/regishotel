@@ -6,8 +6,11 @@
     <title>Habitaciones - Hotel Regis</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <style>
-        /* Variables y reset */
+
+        
+        /* Variables y reset 
         :root {
             --black: #05154d;
             --dark-gray: #333333;
@@ -79,6 +82,9 @@
         section {
             padding: 80px 0;
         }
+
+
+        */
 
         /* Header */
         header {
@@ -280,70 +286,7 @@
             gap: 15px;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 60px 0 20px;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            margin-bottom: 20px;
-        }
-
-        .footer-logo img {
-            height: 90px;
-        }
-
-        .footer-section h4 {
-            font-size: 1rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-section h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--light-gray);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: var(--light-gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--white);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.6rem;
-            color: var(--light-gray);
-        }
+        
 
         /* Responsive */
         @media (max-width: 992px) {
@@ -418,28 +361,64 @@
     </style>
 </head>
 <body>
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/541143272605" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Botones flotantes laterales - Versión corregida -->
+<div class="floating-buttons">
+    <a href="#contacto" class="floating-button">
+        <div class="icon"><i class="fas fa-envelope"></i></div>
+        <span class="text">Contacto</span>
+    </a>
+    <a href="#ubicacion" class="floating-button">
+        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+        <span class="text">Ubicación</span>
+    </a>
+    <a href="https://facebook.com" target="_blank" class="floating-button">
+        <div class="icon"><i class="fab fa-facebook-f"></i></div>
+        <span class="text">Facebook</span>
+    </a>
+    <a href="https://instagram.com" target="_blank" class="floating-button">
+        <div class="icon"><i class="fab fa-instagram"></i></div>
+        <span class="text">Instagram</span>
+    </a>
+    <a href="https://linkedin.com" target="_blank" class="floating-button">
+        <div class="icon"><i class="fab fa-linkedin-in"></i></div>
+        <span class="text">LinkedIn</span>
+    </a>
+</div>
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <a href="index.html"><img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel"></a>
-            </div>
-            
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <ul class="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="habitaciones.html">Habitaciones</a></li>
-                <li><a href="index.html#servicios">Servicios</a></li>
-                <li><a href="index.html#corporativas">Corporativo</a></li>
-                <li><a href="index.html#testimonios">Testimonios</a></li>
-                <li><a href="index.html#contacto">Contacto</a></li>
-                <li><a href="#" class="reserva-btn">Reservar</a></li>
-            </ul>
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <a href="index.html"><img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel"></a>
         </div>
-    </header>
+        
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="menu-item-has-children">
+                <a href="Habitaciones.html">Habitaciones</a>
+                <ul class="submenu">
+                    <li><a href="habitacion-simple.html">Habitación Simple</a></li>
+                    <li><a href="habitacion-doble.html">Habitación Doble</a></li>
+                    <li><a href="habitacion-triple.html">Habitación Triple</a></li>
+                    <li><a href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
+                </ul>
+            </li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#corporativas">Corporativo</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#" class="reserva-btn">Reservar</a></li>
+        </ul>
+    </div>
+</header>
 
     <!-- Hero Section para página interna -->
     <section class="hero-internal">
@@ -614,6 +593,11 @@
                         <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
                     </div>
                     <p>Alojate en el corazón de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
@@ -640,9 +624,11 @@
                 
                 <div class="footer-section">
                     <h4>Legal</h4>
-                    <div class="footer-links">
-                        <a href="#">Política de Privacidad</a>
-                        <a href="#">Términos y Condiciones</a>
+                    <div class="legal-links">
+                        <a href="#">POLÍTICA DE PRIVACIDAD</a>
+                        <a href="#">POLÍTICA DE COOKIES</a>
+                        <a href="#">TÉRMINOS Y CONDICIONES</a>
+                        <a href="#">Libro de quejas</a>
                     </div>
                 </div>
             </div>
