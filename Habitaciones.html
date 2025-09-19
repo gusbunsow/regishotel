@@ -1,423 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habitaciones - Hotel Regis</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regis Hotel - Alojate en el corazón de Buenos Aires</title>
 
-        
-        /* Variables y reset 
-        :root {
-            --black: #05154d;
-            --dark-gray: #333333;
-            --medium-gray: #666666;
-            --light-gray: #CEB98D;
-            --white: #ffffff;
-            --whatsapp: #25D366;
-            --primary-font: 'Montserrat', sans-serif;
-            --light-beige: #f8f5f0;
-            --light-blue: #f0f5f9;
-        }
+  <!-- Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <!-- Bootstrap 5.3.3 CSS (sin integrity) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        body {
-            font-family: var(--primary-font);
-            color: var(--dark-gray);
-            background-color: var(--white);
-            line-height: 1.6;
-        }
+  <!-- Font Awesome 6.5.2 (sin integrity) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-family: var(--primary-font);
-        }
-
-        .btn-primary {
-            background-color: var(--black);
-            color: var(--white);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--black);
-            border: 2px solid var(--black);
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-
-        */
-
-        /* Header */
-        header {
-            background-color: var(--black);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            height: 80px;
-        }
-
-        .logo img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-menu li {
-            margin-left: 25px;
-        }
-
-        .nav-menu a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.8rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: var(--light-gray);
-        }
-
-        .reserva-btn {
-            background-color: var(--white);
-            color: var(--black);
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero-internal {
-            height: 60vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-017-scaled-1000x1000.jpg') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            margin-top: 80px;
-        }
-        
-        .hero-content-internal {
-            background-color: rgba(5, 21, 77, 0.8);
-            padding: 40px;
-            border-radius: 8px;
-            max-width: 800px;
-            width: 90%;
-        }
-        
-        .hero-content-internal h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .hero-content-internal p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-
-        /* Room Sections */
-        .room-section {
-            padding: 80px 0;
-            display: flex;
-            align-items: center;
-            min-height: 500px;
-        }
-
-        .room-section:nth-child(odd) {
-            background-color: var(--light-beige);
-        }
-
-        .room-section:nth-child(even) {
-            background-color: var(--light-blue);
-        }
-
-        .room-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-        }
-
-        .room-section:nth-child(odd) .room-container {
-            flex-direction: row;
-        }
-
-        .room-section:nth-child(even) .room-container {
-            flex-direction: row-reverse;
-        }
-
-        .room-image {
-            flex: 1;
-            border-radius: 0%;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .room-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .room-image:hover img {
-            transform: scale(1.03);
-        }
-
-        .room-content {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .room-title {
-            font-size: 2rem;
-            color: var(--black);
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .room-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: var(--light-gray);
-        }
-
-        .room-description {
-            margin-bottom: 25px;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-
-        .room-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 8px 15px;
-            border-radius: 30px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .feature i {
-            color: var(--black);
-            font-size: 1.2rem;
-        }
-
-        .room-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .room-container {
-                flex-direction: column !important;
-                gap: 30px;
-            }
-            
-            .room-image, .room-content {
-                width: 100%;
-            }
-            
-            .hero-content-internal h1 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-container {
-                flex-wrap: wrap;
-            }
-            
-            .nav-menu {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                margin-top: 20px;
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .nav-menu li {
-                margin: 10px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .room-buttons {
-                flex-direction: column;
-            }
-            
-            .room-features {
-                gap: 10px;
-            }
-            
-            .feature {
-                padding: 6px 12px;
-            }
-            
-            .hero-content-internal {
-                padding: 20px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .room-section {
-                padding: 60px 0;
-            }
-            
-            .room-title {
-                font-size: 1.7rem;
-            }
-            
-            .hero-internal {
-                height: 50vh;
-            }
-        }
-    </style>
+  <!-- Tu CSS -->
+  <link href="assets/css/styles.css" rel="stylesheet">
 </head>
-<body>
-    <!-- WhatsApp flotante -->
-    <a href="https://wa.me/541143272605" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
-    <!-- Botones flotantes laterales - Versión corregida -->
-<div class="floating-buttons">
-    <a href="#contacto" class="floating-button">
-        <div class="icon"><i class="fas fa-envelope"></i></div>
-        <span class="text">Contacto</span>
-    </a>
-    <a href="#ubicacion" class="floating-button">
-        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-        <span class="text">Ubicación</span>
-    </a>
-    <a href="https://facebook.com" target="_blank" class="floating-button">
-        <div class="icon"><i class="fab fa-facebook-f"></i></div>
-        <span class="text">Facebook</span>
-    </a>
-    <a href="https://instagram.com" target="_blank" class="floating-button">
-        <div class="icon"><i class="fab fa-instagram"></i></div>
-        <span class="text">Instagram</span>
-    </a>
-    <a href="https://linkedin.com" target="_blank" class="floating-button">
-        <div class="icon"><i class="fab fa-linkedin-in"></i></div>
-        <span class="text">LinkedIn</span>
-    </a>
-</div>
-    <!-- Header -->
-<header>
-    <div class="container header-container">
-        <div class="logo">
-            <a href="index.html"><img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel"></a>
+<body>
+    <!-- HEADER -->
+<header class="rh-header">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Inicio">
+        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
+      </a>
+
+      <!-- Botón hamburguesa (mobile) -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="offcanvas" data-bs-target="#rhOffcanvas"
+              aria-controls="rhOffcanvas" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menú / Offcanvas -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="rhOffcanvas" aria-labelledby="rhOffcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="rhOffcanvasLabel">Menú</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
         </div>
-        
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <ul class="nav-menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li class="menu-item-has-children">
-                <a href="Habitaciones.html">Habitaciones</a>
-                <ul class="submenu">
-                    <li><a href="habitacion-simple.html">Habitación Simple</a></li>
-                    <li><a href="habitacion-doble.html">Habitación Doble</a></li>
-                    <li><a href="habitacion-triple.html">Habitación Triple</a></li>
-                    <li><a href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
-                </ul>
+
+        <div class="offcanvas-body">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+
+            <!-- Habitaciones (submenú) -->
+            <li class="nav-item dropdown rh-dropdown">
+              <!-- Con .dropdown-toggle para estilos; la flecha se oculta por CSS -->
+              <a class="nav-link dropdown-toggle" href="Habitaciones.html" id="habitacionesDropdown" role="button" aria-expanded="false">
+                Habitaciones
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="habitacionesDropdown">
+                <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
+                <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
+                <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
+                <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
+              </ul>
             </li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#corporativas">Corporativo</a></li>
-            <li><a href="#testimonios">Testimonios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-            <li><a href="#" class="reserva-btn">Reservar</a></li>
-        </ul>
+
+            <!-- Secciones -->
+            <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="#corporativas">Corporativo</a></li>
+            <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+
+            <!-- CTA: Reservar -->
+            <li class="nav-item ms-lg-3">
+              <a href="#reservar" class="btn btn-reservar">
+                <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
+                <span>Reservar</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
     </div>
+  </nav>
 </header>
 
     <!-- Hero Section para página interna -->
@@ -584,60 +244,94 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
-                    </div>
-                    <p>Alojate en el corazón de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Nuestros Hoteles</h4>
-                    <ul class="footer-links">
-                        <li><strong>ARGENTINA</strong></li>
-                        <li><a href="#">Hotel A&B</a></li>
-                        <li><a href="#">Hotel El Cabildo</a></li>
-                        <li><a href="#">Hotel Reina</a></li>
-                        <li><a href="#">Hotel Tritone</a></li>
-                        <li><strong>URUGUAY</strong></li>
-                        <li><a href="#">Hotel Hispano</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-phone"></i> Tel.: +54 11 4327 2605</li>
-                        <li><i class="fas fa-envelope"></i> E-mail: reservas@regishotel.com.ar</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Lavalle 813, C1047AAQ, C.A.B.A., Argentina</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <div class="legal-links">
-                        <a href="#">POLÍTICA DE PRIVACIDAD</a>
-                        <a href="#">POLÍTICA DE COOKIES</a>
-                        <a href="#">TÉRMINOS Y CONDICIONES</a>
-                        <a href="#">Libro de quejas</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 - Hotel Regis. Todos los derechos reservados.</p>
-            </div>
+    <!-- =========================
+     FOOTER
+     ========================= -->
+<footer class="rh-footer pt-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Col 1: brand -->
+      <div class="col-12 col-lg-4">
+        <a class="footer-brand d-inline-flex align-items-center gap-2 mb-3" href="#">
+          <img src="assets/img/logoregishoteloro.svg.svg" alt="Hotel Regis">
+          <span class="visually-hidden">Hotel Regis</span>
+        </a>
+        <p class="footer-copy">
+          Alojate en el corazón de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.
+        </p>
+        <div class="footer-social d-flex gap-2 mt-2">
+          <a href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/hotel.regis/" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/regis-hotel?trk=public_jobs_topcard-org-name" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
         </div>
-    </footer>
+      </div>
+
+      <!-- Col 2: Nuestros Hoteles -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <h3 class="footer-title">Nuestros Hoteles</h3>
+        <div class="footer-list">
+          <h4>Argentina</h4>
+          <ul>
+            <li><a href="https://hotelayb.com.ar/" target="_blank" rel="noopener">Hotel A&amp;B</a></li>
+            <li><a href="https://hotelelcabildo.com/" target="_blank" rel="noopener">Hotel El Cabildo</a></li>
+            <li><a href="https://reina.buenosaireshotelsargentina.com/es/" target="_blank" rel="noopener">Hotel Reina</a></li>
+            <li><a href="https://www.tritonehotel.com.ar/" target="_blank" rel="noopener">Hotel Tritone</a></li>
+          </ul>
+          <h4>Uruguay</h4>
+          <ul>
+            <li><a href="https://www.hispanohotel.com.uy/" target="_blank" rel="noopener">Hotel Hispano</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Col 3: Contacto + Legal -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <h3 class="footer-title">Contacto</h3>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-phone me-2"></i> <a href="tel:+541143272605">+54 11 4327 2605</a></li>
+          <li><i class="fa-solid fa-envelope me-2"></i> <a href="mailto:reservas@regishotel.com.ar">reservas@regishotel.com.ar</a></li>
+          <li><i class="fa-solid fa-location-dot me-2"></i> Lavalle 813, C1047AAQ, C.A.B.A., Argentina</li>
+        </ul>
+
+        <h3 class="footer-title mt-3">Legal</h3>
+        <ul class="footer-legal">
+          <li><a href="#" rel="nofollow">Política de Privacidad</a></li>
+          <li><a href="#" rel="nofollow">Política de Cookies</a></li>
+          <li><a href="#" rel="nofollow">Términos y Condiciones</a></li>
+          <li><a href="#" rel="nofollow">Libro de quejas</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom mt-4">
+      <p class="small mb-0">© 2025 - Hotel Regis. Todos los derechos reservados. Capitana MKT</p>
+    </div>
+  </div>
+</footer>
+
+<!-- =========================
+     FLOTANTES: WhatsApp + Quick Links
+     ========================= -->
+<!-- WhatsApp flotante (completa número) -->
+<a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- Quick Links laterales (no pisan WhatsApp) -->
+<nav class="quick-links" aria-label="Accesos rápidos">
+  <a class="ql-item" href="#contacto"><i class="fa-solid fa-envelope"></i><span>Contacto</span></a>
+  <a class="ql-item" href="#contacto"><i class="fa-solid fa-location-dot"></i><span>Ubicación</span></a>
+  <a class="ql-item" href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
+  <a class="ql-item" href="https://www.instagram.com/hotel.regis/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
+  <a class="ql-item" href="https://www.linkedin.com/company/regis-hotel?trk=public_jobs_topcard-org-name" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
+</nav>
+
 
     <script>
         // Menú móvil

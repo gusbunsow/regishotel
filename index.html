@@ -1,909 +1,775 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Regis Hotel - Alojate en el corazón de Buenos Aires</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Third-party CSS (antes de tu CSS) -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+  <!-- Bootstrap 5.3.3 CSS (sin integrity) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- TU CSS al final -->
-<link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Font Awesome 6.5.2 (sin integrity) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
+  <!-- Tu CSS -->
+  <link href="assets/css/styles.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- WhatsApp flotante -->
-    <a href="https://wa.me/541143272605" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+<!-- HEADER -->
+<header class="rh-header">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Inicio">
+        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
+      </a>
 
-    <!-- Botones flotantes laterales - Versión corregida -->
-<div class="floating-buttons">
-    <a href="#contacto" class="floating-button">
-        <div class="icon"><i class="fas fa-envelope"></i></div>
-        <span class="text">Contacto</span>
-    </a>
-    <a href="#ubicacion" class="floating-button">
-        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-        <span class="text">Ubicación</span>
-    </a>
-    <a href="https://facebook.com" target="_blank" class="floating-button">
-        <div class="icon"><i class="fab fa-facebook-f"></i></div>
-        <span class="text">Facebook</span>
-    </a>
-    <a href="https://instagram.com" target="_blank" class="floating-button">
-        <div class="icon"><i class="fab fa-instagram"></i></div>
-        <span class="text">Instagram</span>
-    </a>
-    <a href="https://linkedin.com" target="_blank" class="floating-button">
-        <div class="icon"><i class="fab fa-linkedin-in"></i></div>
-        <span class="text">LinkedIn</span>
-    </a>
-</div>
-    <!-- Header -->
-<header>
-    <div class="container header-container">
-        <div class="logo">
-            <a href="index.html"><img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel"></a>
-            
+      <!-- Botón hamburguesa (mobile) -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="offcanvas" data-bs-target="#rhOffcanvas"
+              aria-controls="rhOffcanvas" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menú / Offcanvas -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="rhOffcanvas" aria-labelledby="rhOffcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="rhOffcanvasLabel">Menú</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
         </div>
-        
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <ul class="nav-menu">
-            <!--Eliminé el Inicio de la Home
-            <li><a href="index.html">Inicio</a></li>
-            -->
-            <li class="menu-item-has-children">
-                <a href="Habitaciones.html">Habitaciones</a>
-                <ul class="submenu">
-                    <li><a href="habitacion-simple.html">Habitación Simple</a></li>
-                    <li><a href="habitacion-doble.html">Habitación Doble</a></li>
-                    <li><a href="habitacion-triple.html">Habitación Triple</a></li>
-                    <li><a href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
-                </ul>
+
+        <div class="offcanvas-body">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+
+            <!-- Habitaciones (submenú) -->
+            <li class="nav-item dropdown rh-dropdown">
+              <!-- Con .dropdown-toggle para estilos; la flecha se oculta por CSS -->
+              <a class="nav-link dropdown-toggle" href="Habitaciones.html" id="habitacionesDropdown" role="button" aria-expanded="false">
+                Habitaciones
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="habitacionesDropdown">
+                <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
+                <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
+                <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
+                <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
+              </ul>
             </li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#corporativas">Corporativo</a></li>
-            <li><a href="#testimonios">Testimonios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-            <li><a href="#"class="reserva-btn">Reservar</a></li>
-        </ul>
+
+            <!-- Secciones -->
+            <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="#corporativas">Corporativo</a></li>
+            <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+
+            <!-- CTA: Reservar -->
+<li class="nav-item ms-lg-3">
+  <a href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es" 
+     target="_blank" 
+     rel="noopener" 
+     class="btn btn-reservar">
+    <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
+    <span>Reservar</span>
+  </a>
+</li>
+
+
+          </ul>
+        </div>
+      </div>
     </div>
+  </nav>
 </header>
 
- <!-- Hero Section -->
-<section class="hero">
-    <video autoplay muted loop class="hero-video">
-        <source src="assets/img/14907581-hd_1280_720_60fps.mp4" type="video/mp4">
-        Tu navegador no soporta videos HTML5.
-    </video>
-    
-    <div class="video-overlay"></div>
-    
-    <div class="container">
-        <div class="hero-content">
-            <h1>Hotel Regis</h1>
-            <p>Alojate en el corazón de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.</p>
-        </div>
-    
-    <!-- Motor de reservas -->
-<div id="search_room_box" class="motor-reservas">
-  <form name="formSearch" id="formSearch" action="https://booking.roomcloud.net/be/se1/hotel.jsp" method="post">
-    <div class="rc-row">
-      
-      <!-- Fechas -->
-<div class="rc-col-xs-12 rc-col-sm-6 rc-col-md-3">
-  <div class="rc-input-group">
-    <label for="search_calendar" class="visually-hidden">Fechas</label>
-    <span class="input-group-addon" aria-hidden="true"><i class="fa fa-calendar"></i></span>
-    <input
-      type="text"
-      class="form-control"
-      name="search_calendar"
-      id="search_calendar"
-      placeholder="Seleccionar fechas"
-      readonly
-      autocomplete="off"
-      aria-describedby="search_calendar_desc"
-    />
-    <small id="search_calendar_desc" class="visually-hidden">Seleccioná fecha de entrada y salida</small>
+<!-- Hero Section -->
+<section class="rh-hero hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="assets/img/14907581-hd_1280_720_60fps.mp4" type="video/mp4">
+    Tu navegador no soporta videos HTML5.
+  </video>
+
+  <div class="video-overlay" aria-hidden="true"></div>
+
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <!-- Texto hero -->
+      <div class="col-12 col-lg-6 rh-hero-copy">
+        <h1 class="mb-3">Hotel Regis</h1>
+        <p class="lead mb-0">
+          Alojate en el centro de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.
+Donde todo sucede.
+        </p>
+      </div>
+
+      <!-- Banner / Formulario de reservas -->
+      <div class="col-12 col-lg-5 ms-lg-auto">
+        <form id="heroForm" class="booking-card" aria-label="Buscador de reservas">
+          <div class="row g-2">
+            <div class="col-6">
+              <label for="checkin" class="form-label">Check-in</label>
+              <input id="checkin" type="date" class="form-control" required>
+            </div>
+            <div class="col-6">
+              <label for="checkout" class="form-label">Check-out</label>
+              <input id="checkout" type="date" class="form-control" required>
+            </div>
+            <div class="col-6">
+              <label for="adults" class="form-label">Adultos</label>
+              <input id="adults" type="number" class="form-control" min="1" value="2" inputmode="numeric">
+            </div>
+            <div class="col-6">
+              <label for="children" class="form-label">Niños</label>
+              <input id="children" type="number" class="form-control" min="0" value="0" inputmode="numeric">
+            </div>
+            <div class="col-12 d-grid">
+              <button class="btn btn-primary btn-lg" type="submit">Reservar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
+
+  <!-- Mini-script: fechas mínimas (siempre desde hoy) -->
+  <script>
+    (function(){
+      const $in  = document.getElementById('checkin');
+      const $out = document.getElementById('checkout');
+
+      // hoy en YYYY-MM-DD
+      const pad = n => String(n).padStart(2,'0');
+      const fmt = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+
+      const today = new Date();
+      const tomorrow = new Date(); tomorrow.setDate(today.getDate()+1);
+
+      $in.min  = fmt(today);
+      $out.min = fmt(tomorrow);
+
+      // valores por defecto
+      if(!$in.value)  $in.value  = fmt(today);
+      if(!$out.value) $out.value = fmt(tomorrow);
+
+      // cuando cambia check-in, forzar min de check-out
+      $in.addEventListener('change', () => {
+        const ci = new Date($in.value);
+        const coMin = new Date(ci); coMin.setDate(ci.getDate()+1);
+        $out.min = fmt(coMin);
+        if (new Date($out.value) <= ci) $out.value = fmt(coMin);
+      });
+    })();
+  </script>
+
+  <!-- Script conexion-->
+<script>
+  // ===== Conexión Hero -> RoomCloud =====
+  const HOTEL_ID = '12269';
+  const BASE_URL = 'https://booking.roomcloud.net/be/se1/hotel.jsp';
+  const DEFAULT_LANG = 'es';
+
+  // util para partir "YYYY-MM-DD"
+  function splitYMD(val){
+    const [y,m,d] = val.split('-').map(Number);
+    return { y, m, d };
+  }
+  // suma días a una fecha YYYY-MM-DD -> YYYY-MM-DD
+  function addDays(ymd, days){
+    const dt = new Date(ymd);
+    dt.setDate(dt.getDate() + days);
+    const pad = n => String(n).padStart(2,'0');
+    return `${dt.getFullYear()}-${pad(dt.getMonth()+1)}-${pad(dt.getDate())}`;
+  }
+
+  document.getElementById('heroForm').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    let ciVal = document.getElementById('checkin').value;   // YYYY-MM-DD
+    let coVal = document.getElementById('checkout').value;  // YYYY-MM-DD
+    const ad   = document.getElementById('adults').value || 2;
+    const ch   = document.getElementById('children').value || 0;
+
+    // seguridad: si checkout <= checkin, forzar +1 noche
+    if (new Date(coVal) <= new Date(ciVal)) {
+      coVal = addDays(ciVal, 1);
+      document.getElementById('checkout').value = coVal; // opcional: reflejar en UI
+    }
+
+    const ci = splitYMD(ciVal);
+    const co = splitYMD(coVal);
+
+    // Construimos URL con el esquema probado (start_day/month/year, end_*)
+    const params = new URLSearchParams({
+      hotel: HOTEL_ID,
+      lang: DEFAULT_LANG,
+      adults: ad,
+      children: ch,
+      start_day:  String(ci.d).padStart(2,'0'),
+      start_month:String(ci.m).padStart(2,'0'),
+      start_year: ci.y,
+      end_day:    String(co.d).padStart(2,'0'),
+      end_month:  String(co.m).padStart(2,'0'),
+      end_year:   co.y,
+      // flags “seguros” (como en tu URL funcional)
+      a: 1, d: 1, f: 1, h: 1, l: 1, m: 0, n: 1, p: 1, t: 1, showCrossed: 'false'
+    });
+
+    // Redirigir en la misma pestaña
+    window.location.href = `${BASE_URL}?${params.toString()}`;
+    // Si preferís nueva pestaña: window.open(`${BASE_URL}?${params}`, '_blank');
+  });
+</script>
 
 
-      <!-- Pasajeros -->
-      <div class="rc-col-xs-12 rc-col-sm-6 rc-col-md-4">
-        <div class="rc-dropdown">
-          <div class="rc-input-group" id="travelers_group">
-            <span class="input-group-addon"><i class="fa fa-male"></i></span>
-            <input type="text" class="form-control" id="travelers" value="2 Adultos, 0 Niños" readonly />
-          </div>
-          <div class="rc-dropdown-menu" id="traveler_details" style="display:none;">
-            <div class="traveler-counter">
-              <label>Adultos</label>
-              <button type="button" class="decrease" data-type="adult">−</button>
-              <span class="count" id="adult_count">2</span>
-              <button type="button" class="increase" data-type="adult">+</button>
+</section>
+
+<!-- Nuestras Habitaciones -->
+<section class="rh-rooms py-5" id="habitaciones">
+  <div class="container">
+    <header class="text-center mb-4">
+      <h2 class="rh-title">Nuestras Habitaciones</h2>
+      <p class="rh-subtitle mx-auto">
+        Diseñadas para tu descanso y comodidad. Elegí entre opciones estándar, dobles, triples, ejecutivas o familiares, todas equipadas con Wi-Fi gratuito, TV, climatización y espacios pensados para relajarte después de recorrer la ciudad.
+      </p>
+    </header>
+
+    <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 justify-content-center">
+
+      <!-- Habitación Simple -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <article class="card rh-room-card rh-anim">
+          <img class="card-img-top" src="assets/img/hab-ejecutiva-1200.webp" alt="Habitación Simple">
+          <div class="card-body text-center">
+            <h3 class="card-title">Habitación Simple</h3>
+            <p class="card-text">Confort esencial para una estadía práctica y tranquila.</p>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="#reservar" class="btn btn-primary btn-sm">Reservar</a>
+              <a href="habitacion-simple.html" class="btn btn-outline-primary btn-sm">Más info</a>
             </div>
-            <div class="traveler-counter">
-              <label>Niños</label>
-              <button type="button" class="decrease" data-type="child">−</button>
-              <span class="count" id="child_count">0</span>
-              <button type="button" class="increase" data-type="child">+</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Habitación Doble -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <article class="card rh-room-card rh-anim">
+          <img class="card-img-top" src="assets/img/hab-ejecutiva-1200.webp" alt="Habitación Doble">
+          <div class="card-body text-center">
+            <h3 class="card-title">Habitación Doble</h3>
+            <p class="card-text">Espacio ideal para dos, con todo lo necesario para descansar.</p>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="#reservar" class="btn btn-primary btn-sm">Reservar</a>
+              <a href="habitacion-doble.html" class="btn btn-outline-primary btn-sm">Más info</a>
             </div>
           </div>
+        </article>
+      </div>
+
+      <!-- Habitación Triple -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <article class="card rh-room-card rh-anim">
+          <img class="card-img-top" src="assets/img/hab-ejecutiva-1200.webp" alt="Habitación Triple">
+          <div class="card-body text-center">
+            <h3 class="card-title">Habitación Triple</h3>
+            <p class="card-text">Comodidad para grupos o familias pequeñas, sin resignar confort.</p>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="#reservar" class="btn btn-primary btn-sm">Reservar</a>
+              <a href="habitacion-triple.html" class="btn btn-outline-primary btn-sm">Más info</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Habitación Familiar -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <article class="card rh-room-card rh-anim">
+          <img class="card-img-top" src="assets/img/hab-ejecutiva-1200.webp" alt="Habitación Familiar">
+          <div class="card-body text-center">
+            <h3 class="card-title">Habitación Familiar</h3>
+            <p class="card-text">Ambientes amplios para compartir y descansar después de la ciudad.</p>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="#reservar" class="btn btn-primary btn-sm">Reservar</a>
+              <a href="habitacion-cuadruple.html" class="btn btn-outline-primary btn-sm">Más info</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Habitación Ejecutiva (nueva) -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <article class="card rh-room-card rh-anim">
+          <!-- Usa las imágenes optimizadas que te pasé -->
+          <img
+            class="card-img-top"
+            src="assets/img/hab-ejecutiva-800.webp"
+            srcset="
+              assets/img/hab-ejecutiva-400.webp 400w,
+              assets/img/hab-ejecutiva-800.webp 800w,
+              assets/img/hab-ejecutiva-1200.webp 1200w,
+              assets/img/hab-ejecutiva-1600.webp 1600w"
+            sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw"
+            alt="Habitación Ejecutiva del Hotel Regis">
+          <div class="card-body text-center">
+            <h3 class="card-title">Habitación Ejecutiva</h3>
+            <p class="card-text">Más espacio, escritorio y detalles premium para viajes de trabajo o estadías largas.</p>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="#reservar" class="btn btn-primary btn-sm">Reservar</a>
+              <a href="habitacion-ejecutiva.html" class="btn btn-outline-primary btn-sm">Más info</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Bootstrap 5 bundle (sin integrity) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- =========================
+     NUESTROS SERVICIOS
+     ========================= -->
+<section class="rh-services py-5">
+  <div class="container">
+    <header class="text-center mb-4">
+      <h2 class="rh-title">Nuestros Servicios</h2>
+      <p class="rh-subtitle mx-auto">En el Hotel Regis cuidamos cada detalle para que su estadía sea única.</p>
+    </header>
+
+    <div class="row g-4">
+      <!-- Servicio -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <article class="rh-service-card rh-anim">
+          <img src="assets/img/icono-recepcion.svg" alt="Recepción 24hs" class="rh-service-icon">
+          <h3 class="h5">Recepción 24hs</h3>
+          <p>Recepción y conserjería disponibles las 24 horas, para brindarle asistencia en todo momento.</p>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <article class="rh-service-card rh-anim">
+          <img src="assets/img/icono-desayuno.svg" alt="Desayuno Porteño" class="rh-service-icon">
+          <h3 class="h5">Desayuno Porteño</h3>
+          <p>Comience el día en el clásico restaurante “Los Inmortales”.</p>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <article class="rh-service-card rh-anim">
+          <img src="assets/img/icono-wifi.svg" alt="Wi-Fi" class="rh-service-icon">
+          <h3 class="h5">Wi-Fi</h3>
+          <p>Conexión en todas las áreas del hotel, ideal para trabajar, estudiar y mantenerse conectado.</p>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <article class="rh-service-card rh-anim">
+          <img src="assets/img/iconoequipaje.svg" alt="Guarda de equipaje" class="rh-service-icon">
+          <h3 class="h5">Guarda de equipaje sin cargo</h3>
+          <p>Antes del check-in o después del check-out, guarde su equipaje y aproveche su estadía en la ciudad.</p>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <article class="rh-service-card rh-anim">
+          <img src="assets/img/icono-limpieza.svg" alt="Servicio de Limpieza" class="rh-service-icon">
+          <h3 class="h5">Servicio de Limpieza</h3>
+          <p>Limpieza completa de la habitación y espacios comunes para su máximo confort.</p>
+        </article>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <article class="rh-service-card rh-anim">
+          <img src="assets/img/habitaciones.svg" alt="Habitaciones Conectadas" class="rh-service-icon">
+          <h3 class="h5">Habitaciones Conectadas</h3>
+          <p>Conecte hasta tres habitaciones: ideal para familias o grupos que desean cercanía y privacidad.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     RESERVAS CORPORATIVAS
+     ========================= -->
+<section class="rh-corp py-5" id="corporativas">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-lg-7">
+        <h2 class="rh-title mb-2">Reservas Corporativas</h2>
+        <p class="lead mb-3">
+          Ofrecemos tarifas preferenciales para empresas y grupos, con beneficios exclusivos para viajes de trabajo o estadías prolongadas. Contáctenos para obtener más información sobre tarifas especiales y condiciones personalizadas.
+        </p>
+      </div>
+      <div class="col-12 col-lg-5">
+        <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
+          <!-- WhatsApp (completa tu número en el href cuando lo tengas) -->
+          <a class="btn btn-whatsapp" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp me-2" aria-hidden="true"></i> Consulte ahora
+          </a>
+          <!-- Email -->
+         <a class="btn btn-outline-light" 
+   href="mailto:reservas@regishotel.com.ar?subject=Consulta%20corporativa%20Hotel%20Regis">
+  <i class="fa-solid fa-envelope me-2" aria-hidden="true"></i> Enviar e-mail
+</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     EXPERIENCIAS CERCA
+     ========================= -->
+<section class="rh-experiencias py-5" id="experiencias">
+  <div class="container">
+    <header class="text-center mb-4">
+      <h2 class="rh-title">Experiencias Cerca</h2>
+      <p class="rh-subtitle mx-auto">
+        Desde el Hotel Regis, viví la ciudad a pocos pasos de sus principales atractivos turísticos, culturales y comerciales.
+        Nuestra ubicación en pleno centro te permite recorrer caminando las zonas más emblemáticas.
+      </p>
+    </header>
+
+    <div class="row g-4">
+
+      <!-- Florida -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="card rh-exp-card rh-anim h-100">
+          <img class="card-img-top" src="https://resizer.glanacion.com/resizer/v2/ciudad-autonoma-de-buenos-aires-buenos-aires-WN5QYCNKA5BTZPRJVHMIQF7QJ4.jpg?auth=537d27a4c8f68b831aae192fe185aabe7f9eb199940ae7d331cb5de57aaff205&width=1280&height=854&quality=70&smart=true" alt="Calle Florida">
+          <div class="card-body d-flex flex-column text-center">
+            <h3 class="card-title">Calle Florida <small class="text-muted">· 200 m</small></h3>
+            <p class="card-text flex-grow-1">Icónica peatonal con tiendas, artistas callejeros y Galerías Pacífico.</p>
+            <div class="text-center">
+              <a href="https://maps.app.goo.gl/9PKw29awBMERQ5S96" class="btn btn-ir">Ir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Corrientes -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="card rh-exp-card rh-anim h-100">
+          <img class="card-img-top" src="https://images.adsttc.com/media/images/5ab5/018c/f197/cc29/0200/00ea/slideshow/Obelisco-desde_Corrientes-TM.jpg?1521811844" alt="Avenida Corrientes">
+          <div class="card-body d-flex flex-column text-center">
+            <h3 class="card-title">Avenida Corrientes <small class="text-muted">· 100 m</small></h3>
+            <p class="card-text flex-grow-1">Teatros, librerías y pizzerías tradicionales. Clásico porteño.</p>
+            <div class="text-center">
+              <a href="https://maps.app.goo.gl/hWMQ8M5jJMNqiaKN8" class="btn btn-ir">Ir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- La Ideal -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="card rh-exp-card rh-anim h-100">
+          <img class="card-img-top" src="https://laideal.ar/img/carrousel_2.jpg" alt="Confitería La Ideal">
+          <div class="card-body d-flex flex-column text-center">
+            <h3 class="card-title">Confitería La Ideal <small class="text-muted">· 250 m</small></h3>
+            <p class="card-text flex-grow-1">Joya arquitectónica restaurada; café notable y pastelería de autor.</p>
+            <div class="text-center">
+              <a href="https://maps.app.goo.gl/fEV1DN6F464p7PV8A" class="btn btn-ir">Ir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Obelisco -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="card rh-exp-card rh-anim h-100">
+          <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/0/00/ObeliscoBA2015.2.jpg" alt="Obelisco de Buenos Aires">
+          <div class="card-body d-flex flex-column text-center">
+            <h3 class="card-title">Obelisco <small class="text-muted">· 450 m</small></h3>
+            <p class="card-text flex-grow-1">El emblema de la ciudad, a minutos del hotel.</p>
+            <div class="text-center">
+              <a href="https://maps.app.goo.gl/SAdiTy7Q42WBp4m88" class="btn btn-ir">Ir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Teatro Colón -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="card rh-exp-card rh-anim h-100">
+          <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Fachada_del_Teatro_Col%C3%B3n_en_Buenos_Aires%2C_Argentina.jpg/1200px-Fachada_del_Teatro_Col%C3%B3n_en_Buenos_Aires%2C_Argentina.jpg" alt="Teatro Colón">
+          <div class="card-body d-flex flex-column text-center">
+            <h3 class="card-title">Teatro Colón <small class="text-muted">· 600 m</small></h3>
+            <p class="card-text flex-grow-1">Visitas guiadas y una acústica excepcional.</p>
+            <div class="text-center">
+              <a href="https://maps.app.goo.gl/wcTTauhBXvRpvAyG8" class="btn btn-ir">Ir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Puerto Madero -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="card rh-exp-card rh-anim h-100">
+          <img class="card-img-top" src="https://turismo.buenosaires.gob.ar/sites/turismo/files/panoramica-puerto-madero-1500x610.jpg" alt="Puerto Madero">
+          <div class="card-body d-flex flex-column text-center">
+            <h3 class="card-title">Puerto Madero <small class="text-muted">· 700 m</small></h3>
+            <p class="card-text flex-grow-1">Restaurantes y paseos junto al río.</p>
+            <div class="text-center">
+              <a href="https://maps.app.goo.gl/85azwBENLFtsuGhG6" class="btn btn-ir">Ir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Palacio Barolo -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="card rh-exp-card rh-anim h-100">
+          <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Palacio_Barolo_visto_de_frente.jpg" alt="Palacio Barolo">
+          <div class="card-body d-flex flex-column text-center">
+            <h3 class="card-title">Palacio Barolo <small class="text-muted">· 1 km</small></h3>
+            <p class="card-text flex-grow-1">Maravilla inspirada en la Divina Comedia.</p>
+            <div class="text-center">
+              <a href="https://maps.app.goo.gl/EFGZbqE6Ui1n1bHQ7" class="btn btn-ir">Ir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Plaza de Mayo -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="card rh-exp-card rh-anim h-100">
+          <img class="card-img-top" src="https://turismo.buenosaires.gob.ar/sites/turismo/files/plaza-mayo-sol-1500x610-24.jpg" alt="Plaza de Mayo">
+          <div class="card-body d-flex flex-column text-center">
+            <h3 class="card-title">Plaza de Mayo <small class="text-muted">· 1 km</small></h3>
+            <p class="card-text flex-grow-1">Centro político e histórico del país.</p>
+            <div class="text-center">
+              <a href="https://maps.app.goo.gl/EXPAVKsqARQ3VzQ16" class="btn btn-ir">Ir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Casa Rosada -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="card rh-exp-card rh-anim h-100">
+          <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Casa_Rosada_Buenos_Aires.JPG" alt="Casa Rosada">
+          <div class="card-body d-flex flex-column text-center">
+            <h3 class="card-title">Casa Rosada <small class="text-muted">· 1 km</small></h3>
+            <p class="card-text flex-grow-1">Sede del Poder Ejecutivo y emblema histórico.</p>
+            <div class="text-center">
+              <a href="https://maps.app.goo.gl/Un4J9AzavwNsca6a8" class="btn btn-ir">Ir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================
+     TESTIMONIOS
+     ========================= -->
+<section class="rh-testimonials py-5" id="testimonios">
+  <div class="container">
+    <header class="text-center mb-4">
+      <h2 class="rh-title">Testimonios</h2>
+      <p class="rh-subtitle mx-auto">Opiniones reales de huéspedes que eligieron vivir Buenos Aires desde el Regis.</p>
+    </header>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Tarjeta -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="rh-test-card rh-anim">
+          <div class="rh-test-quote"><i class="fa-solid fa-quote-left"></i></div>
+          <p>“The room had a fridge, a large bed, was spacious and airy with a nice big window. The aircon worked perfectly and the staff were lovely...”</p>
+          <div class="rh-test-meta">
+            <span class="rh-flag"><i class="fa-solid fa-umbrella-beach"></i></span>
+            <strong>Kiah</strong> · United States · Vacaciones
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="rh-test-card rh-anim">
+          <div class="rh-test-quote"><i class="fa-solid fa-quote-left"></i></div>
+          <p>“Excelente ubicación, instalaciones cómodas e impecables. Excelente la atención y amabilidad del personal!!”</p>
+          <div class="rh-test-meta">
+            <span class="rh-flag"><i class="fa-solid fa-briefcase"></i></span>
+            <strong>María</strong> · Uruguay · Trabajo
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="rh-test-card rh-anim">
+          <div class="rh-test-quote"><i class="fa-solid fa-quote-left"></i></div>
+          <p>“Lo mejor de todo fue la limpieza y la atención del personal… Espacios grandes y cómodos.”</p>
+          <div class="rh-test-meta">
+            <span class="rh-flag"><i class="fa-solid fa-people-group"></i></span>
+            <strong>Natalia</strong> · Argentina · Turismo familiar
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="rh-test-card rh-anim">
+          <div class="rh-test-quote"><i class="fa-solid fa-quote-left"></i></div>
+          <p>“Excellent location. Good price and nice staff. Very clean.”</p>
+          <div class="rh-test-meta">
+            <span class="rh-flag"><i class="fa-solid fa-briefcase"></i></span>
+            <strong>Eleonora</strong> · Canadá · Trabajo
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="rh-test-card rh-anim">
+          <div class="rh-test-quote"><i class="fa-solid fa-quote-left"></i></div>
+          <p>“Son muy amables, el hotel es hermoso, cómodo y muy bien ubicado. Voy a volver.”</p>
+          <div class="rh-test-meta">
+            <span class="rh-flag"><i class="fa-solid fa-umbrella-beach"></i></span>
+            <strong>María</strong> · Argentina · Turismo
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     CONTACTO + UBICACIÓN
+     ========================= -->
+<section class="rh-contact py-5" id="contacto">
+  <div class="container">
+    <header class="text-center mb-4">
+      <h2 class="rh-title">Contáctenos</h2>
+      <p class="rh-subtitle mx-auto">Escríbanos su consulta. Le responderemos a la brevedad.</p>
+    </header>
+
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <!-- Form simple que abre el email del usuario -->
+        <form class="rh-form" onsubmit="window.location.href=`mailto:reservas@regishotel.com.ar?subject=Consulta%20Hotel%20Regis&body=Correo:%20${encodeURIComponent(document.getElementById('cEmail').value)}%0A%0AMensaje:%0A${encodeURIComponent(document.getElementById('cMsg').value)}`; return false;">
+          <div class="mb-3">
+            <label for="cEmail" class="form-label">Correo electrónico</label>
+            <input id="cEmail" type="email" class="form-control" placeholder="suemail@dominio.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="cMsg" class="form-label">Mensaje</label>
+            <textarea id="cMsg" class="form-control" rows="5" placeholder="Escriba su mensaje…" required></textarea>
+          </div>
+          <button class="btn btn-primary">Enviar mensaje</button>
+        </form>
+
+        <div class="mt-4 rh-contact-data">
+          <p><i class="fa-solid fa-phone me-2"></i> Tel.: <a href="tel:+541143272605">+54 11 4327 2605</a></p>
+          <p><i class="fa-solid fa-envelope me-2"></i> E-mail: <a href="mailto:reservas@regishotel.com.ar">reservas@regishotel.com.ar</a></p>
+          <p><i class="fa-solid fa-location-dot me-2"></i> Lavalle 813, C1047AAQ, C.A.B.A., Argentina — <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir//Regis+Hotel+Lavalle+813+C1047+AAQ+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/@-34.6022862,-58.378318,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x95bccacebb75ff79:0xdad638b89103db6b!2m2!1d-58.378318!2d-34.6022862?entry=ttu">Cómo llegar</a></p>
         </div>
       </div>
 
-      <!-- Botón Buscar -->
-      <div class="rc-col-xs-12 rc-col-sm-6 rc-col-md-2">
-        <button type="button" id="btn-search" class="btn btn-primary btn-block">
-          <i class="fa fa-search"></i> Buscar
-        </button>
+      <div class="col-12 col-lg-6">
+        <!-- Mapa responsive -->
+        <div class="rh-map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.074335317239!2d-58.38089292350342!3d-34.602281757423654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacebb75ff79%3A0xdad638b89103db6b!2sRegis%20Hotel!5e0!3m2!1ses!2sar!4v1758210031671!5m2!1ses!2sar"
+            style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     FOOTER
+     ========================= -->
+<footer class="rh-footer pt-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Col 1: brand -->
+      <div class="col-12 col-lg-4">
+        <a class="footer-brand d-inline-flex align-items-center gap-2 mb-3" href="#">
+          <img src="assets/img/logoregishoteloro.svg.svg" alt="Hotel Regis">
+          <span class="visually-hidden">Hotel Regis</span>
+        </a>
+        <p class="footer-copy">
+          Alojate en el corazón de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.
+        </p>
+        <div class="footer-social d-flex gap-2 mt-2">
+          <a href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/hotel.regis/" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/regis-hotel?trk=public_jobs_topcard-org-name" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Nuestros Hoteles -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <h3 class="footer-title">Nuestros Hoteles</h3>
+        <div class="footer-list">
+          <h4>Argentina</h4>
+          <ul>
+            <li><a href="https://hotelayb.com.ar/" target="_blank" rel="noopener">Hotel A&amp;B</a></li>
+            <li><a href="https://hotelelcabildo.com/" target="_blank" rel="noopener">Hotel El Cabildo</a></li>
+            <li><a href="https://reina.buenosaireshotelsargentina.com/es/" target="_blank" rel="noopener">Hotel Reina</a></li>
+            <li><a href="https://www.tritonehotel.com.ar/" target="_blank" rel="noopener">Hotel Tritone</a></li>
+          </ul>
+          <h4>Uruguay</h4>
+          <ul>
+            <li><a href="https://www.hispanohotel.com.uy/" target="_blank" rel="noopener">Hotel Hispano</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Col 3: Contacto + Legal -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <h3 class="footer-title">Contacto</h3>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-phone me-2"></i> <a href="tel:+541143272605">+54 11 4327 2605</a></li>
+          <li><i class="fa-solid fa-envelope me-2"></i> <a href="mailto:reservas@regishotel.com.ar">reservas@regishotel.com.ar</a></li>
+          <li><i class="fa-solid fa-location-dot me-2"></i> Lavalle 813, C1047AAQ, C.A.B.A., Argentina</li>
+        </ul>
+
+        <h3 class="footer-title mt-3">Legal</h3>
+        <ul class="footer-legal">
+          <li><a href="#" rel="nofollow">Política de Privacidad</a></li>
+          <li><a href="#" rel="nofollow">Política de Cookies</a></li>
+          <li><a href="#" rel="nofollow">Términos y Condiciones</a></li>
+          <li><a href="#" rel="nofollow">Libro de quejas</a></li>
+        </ul>
       </div>
     </div>
 
-    <!-- Campos ocultos fechas -->
-    <input type="hidden" name="hotel" id="hotel" value="7167">
-    <input type="hidden" name="start_day" id="start_day">
-    <input type="hidden" name="start_month" id="start_month"> 
-    <input type="hidden" name="start_year" id="start_year">
-    <input type="hidden" name="end_day" id="end_day">                                        
-    <input type="hidden" name="end_month" id="end_month">
-    <input type="hidden" name="end_year" id="end_year">
-  </form>
-</div>
+    <div class="footer-bottom mt-4">
+      <p class="small mb-0">© 2025 - Hotel Regis. Todos los derechos reservados. Capitana MKT</p>
+    </div>
+  </div>
+</footer>
 
-<!-- Estilos encapsulados -->
-<style>
-.motor-reservas {
-  background: #fff;
-  padding: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  font-family: 'Montserrat', sans-serif;
-}
-.motor-reservas .rc-input-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.motor-reservas .rc-input-group .input-group-addon {
-  background: #f1f1f1;
-  padding: 8px 10px;
-  border-radius: 4px 0 0 4px;
-  border: 1px solid #ccc;
-}
-.motor-reservas .form-control {
-  flex: 1;
-  padding: 8px 10px;
-  border-radius: 0 4px 4px 0;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-.motor-reservas .btn-block {
-  width: 100%;
-  padding: 8px;
-  border-radius: 4px;
-}
-.rc-dropdown {
-  position: relative;
-}
-.rc-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 10px;
-  z-index: 10;
-}
-.traveler-counter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-.traveler-counter label {
-  font-weight: 500;
-}
-.traveler-counter button {
-  background: #007bff;
-  color: #fff;
-  border: none;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.traveler-counter .count {
-  margin: 0 10px;
-  min-width: 20px;
-  text-align: center;
-}
-@media (max-width: 768px) {
-  .motor-reservas .rc-row {
-    flex-direction: column;
-  }
-  .motor-reservas .rc-col-xs-12,
-  .motor-reservas .rc-col-sm-6,
-  .motor-reservas .rc-col-md-3,
-  .motor-reservas .rc-col-md-4,
-  .motor-reservas .rc-col-md-2 {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-}
-</style>
+<!-- =========================
+     FLOTANTES: WhatsApp + Quick Links
+     ========================= -->
+<!-- WhatsApp flotante (completa número) -->
+<a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
 
-<!-- Script Litepicker + pasajeros -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Fechas
-  var today = new Date();
-  var tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
-
-  function formatDate(date) {
-    return ('0' + date.getDate()).slice(-2) + '/' +
-           ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
-           date.getFullYear();
-  }
-
-  const picker = new Litepicker({
-    element: document.getElementById('search_calendar'),
-    singleMode: false,
-    format: 'DD/MM/YYYY',
-    lang: 'es-ES',
-    numberOfMonths: 2,
-    numberOfColumns: 2,
-    autoApply: true,
-    minDate: today,
-    setup: (picker) => {
-      picker.on('selected', (start, end) => {
-        if (start && end) {
-          document.getElementById('search_calendar').value = start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY');
-          document.getElementById('start_day').value = start.format('DD');
-          document.getElementById('start_month').value = start.format('MM');
-          document.getElementById('start_year').value = start.format('YYYY');
-          document.getElementById('end_day').value = end.format('DD');
-          document.getElementById('end_month').value = end.format('MM');
-          document.getElementById('end_year').value = end.format('YYYY');
-        }
-      });
-    }
-  });
-  
-  // Pasajeros
-  const travelersInput = document.getElementById('travelers');
-  const dropdown = document.getElementById('traveler_details');
-  const adultCountEl = document.getElementById('adult_count');
-  const childCountEl = document.getElementById('child_count');
-
-  let adults = parseInt(adultCountEl.textContent);
-  let children = parseInt(childCountEl.textContent);
-
-  travelersInput.setAttribute('role','button'); // si no existe
-travelersInput.setAttribute('aria-expanded','false');
-
-travelersInput.addEventListener('click', () => {
-  const isOpen = dropdown.style.display === 'block';
-  dropdown.style.display = isOpen ? 'none' : 'block';
-  travelersInput.setAttribute('aria-expanded', String(!isOpen));
-});
-
-
-  dropdown.querySelectorAll('.increase').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if(btn.dataset.type === 'adult') adults++;
-      else children++;
-      updateCounts();
-    });
-  });
-
-  dropdown.querySelectorAll('.decrease').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if(btn.dataset.type === 'adult') adults = Math.max(1, adults);
-      else children = Math.max(0, children);
-      updateCounts();
-    });
-  });
-
-  function updateCounts() {
-    adultCountEl.textContent = adults;
-    childCountEl.textContent = children;
-    travelersInput.value = adults + ' Adultos, ' + children + ' Niños';
-  }
-
-  // Cerrar dropdown al hacer clic afuera
-  document.addEventListener('click', function(e){
-    if(!travelersInput.contains(e.target) && !dropdown.contains(e.target)){
-      dropdown.style.display = 'none';
-    }
-  });
-
-  // Buscar
-  document.getElementById('btn-search').addEventListener('click', function(e){
-    e.preventDefault();
-    document.getElementById('formSearch').submit();
-  });
-});
-</script>
-
-</div>
-</section>
-
-    <!-- Fin motor de reservas -->
-
-
-    <!-- Habitaciones -->
-    <section id="habitaciones" class="rooms">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestras Habitaciones</h2>
-                <p>Diseñadas para tu descanso y comodidad. Elegí entre opciones estándar, dobles, triples o familiares, todas equipadas con Wi-Fi gratuito, TV, climatización y espacios pensados para relajarte después de recorrer la ciudad.</p>
-            </div>
-            
-            <div class="rooms-grid">
-                <!-- Habitación Simple -->
-                <div class="room-card">
-                    <div class="room-img">
-                        <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-017-scaled-1000x1000.jpg" alt="Habitación Doble">
-                    </div>
-                    <div class="room-content">
-                        <h3>Habitación Simple</h3>
-                        <p>Amplia habitación con dos camas individuales o una cama queen, ideal para parejas o viajeros individuales que buscan mayor espacio.</p>
-                        <div class="room-btns">
-                            <a href="#" class="btn btn-primary">Reservar</a>
-                            <a href="#" class="btn btn-secondary">Más Info</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Habitación Doble -->
-                <div class="room-card">
-                    <div class="room-img">
-                        <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-026-scaled-1000x1000.jpg" alt="Habitación Triple">
-                    </div>
-                    <div class="room-content">
-                        <h3>Habitación Doble</h3>
-                        <p>Espaciosa habitación con tres camas individuales, perfecta para grupos pequeños o familias que viajan juntas.</p>
-                        <div class="room-btns">
-                            <a href="#" class="btn btn-primary">Reservar</a>
-                            <a href="#" class="btn btn-secondary">Más Info</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Habitación Triple -->
-                <div class="room-card">
-                    <div class="room-img">
-                        <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-026-scaled-1000x1000.jpg" alt="Habitación Triple">
-                    </div>
-                    <div class="room-content">
-                        <h3>Habitación Triple</h3>
-                        <p>Espaciosa habitación con tres camas individuales, perfecta para grupos pequeños o familias que viajan juntas.</p>
-                        <div class="room-btns">
-                            <a href="#" class="btn btn-primary">Reservar</a>
-                            <a href="#" class="btn btn-secondary">Más Info</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Habitación Cuádruple -->
-                <div class="room-card">
-                    <div class="room-img">
-                        <img src="https://regishotel.com.ar/wp-content/uploads/2022/04/Habitacion-Regis-018-scaled-1000x1000.jpg" alt="Habitación Cuádruple">
-                    </div>
-                    <div class="room-content">
-                        <h3>Habitación Cuádruple</h3>
-                        <p>Nuestra habitación más grande, equipada con cuatro camas individuales, ideal para grupos familiares o amigos.</p>
-                        <div class="room-btns">
-                            <a href="#" class="btn btn-primary">Reservar</a>
-                            <a href="#" class="btn btn-secondary">Más Info</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Servicios -->
-    <section id="servicios" class="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Servicios</h2>
-                <p>En el Hotel Regis cuidamos cada detalle para que su estadía sea única.</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/img/Recepción 24 hs.svg" alt="Icono de recepción 24hs">
-                    </div>
-                    <h3>Recepción 24hs</h3>
-                    <p>Recepción y conserjería disponibles las 24 horas, para brindarle asistencia en todo momento.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/img/Desayuno porteño.svg" alt="Desayuno">
-                    </div>
-                    <h3>Desayuno Porteño</h3>
-                    <p>Comience el día en el clásico restaurante “Los Inmortales”.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/img/Wi-Fi.svg" alt="wi-fi">
-                    </div>
-                    <h3>Wi-Fi</h3>
-                    <p>Conexión en todas las áreas del hotel, ideal para trabajar, estudiar y mantenerse conectado durante su viaje.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/img/Guarda de equipaje sin cargo.svg" alt="Guarda de equipaje sin cargo">
-                    </div>
-                    <h3>Guarda de equipaje sin cargo</h3>
-                    <p>Guarde su equipaje de manera segura antes del check-in o después del check-out para aprovechar su estadía en la ciudad.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/img/Servicio de limpieza.svg" alt="Servicio de Limpieza">
-                    </div>
-                    <h3>Servicio de Limpieza</h3>
-                    <p>Limpieza completa de la habitación y espacios comunes para su máximo confort.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reservas Corporativas -->
-    <section id="corporativas" class="corporate">
-        <div class="container">
-            <h2>Reservas Corporativas</h2>
-            <p>Ofrecemos <strong>tarifas preferenciales para empresas y grupos</strong>, con beneficios exclusivos diseñados para viajes de trabajo o estadías prolongadas.
-                Contáctenos para obtener más información sobre nuestras <strong>tarifas especiales y condiciones personalizadas</strong>.</p>
-                        <p style="margin-top: 30px; font-weight: 600;">Solicitar tarifa corporativa</p>
-                <div class="corporate-btns">
-                <a href="https://wa.me/541143272605" class="btn btn-whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Consulte ahora
-                </a>
-                <a href="mailto:reservas@regishotel.com.ar" class="btn btn-primary">
-                    <i class="fas fa-envelope"></i> Enviar Email
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experiencias Cerca -->
-    <section id="experiencias" class="experiences">
-        <div class="container">
-            <div class="section-title">
-                <h2>Experiencias Cerca</h2>
-                <p>Desde el <strong>Hotel Regis</strong>, viví la ciudad a pocos pasos de sus principales atractivos turísticos, culturales y comerciales. Nuestra ubicación en pleno centro te permite recorrer caminando las zonas más emblemáticas.</p>
-            </div>
-                     
-            <div class="experiences-grid">
-                <div class="experience-card">
-                    <div class="experience-img">
-                        <img src="https://resizer.glanacion.com/resizer/v2/ciudad-autonoma-de-buenos-aires-buenos-aires-WN5QYCNKA5BTZPRJVHMIQF7QJ4.jpg?auth=537d27a4c8f68b831aae192fe185aabe7f9eb199940ae7d331cb5de57aaff205&width=1280&height=854&quality=70&smart=true" alt="Calle Florida">
-                    </div>
-                    <div class="experience-content">
-                        <h3>Calle Florida</h3>
-                        <span class="distance">200 m</span>
-                        <p>A solo 2 minutos del hotel, la icónica calle Florida te conecta con tiendas, artistas callejeros y las famosas Galerías Pacífico. Ideal para compras y para sumergirte en la vida urbana de Buenos Aires.</p>
-                    </div>
-
-                    <div class="xp-btns">
-                            <a href="#" class="btn btn-primary">Ir</a>
-                        </div>
-                        
-                </div>
-
-                  <div class="experience-card">
-                    <div class="experience-img">
-                        <img src="https://images.adsttc.com/media/images/5ab5/018c/f197/cc29/0200/00ea/slideshow/Obelisco-desde_Corrientes-TM.jpg?1521811844"alt="Avenida Corrientes">
-                    </div>
-                    <div class="experience-content">
-                        <h3>Avenida Corrientes</h3>
-                        <span class="distance">300 m</span>
-                        <p>La avenida de los teatros, librerías y pizzerías tradicionales. Un clásico porteño para quienes disfrutan de espectáculos en vivo y de la vibrante vida nocturna.</p>
-                    </div>
-                </div>
-                
-                <div class="experience-card">
-                    <div class="experience-img">
-                        <img src="https://laideal.ar/img/carrousel_2.jpg" alt="Cpnfiteria La Ideal">
-                    </div>
-                    <div class="experience-content">
-                        <h3>Confiteria La Ideal</h3>
-                        <span class="distance"> 500m</span>
-                        <p>Café, Restaurant y Bar Notable. Un salón majestuoso desde 1912.</p>
-                    </div>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-img">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Fachada_del_Teatro_Col%C3%B3n_en_Buenos_Aires%2C_Argentina.jpg/1200px-Fachada_del_Teatro_Col%C3%B3n_en_Buenos_Aires%2C_Argentina.jpg"alt="Teatro Colon">
-                    </div>
-                    <div class="experience-content">
-                        <h3>Teatro Colón</h3>
-                        <span class="distance">600 m</span>
-                        <p>Considerado uno de los teatros de ópera más importantes del mundo. A pocos pasos del hotel podés realizar visitas guiadas y admirar su imponente arquitectura y acústica excepcional.</p>
-                    </div>
-                </div>
-                
-                <div class="experience-card">
-                    <div class="experience-img">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Palacio_Barolo_visto_de_frente.jpg" alt="Palacio Barolo">
-                    </div>
-                    <div class="experience-content">
-                        <h3>Palacio Barolo</h3>
-                        <span class="distance">700 m</span>
-                        <p>Maravilla arquitectónica inspirada en la Divina Comedia de Dante. Sube al faro para vistas panorámicas de la ciudad (reserva con anticipación).</p>
-                    </div>
-                </div>
-            
-                <div class="experience-card">
-                    <div class="experience-img">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/ObeliscoBA2015.2.jpg" alt="Obelisco">
-                    </div>
-                    <div class="experience-content">
-                        <h3>Obelisco de Buenos Aires</h3>
-                        <span class="distance">800 m</span>
-                        <p>El monumento más emblemático de la ciudad. Desde el Hotel Regis llegás en minutos al centro de la Avenida 9 de Julio, ideal para tomar fotos y disfrutar de la iluminación nocturna.</p>
-                    </div>
-                </div>
-                
-                <div class="experience-card">
-                    <div class="experience-img">
-                        <img src="https://turismo.buenosaires.gob.ar/sites/turismo/files/plaza-mayo-sol-1500x610-24.jpg" alt="Plaza de Mayo">
-                    </div>
-                    <div class="experience-content">
-                        <h3>Plaza de Mayo</h3>
-                        <span class="distance">1,2 Km</span>
-                        <p>Centro político e histórico de Argentina, rodeado de edificios emblemáticos y con acceso directo en subte o caminando desde el hotel.</p>
-                    </div>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-img">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Casa_Rosada_Buenos_Aires.JPG" alt="Casa Rosada">
-                    </div>
-                    <div class="experience-content">
-                        <h3>Casa Rosada</h3>
-                        <span class="distance">1,2 Km</span>
-                        <p>Centro político e histórico de Argentina, rodeado de edificios emblemáticos y con acceso directo en subte o caminando desde el hotel.</p>
-                    </div>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-img">
-                        <img src="https://turismo.buenosaires.gob.ar/sites/turismo/files/panoramica-puerto-madero-1500x610.jpg" alt="Puerto Madero">
-                    </div>
-                    <div class="experience-content">
-                        <h3>Puerto Madero</h3>
-                        <span class="distance">1,5 Km</span>
-                        <p>El barrio más moderno y cosmopolita de Buenos Aires, con restaurantes de primer nivel y paseos junto al río. Perfecto para una caminata al atardecer.</p>
-                    </div>
-                </div>
-            </div>
-<div class="experiences-btn-container"> 
-    <a href="#" class="btn btn-primary">Ver en el Mapa</a>
-</div>
-
-</section>
-
-    <!-- Testimonios -->
-<section id="testimonios" class="testimonials">
-    <div class="container">
-        <div class="section-title">
-            <h2>Testimonios</h2>
-        </div>
-        
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <p>The room had a fridge, a large bed, was spacious and airy with a nice big window. The aircon worked perfectly and the staff were lovely. The room was cleaned well and the location very central.</p>
-                    <div class="testimonial-author">
-                        <div class="author-img">
-                            <img src="assets/img/akiahnew.jpeg" alt="Testimonio de Kiah">
-                        </div>
-                        <div class="author-info">
-                            <h4>Kiah</h4>
-                            <span>United States</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Excelente ubicación, las instalaciones muy cómodas e impecables, habitaciones bien equipadas. Excelente la atención y amabilidad del personal!!</p>
-                        <div class="testimonial-author">
-                            <div class="author-img">
-                            <img src="assets/img/mariauruguay.jpg" alt="Testimonio de María"></div>
-                            <div class="author-info">
-                                <h4>María</h4>
-                                <span>Uruguay</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Lo mejor de todo fue la limpieza y la atención del personal. La cama cómoda, las almohadas un poco altas, sábanas y toallas limpias y con buen aroma. Espacios grandes y cómodos. En el baño hay secador de pelo y todo lo necesario para la higiene personal.</p>
-                        <div class="testimonial-author">
-                            <div class="author-img"><img src="assets/img/Natalie_Pérez_-_Consentidos_(cropped).JPG" alt="Testimonio de Natalia"></div>
-                            <div class="author-info">
-                                <h4>Natalia</h4>
-                                <span>Argentina</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Excellent location Good price and nice staff Very clean.</p>
-                        <div class="testimonial-author">
-                            <div class="author-img"><img src="assets/img/eleonora_dimitrova_choice_headshot-27_4.jpg" alt="Testimonio de Eleonora"></div>
-                            <div class="author-info">
-                                <h4>Eleonora</h4>
-                                <span>Canadá</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ubicación y Contacto -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contacto</h2>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-form">
-                    <h3>Contáctenos</h3>
-                    <form action="mailto:reservas@regishotel.com.ar" method="post" enctype="text/plain">
-                        <div class="form-group">
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" required autocomplete="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                    </form>
-                </div>
-                
-                <div class="contact-info">
-                    <h3>Nuestra Ubicación</h3>
-                    <div class="contact-details">
-                        <p><i class="fas fa-map-marker-alt"></i> Lavalle 813, C1047AAQ, C.A.B.A., Argentina</p>
-                        <p><i class="fas fa-phone"></i> Tel.: +54 11 4327 2605</p>
-                        <p><i class="fas fa-envelope"></i> E-mail: reservas@regishotel.com.ar</p>
-                    </div>
-
-                    <div>
-                    </div>
-                    
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.0356520583044!2d-58.380892923544!3d-34.60228617295561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacebb75ff79%3A0xdad638b89103db6b!2sLavalle%20813%2C%20C1047%20AAQ%2C%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1716491479413!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
-                    </div>
-                    <p>Alojate en el corazón de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Nuestros Hoteles</h4>
-                    <ul class="footer-links">
-                        <li><strong>ARGENTINA</strong></li>
-                        <li><a href="#">Hotel A&B</a></li>
-                        <li><a href="#">Hotel El Cabildo</a></li>
-                        <li><a href="#">Hotel Reina</a></li>
-                        <li><a href="#">Hotel Tritone</a></li>
-                        <li><strong>URUGUAY</strong></li>
-                        <li><a href="#">Hotel Hispano</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-phone"></i> Tel.: +54 11 4327 2605</li>
-                        <li><i class="fas fa-envelope"></i> E-mail: reservas@regishotel.com.ar</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Lavalle 813, C1047AAQ, C.A.B.A., Argentina</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <div class="legal-links">
-                        <a href="#">POLÍTICA DE PRIVACIDAD</a>
-                        <a href="#">POLÍTICA DE COOKIES</a>
-                        <a href="#">TÉRMINOS Y CONDICIONES</a>
-                        <a href="#">Libro de quejas</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 - Hotel Regis. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Menú móvil
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Cerrar menú móvil después de hacer clic
-                document.querySelector('.nav-menu').classList.remove('active');
-            });
-        });
-    </script>
-<!-- Scripts (pegá esto justo antes de </body>) -->
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment-with-locales.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
-<!-- Opcional: Bootstrap JS si necesitás componentes JS de Bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Fechas
-  var today = new Date();
-  var tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
-
-  function formatDate(date) {
-    return ('0' + date.getDate()).slice(-2) + '/' +
-           ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
-           date.getFullYear();
-  }
-
-  // Valores iniciales visibles y ocultos
-  var searchInput = document.getElementById('search_calendar');
-  if (searchInput) {
-    searchInput.value = formatDate(today) + ' - ' + formatDate(tomorrow);
-  }
-  if (document.getElementById('start_day')) {
-    document.getElementById('start_day').value = ('0' + today.getDate()).slice(-2);
-    document.getElementById('start_month').value = ('0' + (today.getMonth() + 1)).slice(-2);
-    document.getElementById('start_year').value = today.getFullYear();
-    document.getElementById('end_day').value = ('0' + tomorrow.getDate()).slice(-2);
-    document.getElementById('end_month').value = ('0' + (tomorrow.getMonth() + 1)).slice(-2);
-    document.getElementById('end_year').value = tomorrow.getFullYear();
-  }
-
-  const picker = new Litepicker({
-    element: document.getElementById('search_calendar'),
-    singleMode: false,
-    format: 'DD/MM/YYYY',
-    lang: 'es-ES',
-    numberOfMonths: 2,
-    numberOfColumns: 2,
-    autoApply: true,
-    minDate: today,
-    minDays: 2,
-    setup: (picker) => {
-      picker.on('selected', (start, end) => {
-        if (start && end) {
-          document.getElementById('search_calendar').value = start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY');
-          document.getElementById('start_day').value = start.format('DD');
-          document.getElementById('start_month').value = start.format('MM');
-          document.getElementById('start_year').value = start.format('YYYY');
-          document.getElementById('end_day').value = end.format('DD');
-          document.getElementById('end_month').value = end.format('MM');
-          document.getElementById('end_year').value = end.format('YYYY');
-        }
-      });
-    }
-  });
-  
-  // Pasajeros
-  const travelersInput = document.getElementById('travelers');
-  const dropdown = document.getElementById('traveler_details');
-  const adultCountEl = document.getElementById('adult_count');
-  const childCountEl = document.getElementById('child_count');
-
-  let adults = parseInt(adultCountEl.textContent, 10) || 2;
-  let children = parseInt(childCountEl.textContent, 10) || 0;
-
-  travelersInput.addEventListener('click', () => {
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-  });
-
-  dropdown.querySelectorAll('.increase').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.dataset.type === 'adult') adults++;
-      else children++;
-      updateCounts();
-    });
-  });
-
-  // CORRECCIÓN: ahora DECREASE decrementa correctamente
-  dropdown.querySelectorAll('.decrease').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.dataset.type === 'adult') adults = Math.max(1, adults - 1);
-      else children = Math.max(0, children - 1);
-      updateCounts();
-    });
-  });
-
-  function updateCounts() {
-    adultCountEl.textContent = adults;
-    childCountEl.textContent = children;
-    travelersInput.value = adults + ' Adultos, ' + children + ' Niños';
-  }
-
-  // Cerrar dropdown al hacer clic afuera
-  document.addEventListener('click', function(e){
-    if (!travelersInput.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.style.display = 'none';
-    }
-  });
-
-  // Buscar
-  var btnSearch = document.getElementById('btn-search');
-  if (btnSearch) {
-    btnSearch.addEventListener('click', function(e){
-      e.preventDefault();
-      document.getElementById('formSearch').submit();
-    });
-  }
-});
-</script>
+<!-- Quick Links laterales (no pisan WhatsApp) -->
+<nav class="quick-links" aria-label="Accesos rápidos">
+  <a class="ql-item" href="#contacto"><i class="fa-solid fa-envelope"></i><span>Contacto</span></a>
+  <a class="ql-item" href="#contacto"><i class="fa-solid fa-location-dot"></i><span>Ubicación</span></a>
+  <a class="ql-item" href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
+  <a class="ql-item" href="https://www.instagram.com/hotel.regis/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
+  <a class="ql-item" href="https://www.linkedin.com/company/regis-hotel?trk=public_jobs_topcard-org-name" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
+</nav>
 
 </body>
 </html>
