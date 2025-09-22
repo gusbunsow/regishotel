@@ -21,59 +21,69 @@
 <body>
 
 <!-- HEADER unificado (sticky) -->
+<!-- HEADER unificado (fixed-top + offcanvas) -->
 <header class="rh-header">
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background:#05154d;">
+  <nav class="navbar navbar-dark navbar-expand-lg fixed-top" style="background:#05154d;">
     <div class="container">
       <!-- Logo -->
       <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Inicio">
         <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel" style="height:56px;width:auto;">
       </a>
 
-      <!-- Toggler (mobile) -->
+      <!-- Toggler (abre offcanvas) -->
       <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#mainNav"
-              aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menú">
+              data-bs-toggle="offcanvas" data-bs-target="#rhOffcanvas"
+              aria-controls="rhOffcanvas" aria-label="Abrir menú">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Menú -->
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
+      <!-- Offcanvas / Menú -->
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="rhOffcanvas" aria-labelledby="rhOffcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="rhOffcanvasLabel">Menú</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
 
-          <!-- Link directo a la página de habitaciones (en minúsculas) -->
-          <li class="nav-item dropdown rh-dropdown">
-            <!-- usamos dropdown-toggle para estilos; la flecha la ocultamos con CSS -->
-            <a class="nav-link dropdown-toggle" href="habitaciones.html" id="habDrop" role="button" aria-expanded="false">
-              Habitaciones
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="habDrop">
-              <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
-              <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
-              <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
-              <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
-              <li><a class="dropdown-item" href="habitacion-ejecutiva.html">Habitación Ejecutiva</a></li>
-            </ul>
-          </li>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
 
-          <!-- Anclas de la home -->
-          <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#corporativas">Corporativo</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Testimonios</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+            <!-- Habitaciones (linkea a página general + submenu) -->
+            <li class="nav-item dropdown rh-dropdown">
+              <a class="nav-link dropdown-toggle" href="habitaciones.html" id="habDrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Habitaciones
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
+                <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
+                <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
+                <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
+                <li><a class="dropdown-item" href="habitacion-ejecutiva.html">Habitación Ejecutiva</a></li>
+              </ul>
+            </li>
 
-          <!-- CTA -->
-          <li class="nav-item ms-lg-3">
-            <a href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es"
-               target="_blank" rel="noopener" class="btn btn-reservar">
-              <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
-              <span>Reservar</span>
-            </a>
-          </li>
-        </ul>
+            <!-- Secciones (anclas de la home) -->
+            <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#corporativas">Corporativo</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Testimonios</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+
+            <!-- CTA Reservar (idéntico al index) -->
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+              <a href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es"
+                 target="_blank" rel="noopener" class="btn btn-reservar">
+                <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
+                <span>Reservar</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
       </div>
+      <!-- /offcanvas -->
     </div>
   </nav>
 </header>
+
 
 <!-- Hero Section -->
 <section class="rh-hero hero">
@@ -398,7 +408,7 @@ Donde todo sucede.
       <div class="col-12 col-lg-5">
         <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
           <!-- WhatsApp (completa tu número en el href cuando lo tengas) -->
-          <a class="btn btn-whatsapp" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener">
+          <a class="btn btn-whatsapp" href="https://wa.me/5491126294406" target="+5491126294406" rel="noopener">
             <i class="fa-brands fa-whatsapp me-2" aria-hidden="true"></i> Consulte ahora
           </a>
           <!-- Email -->
@@ -748,7 +758,7 @@ Donde todo sucede.
      FLOTANTES: WhatsApp + Quick Links
      ========================= -->
 <!-- WhatsApp flotante (completa número) -->
-<a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/5491126294406" target="_blank" rel="noopener" aria-label="WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 

@@ -1109,3 +1109,51 @@ body{ padding-top: var(--nav-h); }   /* empuja el contenido debajo del header fi
 
 /* Por si el video/overlay del hero tapaba clics: */
 .hero-video, .video-overlay{ pointer-events:none; z-index:0; }
+
+/* ===== Header fijo y compensación global ===== */
+:root{ --nav-h: 72px; }                 /* altura aprox del header */
+body{ padding-top: var(--nav-h); }      /* que nada quede tapado */
+
+/* Botón Reservar (coherente en todas las páginas) */
+.btn-reservar{
+  background:#CEB98D; color:#fff; border:0; border-radius:0;
+  padding:.6rem 1.2rem; font-weight:600; display:inline-flex; align-items:center; gap:.4rem;
+}
+.btn-reservar:hover{ background:#b89f6e; color:#fff; }
+
+/* Links del header: sin subrayado + hover dorado */
+.rh-header .nav-link,
+.rh-header .dropdown-item{ text-decoration:none !important; }
+.rh-header .nav-link:hover,
+.rh-header .nav-link:focus,
+.rh-header .dropdown-item:hover,
+.rh-header .dropdown-item:focus{
+  color:#CEB98D; text-decoration:none !important;
+}
+
+/* Dropdown suave en desktop (hover/focus) */
+@media (min-width: 992px){
+  .rh-dropdown .dropdown-menu{
+    display:block; opacity:0; visibility:hidden; transform:translateY(8px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s;
+    margin-top:0; border-radius:0;
+  }
+  .rh-dropdown:hover .dropdown-menu,
+  .rh-dropdown:focus-within .dropdown-menu{
+    opacity:1; visibility:visible; transform:translateY(0);
+  }
+}
+/* Ocultar caret de dropdown */
+.rh-header .dropdown-toggle::after{ display:none; }
+
+/* Offcanvas: asegurar contraste y botón "X" blanco */
+.offcanvas.text-bg-dark{ background:#05154d; }
+.offcanvas .btn-close{ filter:none; }           /* por si algún reset la alteró */
+.btn-close-white{ opacity:.9; }                  /* un pelín más visible */
+.btn-close-white:hover{ opacity:1; }
+
+/* Evitar que videos/overlays del hero tapen clicks del header */
+.hero-video, .video-overlay{ pointer-events:none; z-index:0; }
+
+/* Anular reglas viejas que rompen el fixed-top */
+.navbar{ position:inherit; }   /* deja que .fixed-top aplique position:fixed */
