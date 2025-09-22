@@ -1209,3 +1209,149 @@ body{ padding-top: var(--nav-h); }/* evita que el header tape el contenido */
 
 /* Evitar que videos/overlays del hero tapen clicks del header */
 .hero-video, .video-overlay{ pointer-events:none; z-index:0; }
+
+/* ==== FIX NAV/DROPDOWN (forzar estado correcto) ==== */
+
+/* 1) El contenedor padre posiciona el submenú y el enlace principal mantiene clic */
+.nav-menu .menu-item-has-children { position: relative; }
+.nav-menu .menu-item-has-children > a { pointer-events: auto; }
+
+/* 2) Submenú oculto por defecto en desktop */
+.nav-menu .submenu{
+  display: none !important;       /* anula cualquier display:block previo */
+  position: absolute;             /* flota: no empuja el layout */
+  left: 0; top: 100%;
+  min-width: 220px;
+  background: #05154d;
+  padding: .25rem 0;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  z-index: 1300;                  /* encima del video/hero */
+}
+
+/* Items del submenú */
+.nav-menu .submenu li a{
+  display: block;
+  padding: .55rem 1rem;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-menu .submenu li a:hover{
+  background: rgba(255,255,255,.08);
+  color: #CEB98D;
+}
+
+/* 3) Mostrar submenú en hover (sólo dispositivos con hover) */
+@media (hover:hover){
+  .nav-menu .menu-item-has-children:hover > .submenu{
+    display: block !important;
+  }
+}
+
+/* 4) Comportamiento en móvil: submenú embebido (si ya te funciona, lo respetamos) */
+@media (max-width: 991.98px){
+  .nav-menu .submenu{
+    position: static;
+    min-width: 0;
+    box-shadow: none;
+    background: transparent;
+    display: block !important;   /* en tu mobile ya lo mostrás expandido */
+  }
+}
+
+/* 5) Evitar que el video de la hero “robe” hover/click del menú */
+.hero .hero-video,
+.hero .video-overlay,
+.rh-hero-rooms .hero-video,
+.rh-hero-rooms .video-overlay { pointer-events: none; }
+
+/* 6) Asegurar header por encima de todo */
+header, .rh-header { position: sticky; top: 0; z-index: 1400; }
+
+/* ===== FIX ÚNICO: dropdown de “Habitaciones” queda desplegado ===== */
+
+/* 1) En desktop: el submenú debe estar oculto por defecto */
+.navbar .nav-item.dropdown .dropdown-menu{
+  display: none !important;           /* oculta por defecto (gana prioridad) */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  z-index: 1300;
+}
+
+/* 2) Mostrarlo sólo al hover/focus del padre (desktop) */
+@media (hover:hover){
+  .navbar .nav-item.dropdown:hover   > .dropdown-menu,
+  .navbar .nav-item.dropdown:focus-within > .dropdown-menu{
+    display: block !important;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* 3) El enlace “Habitaciones” debe seguir siendo clickeable */
+.navbar .nav-item.dropdown > .nav-link{ pointer-events: auto; }
+
+/* 4) En mobile (offcanvas): submenú expandido, sin posicionamiento absoluto */
+@media (max-width: 991.98px){
+  .offcanvas .dropdown-menu{
+    display: block !important;
+    position: static !important;
+    float: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    padding: .25rem 0 .5rem;
+  }
+}
+
+/* 5) Por si el video/overlay del hero estaba “robando” el hover */
+.hero-video, .video-overlay{ pointer-events: none; }
+
+/* ==== FIX: submenú no debe agrandar el header (desktop) ==== */
+
+/* Dejar que el dropdown pueda “salirse” del header sin recortarse */
+.rh-header, .navbar { overflow: visible; }
+
+/* El item padre posiciona el submenú */
+.navbar .nav-item.dropdown{ position: relative; }
+
+/* Desktop: el submenú flota, no ocupa altura */
+@media (min-width: 992px){
+  .navbar .nav-item.dropdown .dropdown-menu{
+    position: absolute;           /* clave: no empuja el header */
+    top: 100%;
+    left: 0;
+    display: none !important;     /* oculto por defecto */
+    min-width: 220px;
+    margin: 0;                    /* sin “salto” de margen */
+    border-radius: 0;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: 0 10px 24px rgba(0,0,0,.15);
+    z-index: 1300;
+  }
+  .navbar .nav-item.dropdown:hover   > .dropdown-menu,
+  .navbar .nav-item.dropdown:focus-within > .dropdown-menu{
+    display: block !important;     /* mostrar en hover/focus */
+  }
+}
+
+/* Mobile (offcanvas): que siga embebido */
+@media (max-width: 991.98px){
+  .offcanvas .dropdown-menu{
+    position: static !important;
+    display: block !important;
+    border: 0; box-shadow: none; background: transparent;
+    padding: .25rem 0 .5rem;
+  }
+}
+
+/* Por si el video/overlay “roba” el hover/click */
+.hero-video, .video-overlay{ pointer-events: none; }
+
