@@ -1094,3 +1094,18 @@ body{ scroll-padding-top: var(--nav-h); }
 
 /* Videos/overlays del hero que no bloqueen clics */
 .hero-video, .video-overlay{ pointer-events:none; z-index:0; }
+
+/* --- Header fijo global --- */
+:root{ --nav-h: 72px; }              /* altura aproximada del navbar */
+body{ padding-top: var(--nav-h); }   /* empuja el contenido debajo del header fijo */
+
+/* Asegurar el z-index correcto del header fijo */
+.navbar.fixed-top{
+  position: fixed; top:0; left:0; right:0; z-index:1040;
+}
+
+/* Si tenías algo que forzaba .navbar a relative, lo anulamos */
+.navbar{ position: inherit; }  /* deja que .fixed-top mande */
+
+/* Por si el video/overlay del hero tapaba clics: */
+.hero-video, .video-overlay{ pointer-events:none; z-index:0; }
