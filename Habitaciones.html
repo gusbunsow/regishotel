@@ -10,239 +10,265 @@
 
   <!-- Bootstrap 5.3.3 CSS (sin integrity) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  
   <!-- Font Awesome 6.5.2 (sin integrity) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
   <!-- Tu CSS -->
   <link href="assets/css/styles.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <!-- HEADER -->
-<header class="rh-header">
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-    <div class="container">
-      <!-- Logo -->
-      <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Inicio">
+   <!-- Header (páginas internas) -->
+<!-- Header (páginas internas) -->
+<!-- Header (igual al index, menú custom) -->
+<header>
+  <div class="container header-container">
+    <div class="logo">
+      <a href="index.html" aria-label="Regis Hotel - Inicio">
         <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
       </a>
+    </div>
 
-      <!-- Botón hamburguesa (mobile) -->
-      <button class="navbar-toggler" type="button"
-              data-bs-toggle="offcanvas" data-bs-target="#rhOffcanvas"
-              aria-controls="rhOffcanvas" aria-label="Abrir menú">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <button class="mobile-menu-btn" aria-label="Abrir menú">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
 
-      <!-- Menú / Offcanvas -->
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="rhOffcanvas" aria-labelledby="rhOffcanvasLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="rhOffcanvasLabel">Menú</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    <ul class="nav-menu">
+      <li><a href="index.html">Inicio</a></li>
+
+      <li class="menu-item-has-children">
+        <a href="Habitaciones.html">Habitaciones</a>
+        <ul class="submenu">
+          <li><a href="habitacion-simple.html">Habitación Simple</a></li>
+          <li><a href="habitacion-doble.html">Habitación Doble</a></li>
+          <li><a href="habitacion-triple.html">Habitación Triple</a></li>
+          <li><a href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
+          <li><a href="habitacion-ejecutiva.html">Habitación Ejecutiva</a></li>
+        </ul>
+      </li>
+
+      <li><a href="index.html#servicios">Servicios</a></li>
+      <li><a href="index.html#corporativas">Corporativo</a></li>
+      <li><a href="index.html#testimonios">Testimonios</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+
+      <!-- Botón Reservar (mismo estilo del index) -->
+      <li>
+        <a href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es"
+           target="_blank" rel="noopener" class="reserva-btn">
+          <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
+          Reservar
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<!-- =========================
+     HERO Habitaciones
+     ========================= -->
+<section class="rh-hero-rooms">
+  <video autoplay muted loop class="hero-video">
+    <source src="assets/img/14907581-hd_1280_720_60fps.mp4" type="video/mp4">
+    Tu navegador no soporta videos HTML5.
+  </video>
+  <div class="video-overlay"></div>
+
+  <div class="container">
+    <div class="hero-box text-center">
+      <h1 class="mb-2">Nuestras posibilidades de alojamiento</h1>
+      <p class="lead mb-0">Explorá nuestras distintas habitaciones y encontrá el espacio que se adapte a tus necesidades.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     TIRA DE RESERVA (apaisada)
+     ========================= -->
+<section class="rh-booking-strip" aria-label="Búsqueda rápida de disponibilidad">
+  <div class="container">
+    <form class="booking-inline" action="https://booking.roomcloud.net/be/se1/hotel.jsp" method="get" target="_blank" rel="noopener">
+      <!-- hotel e idioma fijos -->
+      <input type="hidden" name="hotel" value="12269">
+      <input type="hidden" name="lang" value="es">
+      <!-- Si más adelante quieres pasar fechas/adultos/niños, sumamos campos -->
+
+      <div class="row g-2 align-items-end">
+        <div class="col-12 col-md">
+          <label class="form-label">Check-in</label>
+          <input type="date" class="form-control" name="checkin" min="" placeholder="dd/mm/aaaa">
         </div>
+        <div class="col-12 col-md">
+          <label class="form-label">Check-out</label>
+          <input type="date" class="form-control" name="checkout" min="" placeholder="dd/mm/aaaa">
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label">Adultos</label>
+          <input type="number" class="form-control" name="adults" min="1" value="2">
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label">Niños</label>
+          <input type="number" class="form-control" name="children" min="0" value="0">
+        </div>
+        <div class="col-12 col-md-auto">
+          <button class="btn btn-primary btn-block-md" type="submit">
+            <i class="fa-solid fa-magnifying-glass me-1"></i> Reservar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
 
-        <div class="offcanvas-body">
-          <ul class="navbar-nav ms-auto align-items-lg-center">
+<!-- =========================
+     LISTA DE HABITACIONES (intercaladas)
+     ========================= -->
+<section class="rh-rooms-list">
+  <div class="container">
 
-            <!-- Habitaciones (submenú) -->
-            <li class="nav-item dropdown rh-dropdown">
-              <!-- Con .dropdown-toggle para estilos; la flecha se oculta por CSS -->
-              <a class="nav-link dropdown-toggle" href="Habitaciones.html" id="habitacionesDropdown" role="button" aria-expanded="false">
-                Habitaciones
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="habitacionesDropdown">
-                <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
-                <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
-                <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
-                <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
-              </ul>
-            </li>
-
-            <!-- Secciones -->
-            <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-            <li class="nav-item"><a class="nav-link" href="#corporativas">Corporativo</a></li>
-            <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-
-            <!-- CTA: Reservar -->
-            <li class="nav-item ms-lg-3">
-              <a href="#reservar" class="btn btn-reservar">
-                <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
-                <span>Reservar</span>
-              </a>
-            </li>
-
+    <!-- Habitación Simple -->
+    <div class="row align-items-center g-4 py-4 rh-room-row">
+      <div class="col-12 col-lg-6">
+        <div class="rh-room-media">
+          <img src="assets/img/hab-ejecutiva-1600.webp" alt="Habitación Simple - Hotel Regis">
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="rh-room-info">
+          <h2 class="rh-room-title">Habitación Simple</h2>
+          <p class="rh-room-text">Amplia habitación con dos camas individuales o una cama queen, ideal para parejas o viajeros individuales que buscan mayor espacio. Disfrutá de la comodidad y tranquilidad en un ambiente diseñado para tu descanso.</p>
+          <ul class="rh-room-feats">
+            <li><i class="fa-solid fa-wifi"></i> Wi-Fi Gratuito</li>
+            <li><i class="fa-solid fa-tv"></i> TV por Cable</li>
+            <li><i class="fa-solid fa-shower"></i> Ducha</li>
+            <li><i class="fa-solid fa-toilet"></i> Baño Privado</li>
+            <li><i class="fa-solid fa-user"></i> 1–2 Personas</li>
           </ul>
+          <div class="rh-room-cta">
+            <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reservar</a>
+            <a class="btn btn-outline-primary" href="habitacion-simple.html">Más info</a>
+          </div>
         </div>
       </div>
     </div>
-  </nav>
-</header>
 
-    <!-- Hero Section para página interna -->
-    <section class="hero-internal">
-        <div class="hero-content-internal">
-            <h1>Nuestras posibilidades de alojamiento</h1>
-            <p>Explorá nuestras distintas habitaciones y encontrá el espacio que se adapte a tus necesidades.</p>
+    <!-- Habitación Doble (invertida en desktop) -->
+    <div class="row align-items-center g-4 py-4 rh-room-row">
+      <div class="col-12 col-lg-6 order-lg-2">
+        <div class="rh-room-media">
+          <img src="assets/img/hab-ejecutiva-1600.web" alt="Habitación Doble - Hotel Regis">
         </div>
-    </section>
-
-    <!-- Habitación Simple -->
-    <section class="room-section">
-        <div class="container room-container">
-            <div class="room-image">
-                <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-017-scaled-1000x1000.jpg" alt="Habitación Simple">
-            </div>
-            <div class="room-content">
-                <h2 class="room-title">Habitación Simple</h2>
-                <p class="room-description">Amplia habitación con dos camas individuales o una cama queen, ideal para parejas o viajeros individuales que buscan mayor espacio. Disfrutá de la comodidad y tranquilidad en un ambiente diseñado para tu descanso.</p>
-                <div class="room-features">
-                    <div class="feature">
-                        <i class="fas fa-wifi"></i>
-                        <span>Wi-Fi Gratuito</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-tv"></i>
-                        <span>TV por Cable</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shower"></i>
-                        <span>Ducha</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>Baño Privado</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-user"></i>
-                        <span>1-2 Personas</span>
-                    </div>
-                </div>
-                <div class="room-buttons">
-                    <a href="#" class="btn btn-primary">Reservar</a>
-                    <a href="#" class="btn btn-secondary">Más Información</a>
-                </div>
-            </div>
+      </div>
+      <div class="col-12 col-lg-6 order-lg-1">
+        <div class="rh-room-info">
+          <h2 class="rh-room-title">Habitación Doble</h2>
+          <p class="rh-room-text">Espaciosa habitación con tres camas individuales, perfecta para grupos pequeños o familias que viajan juntas. Con amplios espacios de almacenamiento y una decoración acogedora para hacer tu estadía más placentera.</p>
+          <ul class="rh-room-feats">
+            <li><i class="fa-solid fa-wifi"></i> Wi-Fi Gratuito</li>
+            <li><i class="fa-solid fa-tv"></i> TV Smart</li>
+            <li><i class="fa-solid fa-shower"></i> Ducha</li>
+            <li><i class="fa-solid fa-toilet"></i> Baño Completo</li>
+            <li><i class="fa-solid fa-user-group"></i> 2–3 Personas</li>
+          </ul>
+          <div class="rh-room-cta">
+            <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reservar</a>
+            <a class="btn btn-outline-primary" href="habitacion-doble.html">Más info</a>
+          </div>
         </div>
-    </section>
-
-    <!-- Habitación Doble -->
-    <section class="room-section">
-        <div class="container room-container">
-            <div class="room-image">
-                <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-026-scaled-1000x1000.jpg" alt="Habitación Doble">
-            </div>
-            <div class="room-content">
-                <h2 class="room-title">Habitación Doble</h2>
-                <p class="room-description">Espaciosa habitación con tres camas individuales, perfecta para grupos pequeños o familias que viajan juntas. Con amplios espacios de almacenamiento y una decoración acogedora para hacer tu estadía más placentera.</p>
-                <div class="room-features">
-                    <div class="feature">
-                        <i class="fas fa-wifi"></i>
-                        <span>Wi-Fi Gratuito</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-tv"></i>
-                        <span>TV Smart</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shower"></i>
-                        <span>Ducha</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>Baño Completo</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>2-3 Personas</span>
-                    </div>
-                </div>
-                <div class="room-buttons">
-                    <a href="#" class="btn btn-primary">Reservar</a>
-                    <a href="#" class="btn btn-secondary">Más Información</a>
-                </div>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
 
     <!-- Habitación Triple -->
-    <section class="room-section">
-        <div class="container room-container">
-            <div class="room-image">
-                <img src="https://regishotel.com.ar/wp-content/uploads/2020/01/Habitacion-Regis-026-scaled-1000x1000.jpg" alt="Habitación Triple">
-            </div>
-            <div class="room-content">
-                <h2 class="room-title">Habitación Triple</h2>
-                <p class="room-description">Amplia y confortable habitación con tres camas individuales, ideal para grupos de amigos o familias. Incluye áreas de descanso separadas y todas las comodidades necesarias para una estadía perfecta en el corazón de Buenos Aires.</p>
-                <div class="room-features">
-                    <div class="feature">
-                        <i class="fas fa-wifi"></i>
-                        <span>Wi-Fi Alta Velocidad</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-tv"></i>
-                        <span>TV 32"</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shower"></i>
-                        <span>Ducha de Hidromasaje</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>Baño con Amenities</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>3 Personas</span>
-                    </div>
-                </div>
-                <div class="room-buttons">
-                    <a href="#" class="btn btn-primary">Reservar</a>
-                    <a href="#" class="btn btn-secondary">Más Información</a>
-                </div>
-            </div>
+    <div class="row align-items-center g-4 py-4 rh-room-row">
+      <div class="col-12 col-lg-6">
+        <div class="rh-room-media">
+          <img src="assets/img/hab-ejecutiva-1600.web" alt="Habitación Triple - Hotel Regis">
         </div>
-    </section>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="rh-room-info">
+          <h2 class="rh-room-title">Habitación Triple</h2>
+          <p class="rh-room-text">Amplia y confortable habitación con tres camas individuales, ideal para grupos de amigos o familias. Incluye áreas de descanso separadas y todas las comodidades necesarias para una estadía perfecta en el corazón de Buenos Aires.</p>
+          <ul class="rh-room-feats">
+            <li><i class="fa-solid fa-wifi"></i> Wi-Fi Alta Velocidad</li>
+            <li><i class="fa-solid fa-tv"></i> TV 32"</li>
+            <li><i class="fa-solid fa-shower"></i> Ducha de Hidromasaje</li>
+            <li><i class="fa-solid fa-toilet"></i> Baño con Amenities</li>
+            <li><i class="fa-solid fa-user-group"></i> 3 Personas</li>
+          </ul>
+          <div class="rh-room-cta">
+            <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reservar</a>
+            <a class="btn btn-outline-primary" href="habitacion-triple.html">Más info</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- Habitación Cuádruple -->
-    <section class="room-section">
-        <div class="container room-container">
-            <div class="room-image">
-                <img src="https://regishotel.com.ar/wp-content/uploads/2022/04/Habitacion-Regis-018-scaled-1000x1000.jpg" alt="Habitación Cuádruple">
-            </div>
-            <div class="room-content">
-                <h2 class="room-title">Habitación Cuádruple</h2>
-                <p class="room-description">Nuestra habitación más grande, equipada con cuatro camas individuales, ideal para grupos familiares o amigos. Disfrutá de un espacio amplio con zona de estar y todas las comodidades para una experiencia inolvidable en Buenos Aires.</p>
-                <div class="room-features">
-                    <div class="feature">
-                        <i class="fas fa-wifi"></i>
-                        <span>Wi-Fi Premium</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-tv"></i>
-                        <span>TV 40"</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shower"></i>
-                        <span>Ducha de Lujo</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>Baño Suite</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <span>4 Personas</span>
-                    </div>
-                </div>
-                <div class="room-buttons">
-                    <a href="#" class="btn btn-primary">Reservar</a>
-                    <a href="#" class="btn btn-secondary">Más Información</a>
-                </div>
-            </div>
+    <!-- Habitación Cuádruple (invertida en desktop) -->
+    <div class="row align-items-center g-4 py-4 rh-room-row">
+      <div class="col-12 col-lg-6 order-lg-2">
+        <div class="rh-room-media">
+          <img src="assets/img/hab-ejecutiva-1600.web" alt="Habitación Cuádruple - Hotel Regis">
         </div>
-    </section>
+      </div>
+      <div class="col-12 col-lg-6 order-lg-1">
+        <div class="rh-room-info">
+          <h2 class="rh-room-title">Habitación Cuádruple</h2>
+          <p class="rh-room-text">Ambientes amplios para compartir y descansar después de la ciudad.</p>
+          <ul class="rh-room-feats">
+            <li><i class="fa-solid fa-wifi"></i> Wi-Fi Premium</li>
+            <li><i class="fa-solid fa-tv"></i> TV 40"</li>
+            <li><i class="fa-solid fa-shower"></i> Ducha de Lujo</li>
+            <li><i class="fa-solid fa-toilet"></i> Baño Suite</li>
+            <li><i class="fa-solid fa-user-group"></i> 4 Personas</li>
+          </ul>
+          <div class="rh-room-cta">
+            <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reservar</a>
+            <a class="btn btn-outline-primary" href="habitacion-cuadruple.html">Más info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Habitación Ejecutiva -->
+    <div class="row align-items-center g-4 py-4 rh-room-row">
+      <div class="col-12 col-lg-6">
+        <div class="rh-room-media">
+          <img
+            src="assets/img/hab-ejecutiva-800.webp"
+            srcset="
+              assets/img/hab-ejecutiva-400.webp 400w,
+              assets/img/hab-ejecutiva-800.webp 800w,
+              assets/img/hab-ejecutiva-1200.webp 1200w,
+              assets/img/hab-ejecutiva-1600.webp 1600w"
+            sizes="(min-width:992px) 50vw, 100vw"
+            alt="Habitación Ejecutiva - Hotel Regis">
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="rh-room-info">
+          <h2 class="rh-room-title">Habitación Ejecutiva</h2>
+          <p class="rh-room-text">Más espacio, escritorio y detalles premium para viajes de trabajo o estadías largas.</p>
+          <ul class="rh-room-feats">
+            <li><i class="fa-solid fa-wifi"></i> Wi-Fi Premium</li>
+            <li><i class="fa-solid fa-tv"></i> TV 40"</li>
+            <li><i class="fa-solid fa-shower"></i> Ducha de Lujo</li>
+            <li><i class="fa-solid fa-toilet"></i> Baño Suite</li>
+            <li><i class="fa-solid fa-user-group"></i> 4 Personas</li>
+          </ul>
+          <div class="rh-room-cta">
+            <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reservar</a>
+            <a class="btn btn-outline-primary" href="habitacion-ejecutiva.html">Más info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
     <!-- =========================
      FOOTER
@@ -334,24 +360,16 @@
 
 
     <script>
-        // Menú móvil
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Cerrar menú móvil después de hacer clic
-                document.querySelector('.nav-menu').classList.remove('active');
-            });
-        });
-    </script>
+(function(){
+  const btn = document.querySelector('.mobile-menu-btn');
+  const menu = document.querySelector('.nav-menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', ()=> menu.classList.toggle('active'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> menu.classList.remove('active')));
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

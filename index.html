@@ -20,66 +20,56 @@
 
 <body>
 
-<!-- HEADER -->
+<!-- HEADER unificado (sticky) -->
 <header class="rh-header">
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:#05154d;">
     <div class="container">
       <!-- Logo -->
       <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Inicio">
-        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
+        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel" style="height:56px;width:auto;">
       </a>
 
-      <!-- Botón hamburguesa (mobile) -->
+      <!-- Toggler (mobile) -->
       <button class="navbar-toggler" type="button"
-              data-bs-toggle="offcanvas" data-bs-target="#rhOffcanvas"
-              aria-controls="rhOffcanvas" aria-label="Abrir menú">
+              data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menú">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Menú / Offcanvas -->
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="rhOffcanvas" aria-labelledby="rhOffcanvasLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="rhOffcanvasLabel">Menú</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
-        </div>
+      <!-- Menú -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
 
-        <div class="offcanvas-body">
-          <ul class="navbar-nav ms-auto align-items-lg-center">
+          <!-- Link directo a la página de habitaciones (en minúsculas) -->
+          <li class="nav-item dropdown rh-dropdown">
+            <!-- usamos dropdown-toggle para estilos; la flecha la ocultamos con CSS -->
+            <a class="nav-link dropdown-toggle" href="habitaciones.html" id="habDrop" role="button" aria-expanded="false">
+              Habitaciones
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="habDrop">
+              <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
+              <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
+              <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
+              <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
+              <li><a class="dropdown-item" href="habitacion-ejecutiva.html">Habitación Ejecutiva</a></li>
+            </ul>
+          </li>
 
-            <!-- Habitaciones (submenú) -->
-            <li class="nav-item dropdown rh-dropdown">
-              <!-- Con .dropdown-toggle para estilos; la flecha se oculta por CSS -->
-              <a class="nav-link dropdown-toggle" href="Habitaciones.html" id="habitacionesDropdown" role="button" aria-expanded="false">
-                Habitaciones
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="habitacionesDropdown">
-                <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
-                <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
-                <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
-                <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
-              </ul>
-            </li>
+          <!-- Anclas de la home -->
+          <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#corporativas">Corporativo</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Testimonios</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
 
-            <!-- Secciones -->
-            <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-            <li class="nav-item"><a class="nav-link" href="#corporativas">Corporativo</a></li>
-            <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-
-            <!-- CTA: Reservar -->
-<li class="nav-item ms-lg-3">
-  <a href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es" 
-     target="_blank" 
-     rel="noopener" 
-     class="btn btn-reservar">
-    <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
-    <span>Reservar</span>
-  </a>
-</li>
-
-
-          </ul>
-        </div>
+          <!-- CTA -->
+          <li class="nav-item ms-lg-3">
+            <a href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es"
+               target="_blank" rel="noopener" class="btn btn-reservar">
+              <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
+              <span>Reservar</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -98,7 +88,7 @@
     <div class="row align-items-center">
       <!-- Texto hero -->
       <div class="col-12 col-lg-6 rh-hero-copy">
-        <h1 class="mb-3">Hotel Regis</h1>
+        <h1 class="mb-3">Bienvenidos</h1>
         <p class="lead mb-0">
           Alojate en el centro de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.
 Donde todo sucede.
@@ -333,7 +323,7 @@ Donde todo sucede.
 <!-- =========================
      NUESTROS SERVICIOS
      ========================= -->
-<section class="rh-services py-5">
+<section id="servicios" class="rh-services py-5">
   <div class="container">
     <header class="text-center mb-4">
       <h2 class="rh-title">Nuestros Servicios</h2>
@@ -771,5 +761,23 @@ Donde todo sucede.
   <a class="ql-item" href="https://www.linkedin.com/company/regis-hotel?trk=public_jobs_topcard-org-name" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
 </nav>
 
+<script>
+// Abrir/cerrar menú móvil
+(function(){
+  const btn = document.querySelector('.mobile-menu-btn');
+  const menu = document.querySelector('.nav-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+
+  // Cerrar al hacer click en un link
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => menu.classList.remove('active'));
+  });
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

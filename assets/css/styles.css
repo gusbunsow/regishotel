@@ -196,6 +196,54 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   color: var(--regis-accent); /* solo color alternativo */
 }
 
+/* --- Submenú de Habitaciones --- */
+.rh-header .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  display: none;                /* oculto por defecto */
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  padding: .5rem 0;
+  z-index: 1000;
+  max-height: none;             /* 🔑 permitir más ítems */
+  overflow: visible;            /* 🔑 no recortar */
+}
+
+.rh-header .menu-item-has-children:hover > .submenu,
+.rh-header .menu-item-has-children:focus-within > .submenu {
+  display: block; /* mostrar submenú en desktop */
+}
+
+.rh-header .submenu li { list-style: none; }
+.rh-header .submenu a {
+  display: block;
+  padding: .45rem .9rem;
+  color: #111;
+  white-space: nowrap;
+}
+.rh-header .submenu a:hover {
+  background: #f2f4f7;
+  color: var(--regis-primary);
+}
+
+/* --- Mobile: submenú visible siempre en offcanvas --- */
+@media (max-width: 991.98px){
+  .rh-header .submenu {
+    position: static;
+    display: block;   /* todos visibles en mobile */
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  .rh-header .submenu a {
+    padding: .4rem 0 .4rem 1rem; /* sangría */
+  }
+}
+
 /* Offcanvas (mobile): lo mismo */
 .rh-header .offcanvas .nav-link:hover,
 .rh-header .offcanvas .nav-link:focus {
@@ -809,3 +857,240 @@ desde acá   ========================================= */
 @media (max-width:575.98px){
   .quick-links{ bottom:88px; }
 }
+
+/* =========================
+   HABITACIONES - Página
+   ========================= */
+
+/* HERO Habitaciones (mejor contraste) */
+.rh-hero-rooms{
+  position:relative; min-height: 54vh; display:flex; align-items:center; background:#000;
+}
+.rh-hero-rooms .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.rh-hero-rooms .video-overlay{
+  position:absolute; inset:0;
+  /* oscurece el video y tiñe en azul */
+  background: linear-gradient(180deg, rgba(5,21,77,.55), rgba(5,21,77,.65));
+}
+.rh-hero-rooms .hero-box{
+  position:relative; margin: 0 auto; max-width: 920px;
+  /* bloque azul translúcido */
+  background: rgba(5,21,77,.82);
+  color:#fff;
+  padding: 1.6rem 1.25rem;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.rh-hero-rooms h1{ font-weight:700; color:#fff; margin-bottom:.35rem; }
+.rh-hero-rooms .lead{ color:#f1f4ff; opacity:1; }
+
+
+/* TIRA DE RESERVA apaisada */
+.rh-booking-strip{ background: var(--regis-soft); padding: 1rem 0; }
+.booking-inline .form-label{ font-weight:600; }
+.booking-inline .form-control{ border-radius:0; }
+.btn-block-md{ width:100%; }
+@media (min-width: 768px){ .btn-block-md{ width:auto; } }
+
+/* LISTA INTERCALADA (full-bleed + fondo alternado) */
+.rh-rooms-list{ background:#fff; padding: 2.5rem 0 3rem; }
+
+/* Fila que estira su fondo a todo el viewport */
+.rh-room-row{
+  position: relative;
+  padding: 1.25rem 0;
+  /* full-bleed sin romper el container del contenido */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+/* Alternar fondos: blanco / gris con degradé */
+.rh-room-row:nth-of-type(odd){ background:#fff; }
+.rh-room-row:nth-of-type(even){
+  background: linear-gradient(180deg, #f7f9fc 0%, #f2f4f7 100%);
+}
+
+/* Contenido interno sigue alineado al grid */
+.rh-room-row > .col-12,
+.rh-room-row > [class*="col-"]{
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
+
+/* Media */
+.rh-room-media img{
+  width:100%; height: 360px; object-fit: cover; display:block;
+  border:1px solid rgba(0,0,0,.06);
+}
+@media (min-width:1200px){ .rh-room-media img{ height: 420px; } }
+
+.rh-room-info .rh-room-title{ color: var(--regis-primary); font-weight: 700; margin-bottom:.25rem; }
+.rh-room-info .rh-room-text{ color:#333; margin-bottom:.75rem; }
+
+/* Features con iconos acento */
+.rh-room-feats{ list-style:none; padding-left:0; margin: 0 0 .9rem; columns: 2; column-gap: 2rem; }
+@media (max-width: 575.98px){ .rh-room-feats{ columns:1; } }
+.rh-room-feats li{ break-inside: avoid; margin:.35rem 0; display:flex; align-items:baseline; gap:.5rem; color:#444; }
+.rh-room-feats i{ color: var(--regis-accent); opacity:.95; width: 1.1rem; text-align:center; }
+
+/* CTA */
+.rh-room-cta{ display:flex; flex-wrap:wrap; gap:.5rem; }
+.rh-room-cta .btn{ border-radius:0; }
+
+/* ===== MENÚ MÓVIL (header simple) ===== */
+@media (max-width: 991.98px){
+  .mobile-menu-btn{ 
+    display:inline-flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border:0; background:transparent; color:#fff; 
+    z-index: 2100; position: relative;
+  }
+
+  /* ===== hotfix raro) ===== */
+  @media (max-width: 991.98px){
+  .nav-menu{ position: fixed; top:0; right:-100%; width:80%; max-width:320px; height:100vh; background:#fff; padding:80px 16px 16px; box-shadow:-20px 0 40px rgba(0,0,0,.25); transition:right .25s; overflow-y:auto; z-index:2000; }
+  .nav-menu.active{ right:0; }
+}
+@media (min-width: 992px){
+  .nav-menu{ position: static; display:flex; background:transparent; height:auto; width:auto; padding:0; box-shadow:none; }
+}
+
+
+
+
+  .nav-menu{
+    position: fixed; top:0; right:-100%;
+    width: 80%; max-width: 320px; height: 100vh;
+    background:#fff;
+    padding: 80px 16px 16px;
+    box-shadow: -20px 0 40px rgba(0,0,0,.25);
+    transition: right .25s ease;
+    overflow-y: auto;
+    z-index: 2000;                 /* por encima del contenido */
+  }
+  .nav-menu.active{ right:0; }
+
+  /* enlaces dentro del panel */
+  .nav-menu > li{ margin-bottom:.25rem; }
+  .nav-menu a{ color:#111; display:block; padding:.5rem 0; }
+
+  /* submenú visible en mobile */
+  .nav-menu .submenu{
+    position: static; display:block; background:transparent; border:0; box-shadow:none; padding:0;
+  }
+  .nav-menu .submenu a{ padding:.4rem 0 .4rem 1rem; }
+}
+
+/* Desktop: ocultar botón hamburguesa si aplica */
+@media (min-width: 992px){
+  .mobile-menu-btn{ display:none; }
+}
+
+/* Asegurar que el header quede encima de videos/hero */
+header{ position: relative; z-index: 1500; }
+
+/* ===== FIX NAV MENU QUE TAPA LA PÁGINA ===== */
+
+/* Desktop: menú en línea, sin panel fijo */
+@media (min-width: 992px){
+  .nav-menu{
+    position: static !important;
+    display: flex !important;
+    height: auto !important;
+    width: auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    right: auto !important;
+    left: auto !important;
+    overflow: visible !important;
+  }
+  .nav-menu > li { margin-left: 1rem; }
+}
+
+/* Mobile: panel deslizante que empieza oculto */
+@media (max-width: 991.98px){
+  .nav-menu{
+    position: fixed !important;
+    top: 0; right: -100% !important;           /* oculto */
+    width: 80%; max-width: 320px; height: 100vh;
+    background: #fff;
+    padding: 80px 16px 16px;
+    box-shadow: -20px 0 40px rgba(0,0,0,.25);
+    transition: right .25s ease;
+    overflow-y: auto;
+    z-index: 2000;
+  }
+  .nav-menu.active{ right: 0 !important; }     /* visible al tocar hamburguesa */
+  .nav-menu a{ color:#111; display:block; padding:.5rem 0; }
+  .nav-menu .submenu{
+    position: static; display:block; background:transparent; border:0; box-shadow:none; padding:0;
+  }
+  .nav-menu .submenu a{ padding:.4rem 0 .4rem 1rem; }
+}
+
+/* Asegurar que el header quede por encima del hero/video */
+header.rh-header{ position: relative; z-index: 1500; }
+
+/* Quitar viñetas si quedaron heredadas de estilos viejos */
+.navbar-nav { list-style: none !important; }
+
+/* (Opcional) abrir dropdown al hover en desktop */
+@media (min-width: 992px){
+  .navbar .dropdown:hover .dropdown-menu{ display:block; }
+  .navbar .dropdown-toggle::after{ display:none; } /* sin flechita */
+}
+
+/* ====== Header sticky y compensación de anclas ====== */
+:root{ --nav-h: 72px; }               /* altura aprox del navbar */
+body{ scroll-padding-top: var(--nav-h); }
+
+/* Asegurar header por encima de hero/video */
+/* Header por encima del hero */
+.rh-header{ position:relative; z-index:1020; }
+
+/* Sticky REAL en la navbar */
+.navbar.sticky-top{
+  position: sticky;  /* deja que Bootstrap haga su trabajo */
+  top: 0;
+  z-index: 1020;
+}
+
+/* Por si algún padre tenía overflow que rompe el sticky */
+.rh-header{ overflow: visible; }
+
+/* Quitar subrayados y estilizar hover */
+.rh-header .nav-link,
+.rh-header .dropdown-item { text-decoration: none !important; }
+.rh-header .nav-link:hover,
+.rh-header .nav-link:focus,
+.rh-header .dropdown-item:hover,
+.rh-header .dropdown-item:focus {
+  color: var(--regis-accent, #CEB98D);
+  text-decoration: none !important;
+}
+
+/* Abrir submenu en desktop con hover/focus y que no se cierre "violento" */
+@media (min-width: 992px){
+  .rh-dropdown .dropdown-menu{
+    display:block; opacity:0; visibility:hidden; transform:translateY(8px);
+    transition: opacity .18s ease, transform .18s ease, visibility .18s;
+    margin-top:0; border-radius:0;
+  }
+  .rh-dropdown:hover .dropdown-menu,
+  .rh-dropdown:focus-within .dropdown-menu{
+    opacity:1; visibility:visible; transform:translateY(0);
+  }
+}
+/* Ocultar el caret ↓ del .dropdown-toggle (lo pediste sin flecha) */
+.rh-header .dropdown-toggle::after{ display:none; }
+
+/* Botón Reservar uniforme en todas las páginas */
+.btn-reservar{
+  background:#CEB98D; color:#fff; border:0; border-radius:0;
+  padding:.6rem 1.2rem; font-weight:600; display:inline-flex; align-items:center; gap:.4rem;
+}
+.btn-reservar:hover{ background:#b89f6e; color:#fff; }
+
+/* Videos/overlays del hero que no bloqueen clics */
+.hero-video, .video-overlay{ pointer-events:none; z-index:0; }

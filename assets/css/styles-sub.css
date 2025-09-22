@@ -1,0 +1,10 @@
+/* ====== Overrides para subpáginas (no index) ====== */
+
+/* Si tu hero de internas tiene video/fondo, mantené contraste del titular */
+.rh-hero-rooms .hero-box{
+  background: rgba(5,21,77,.82); color:#fff;
+  padding:1.25rem 1.5rem;
+}
+
+/* Espaciados y correcciones suaves que no afectan al index */
+.rh-rooms-list{ background:#fff; }
