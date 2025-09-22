@@ -20,7 +20,6 @@
 
 <body>
 
-<!-- HEADER unificado (sticky) -->
 <!-- HEADER unificado (fixed-top + offcanvas) -->
 <header class="rh-header">
   <nav class="navbar navbar-dark navbar-expand-lg fixed-top" style="background:#05154d;">
@@ -47,11 +46,10 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav ms-auto align-items-lg-center">
 
-            <!-- Habitaciones (linkea a página general + submenu) -->
+            <!-- Habitaciones: LINK REAL + submenu -->
             <li class="nav-item dropdown rh-dropdown">
-              <a class="nav-link dropdown-toggle" href="habitaciones.html" id="habDrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Habitaciones
-              </a>
+              <!-- OJO: sin 'dropdown-toggle' ni 'data-bs-toggle', así navega -->
+              <a class="nav-link" href="habitaciones.html" id="habLink">Habitaciones</a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
                 <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
                 <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
@@ -67,7 +65,7 @@
             <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Testimonios</a></li>
             <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
 
-            <!-- CTA Reservar (idéntico al index) -->
+            <!-- CTA Reservar (igual en todas las páginas) -->
             <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
               <a href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es"
                  target="_blank" rel="noopener" class="btn btn-reservar">
@@ -83,7 +81,6 @@
     </div>
   </nav>
 </header>
-
 
 <!-- Hero Section -->
 <section class="rh-hero hero">

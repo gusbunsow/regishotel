@@ -1157,3 +1157,55 @@ body{ padding-top: var(--nav-h); }      /* que nada quede tapado */
 
 /* Anular reglas viejas que rompen el fixed-top */
 .navbar{ position:inherit; }   /* deja que .fixed-top aplique position:fixed */
+
+/* ===== Header fijo y compensación global ===== */
+:root{ --nav-h: 72px; }          /* altura aprox del header */
+body{ padding-top: var(--nav-h); }/* evita que el header tape el contenido */
+
+/* Anular reglas antiguas que rompen el fixed-top */
+.navbar{ position: inherit; }     /* deja que .fixed-top mande */
+
+/* Botón Reservar (coherente en todas las páginas) */
+.btn-reservar{
+  background:#CEB98D; color:#fff; border:0; border-radius:0;
+  padding:.6rem 1.2rem; font-weight:600; display:inline-flex; align-items:center; gap:.4rem;
+}
+.btn-reservar:hover{ background:#b89f6e; color:#fff; }
+
+/* Links del header: sin subrayado + hover dorado */
+.rh-header .nav-link,
+.rh-header .dropdown-item{ text-decoration:none !important; }
+.rh-header .nav-link:hover,
+.rh-header .nav-link:focus,
+.rh-header .dropdown-item:hover,
+.rh-header .dropdown-item:focus{
+  color:#CEB98D; text-decoration:none !important;
+}
+
+/* Dropdown suave en desktop (hover/focus) */
+@media (min-width: 992px){
+  .rh-dropdown .dropdown-menu{
+    display:block; opacity:0; visibility:hidden; transform:translateY(8px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s;
+    margin-top:0; border-radius:0;
+  }
+  .rh-dropdown:hover .dropdown-menu,
+  .rh-dropdown:focus-within .dropdown-menu{
+    opacity:1; visibility:visible; transform:translateY(0);
+  }
+}
+/* Ocultar caret del dropdown (sin flechita) */
+.rh-header .dropdown-toggle::after{ display:none; }
+
+/* Mobile (offcanvas): submenu expandido y legible */
+.offcanvas .dropdown-menu{
+  display:block !important;
+  position: static !important;
+  float:none;
+  opacity:1; visibility:visible; transform:none;
+  background:transparent; border:0; box-shadow:none; padding:.25rem 0 .5rem;
+}
+.offcanvas .dropdown-item{ padding:.35rem 0 .35rem 1rem; }
+
+/* Evitar que videos/overlays del hero tapen clicks del header */
+.hero-video, .video-overlay{ pointer-events:none; z-index:0; }
