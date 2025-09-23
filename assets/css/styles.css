@@ -67,7 +67,12 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
 /* =========================
    HEADER (navbar/offcanvas)
    ========================= */
-.rh-header .navbar{ background: var(--regis-primary); }
+.rh-header .navbar{
+  background: var(--regis-primary);
+  margin-bottom: 0;   /* ✅ elimina espacio extra debajo */
+  border-bottom: 0;   /* ✅ asegura que no aparezca línea blanca */
+  box-shadow: none;   /* ✅ sin sombra inferior indeseada */
+}
 
 /* Logo (doble aprox.) */
 .rh-header .navbar-brand img{
@@ -109,30 +114,6 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
 
 /* Dropdown: quitar flecha del toggle */
 .rh-header .dropdown-toggle::after{ display:none !important; }
-
-/* =========================
-   Dropdowns
-   ========================= */
-
-/* ❌ COMENTAR/REMOVER ESTE BLOQUE — causaba que el header se expanda en desktop */
-/*
-@media (min-width: 992px){
-  .rh-header .rh-dropdown .dropdown-menu {
-    display: block; 
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(6px);
-    transition: opacity .18s ease, transform .18s ease, visibility .18s;
-  }
-  .rh-header .rh-dropdown:hover .dropdown-menu,
-  .rh-header .rh-dropdown:focus-within .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    margin-top: .25rem;
-  }
-}
-*/
 
 /* ✅ NUEVO: desktop flotante (no empuja el header) */
 .rh-header .nav-item.dropdown{ position: relative; }
@@ -324,7 +305,7 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
 }
 
 /* === Compensación del header fijo (para que no tape hero/otras secciones) === */
-:root { --nav-h: 88px; } /* altura aprox. navbar en desktop */
+:root { --nav-h: 66px; } /* altura aprox. navbar en desktop */
 @media (max-width: 991.98px){
   :root { --nav-h: 72px; } /* altura menor en mobile */
 }

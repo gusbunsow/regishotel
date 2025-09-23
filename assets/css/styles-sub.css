@@ -1,6 +1,5 @@
 /* ====== Overrides para subpáginas (no index) ====== */
 
-/* Si tu hero de internas tiene video/fondo, mantené contraste del titular */
 .rh-hero-rooms .hero-box{
   background: rgba(5,21,77,.82); color:#fff;
   padding:1.25rem 1.5rem;
@@ -8,3 +7,969 @@
 
 /* Espaciados y correcciones suaves que no afectan al index */
 .rh-rooms-list{ background:#fff; }
+
+/* =========================
+   Variables globales
+   ========================= */
+:root{
+  --regis-primary:#05154d;   /* header/footer */
+  --regis-accent:#CEB98D;    /* detalles/hover */
+  --regis-white:#fff;
+  --regis-text:#111;
+  --regis-soft:#f2f4f7;      /* fondos suaves */
+}
+
+/* =========================
+   Sistema tipográfico global
+   ========================= */
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+
+body{
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 400;
+  color: var(--regis-text);
+  background: #fff;
+  line-height: 1.6;
+  font-size: 16px; /* base */
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 .5rem 0;
+  color: var(--regis-primary);
+}
+
+/* Escala responsiva */
+h1{ font-size: clamp(2rem, 3.5vw + .5rem, 3rem); }     /* Hero / páginas */
+h2{ font-size: clamp(1.6rem, 2.2vw + .4rem, 2.2rem); } /* Secciones */
+h3{ font-size: clamp(1.25rem, 1.2vw + .6rem, 1.5rem); }
+h4{ font-size: 1.125rem; }
+h5{ font-size: 1rem; }
+h6{ font-size: .95rem; }
+
+p{ margin: 0 0 1rem 0; color:#333; }
+.lead{ font-size: clamp(1rem, .5vw + .9rem, 1.25rem); color:#444; }
+
+/* Enlaces */
+a{ color: var(--regis-primary); text-decoration: none; }
+a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
+
+/* Botones (global) — sin bordes redondeados */
+.btn{ border-radius: 0 !important; }
+.btn-primary{
+  background: var(--regis-primary);
+  border-color: var(--regis-primary);
+}
+.btn-primary:hover, .btn-primary:focus{
+  background: #0b2370; border-color:#0b2370;
+}
+.btn-outline-primary{
+  color: var(--regis-primary);
+  border-color: var(--regis-primary);
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus{
+  background: var(--regis-primary); color:#fff;
+}
+
+/* =========================
+   HEADER (navbar/offcanvas)
+   ========================= */
+.rh-header .navbar{
+  background: var(--regis-primary);
+  margin-bottom: 0;   /* ✅ elimina espacio extra debajo */
+  border-bottom: 0;   /* ✅ asegura que no aparezca línea blanca */
+  box-shadow: none;   /* ✅ sin sombra inferior indeseada */
+}
+
+/* Logo (doble aprox.) */
+.rh-header .navbar-brand img{
+  height: clamp(48px, 8vw, 84px);
+  width: auto;
+  display: block;
+}
+
+/* Links */
+.rh-header .navbar-dark .navbar-nav .nav-link{ color: #fff; }
+.rh-header .navbar-dark .navbar-nav .nav-link:hover,
+.rh-header .navbar-dark .navbar-nav .nav-link:focus{
+  color: var(--regis-accent);
+}
+
+/* Botón Reservar en header */
+.rh-header .btn-reservar{
+  background: var(--regis-accent);
+  color:#1a1a1a;
+  font-weight:600;
+  border:none;
+  padding:.55rem .95rem;
+  border-radius:0;
+}
+.rh-header .btn-reservar:hover{ filter: brightness(.95); }
+
+/* Hamburguesa */
+.rh-header .navbar-toggler{ border-color: rgba(255,255,255,.4); border-radius:0; }
+.rh-header .navbar-toggler:focus{
+  box-shadow: 0 0 0 .2rem rgba(206,185,141,.35);
+}
+
+/* Offcanvas (mobile) */
+.rh-header .offcanvas{
+  background: var(--regis-primary);
+  color:#fff;
+}
+.rh-header .offcanvas .btn-close{ filter: invert(1) grayscale(100%); }
+
+/* Dropdown: quitar flecha del toggle */
+.rh-header .dropdown-toggle::after{ display:none !important; }
+
+/* ✅ NUEVO: desktop flotante (no empuja el header) */
+.rh-header .nav-item.dropdown{ position: relative; }
+
+@media (min-width: 992px){
+  .rh-header .dropdown-menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;             /* oculto por defecto */
+    background:#fff;
+    border:1px solid #e9ecef;
+    border-radius:0;
+    padding:.5rem;
+    z-index: 1000;             /* sobre el header */
+  }
+  .rh-header .nav-item.dropdown:hover > .dropdown-menu,
+  .rh-header .nav-item.dropdown:focus-within > .dropdown-menu{
+    display: block;            /* mostrar al hover/focus */
+  }
+}
+
+/* Estilo de items (se mantiene) */
+.rh-header .dropdown-item{
+  color: var(--regis-primary);
+}
+.rh-header .dropdown-item:hover{
+  background:#f6f7f9;
+  color: var(--regis-primary);
+}
+
+/* ✅ Mobile (<992px): submenú dentro del offcanvas, siempre visible */
+@media (max-width: 991.98px){
+  .rh-header .rh-dropdown > .dropdown-menu{
+    display:block !important;
+    position:static !important;
+    float:none;
+    border:none;
+    background:transparent;
+    padding:.25rem 0 0 0;
+    margin:.25rem 0 0 0;
+    box-shadow:none;
+  }
+  .rh-header .rh-dropdown > .dropdown-menu .dropdown-item{
+    background: transparent;
+    color: #e7eaf3;
+    padding:.4rem 1rem .4rem 1.5rem;
+    opacity:.95;
+  }
+  .rh-header .rh-dropdown > .dropdown-menu .dropdown-item:hover{
+    background: rgba(255,255,255,.06);
+    color: #fff;
+  }
+  .rh-header .rh-dropdown > .nav-link{
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+/* Navbar: sin subrayado en hover/focus (desktop y mobile) */
+.rh-header .nav-link,
+.rh-header .dropdown-item { text-decoration: none !important; }
+.rh-header .nav-link:hover,
+.rh-header .nav-link:focus,
+.rh-header .dropdown-item:hover,
+.rh-header .dropdown-item:focus {
+  text-decoration: none !important;
+  color: var(--regis-accent);
+}
+
+/* --- Submenú alternativo (si usás .submenu en otra navegación) --- */
+.rh-header .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  display: none;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  padding: .5rem 0;
+  z-index: 1000;
+  max-height: none;
+  overflow: visible;
+}
+.rh-header .menu-item-has-children:hover > .submenu,
+.rh-header .menu-item-has-children:focus-within > .submenu {
+  display: block;
+}
+.rh-header .submenu li { list-style: none; }
+.rh-header .submenu a {
+  display: block;
+  padding: .45rem .9rem;
+  color: #111;
+  white-space: nowrap;
+}
+.rh-header .submenu a:hover {
+  background: #f2f4f7;
+  color: var(--regis-primary);
+}
+/* Mobile para .submenu “alternativa” */
+@media (max-width: 991.98px){
+  .rh-header .submenu {
+    position: static;
+    display: block;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  .rh-header .submenu a { padding: .4rem 0 .4rem 1rem; }
+}
+
+/* Offcanvas (mobile): hover color */
+.rh-header .offcanvas .nav-link:hover,
+.rh-header .offcanvas .nav-link:focus {
+  text-decoration: none !important;
+  color: var(--regis-accent);
+}
+
+/* Por si tenés botón de WhatsApp flotante */
+.whatsapp-float{ z-index:1080; }
+
+/* =========================
+   HERO (video + reservas)
+   ========================= */
+.rh-hero{
+  position: relative;
+  isolation: isolate;
+  color: #fff; /* texto sobre video */
+  padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+/* Video de fondo */
+.rh-hero .hero-video{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  z-index: -2;
+  pointer-events: none; /* 🔑 no intercepta hover/click del menú */
+}
+
+/* Capa para legibilidad */
+.rh-hero .video-overlay{
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 100%);
+  z-index: -1;
+  pointer-events: none; /* 🔑 igual que el video */
+}
+
+/* Copys */
+.rh-hero .rh-hero-copy h1{ font-weight: 700; line-height: 1.05; color: #f3f4f6; }
+.rh-hero .rh-hero-copy .lead{ color: #f3f4f6; }
+
+/* Banner reservas — sin bordes redondeados */
+.rh-hero .booking-card{
+  background: rgba(255,255,255,.92);
+  color: var(--regis-text);
+  padding: 1rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 0;
+}
+
+/* Controles del form en hero */
+.rh-hero .form-control,
+.rh-hero .form-select,
+.rh-hero .btn{ border-radius: 0 !important; }
+
+.rh-hero .form-label{
+  font-weight: 600;
+  font-size: .9rem;
+  color: #333;
+}
+
+/* Botón primario en hero */
+.rh-hero .btn-primary{
+  background: var(--regis-primary);
+  border-color: var(--regis-primary);
+}
+.rh-hero .btn-primary:hover,
+.rh-hero .btn-primary:focus{
+  background: #0b2370; border-color: #0b2370;
+}
+
+/* Mobile spacing */
+@media (max-width: 991.98px){
+  .rh-hero .rh-hero-copy{ margin-bottom: 1.25rem; }
+}
+
+/* === Compensación del header fijo (para que no tape hero/otras secciones) === */
+:root { --nav-h: 66px; } /* altura aprox. navbar en desktop */
+@media (max-width: 991.98px){
+  :root { --nav-h: 72px; } /* altura menor en mobile */
+}
+html { scroll-padding-top: var(--nav-h); } /* anclas (#servicios, etc.) no quedan tapadas */
+body { padding-top: var(--nav-h); }        /* empuja contenido debajo del header fijo */
+
+/* =========================
+   ROOMS (Nuestras Habitaciones)
+   ========================= */
+.rh-rooms{
+  background: var(--regis-soft); /* casi blanco */
+}
+
+.rh-rooms .rh-title{
+  font-weight: 700;
+  font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);
+  color: var(--regis-primary);
+  margin-bottom: .25rem;
+}
+.rh-rooms .rh-subtitle{
+  max-width: 56ch;
+  color: #444;
+}
+
+/* Tarjetas */
+.rh-room-card{
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 0;
+  overflow: hidden;
+  background: #fff;
+  transition: transform .25s ease, box-shadow .25s ease;
+  will-change: transform, box-shadow;
+}
+.rh-room-card .card-img-top{
+  display:block;
+  width:100%;
+  height: 200px;
+  object-fit: cover;
+}
+@media (min-width: 992px){
+  .rh-room-card .card-img-top{ height: 220px; }
+}
+.rh-room-card .card-body{ padding: 1rem; }
+.rh-room-card .card-title{
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: .35rem;
+  color: var(--regis-primary);
+}
+.rh-room-card .card-text{
+  color: #555;
+  margin-bottom: .75rem;
+}
+
+/* Botones centrados en la tarjeta */
+.rh-room-card .card-body > .d-flex{ justify-content: center; }
+.rh-room-card .btn{ border-radius: 0 !important; }
+.rh-room-card .btn-primary{
+  background: var(--regis-primary);
+  border-color: var(--regis-primary);
+}
+.rh-room-card .btn-primary:hover{
+  background: #0b2370; border-color: #0b2370;
+}
+.rh-room-card .btn-outline-primary{
+  color: var(--regis-primary);
+  border-color: var(--regis-primary);
+}
+.rh-room-card .btn-outline-primary:hover{
+  background: var(--regis-primary); color:#fff;
+}
+
+/* Aparición + hover suave */
+.rh-anim{
+  opacity: 0;
+  transform: translateY(14px);
+  animation: rhFadeUp .6s ease forwards;
+}
+.rh-anim:nth-child(1){ animation-delay: .05s; }
+.rh-anim:nth-child(2){ animation-delay: .1s; }
+.rh-anim:nth-child(3){ animation-delay: .15s; }
+.rh-anim:nth-child(4){ animation-delay: .2s; }
+
+@keyframes rhFadeUp{
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.rh-room-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.12);
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .rh-anim{ animation: none; opacity:1; transform:none; }
+  .rh-room-card{ transition: none; }
+}
+
+/* ===== Anti-underline para botones y navegación ===== */
+.btn,
+.btn:link,
+.btn:visited,
+.btn:hover,
+.btn:focus,
+.btn:active {
+  text-decoration: none !important;
+}
+
+.rh-header .nav-link,
+.rh-header .nav-link:hover,
+.rh-header .nav-link:focus,
+.rh-header .dropdown-item,
+.rh-header .dropdown-item:hover,
+.rh-header .dropdown-item:focus {
+  text-decoration: none !important;
+}
+
+.rh-room-card .card-body a,
+.rh-room-card .card-body a:hover,
+.rh-room-card .card-body a:focus,
+.rh-room-card .btn {
+  text-decoration: none !important;
+}
+
+.btn:focus-visible,
+.rh-header .nav-link:focus-visible,
+.rh-header .dropdown-item:focus-visible,
+.rh-room-card .card-body a:focus-visible {
+  outline: 2px solid var(--regis-accent);
+  outline-offset: 2px;
+  text-decoration: none !important;
+}
+
+/* =========================
+   Servicios
+   ========================= */
+.rh-services{
+  background: linear-gradient(180deg, #fff 0%, #f9fafb 100%);
+}
+.rh-service-card{
+  background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:0;
+  padding:1.25rem; height:100%; text-align:center;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.rh-service-card:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,.12); }
+.rh-service-card .rh-service-icon{
+  width:48px; height:48px; margin-bottom:.75rem; object-fit:contain;
+}
+.rh-service-card h3{ margin-bottom:.25rem; color:var(--regis-primary); }
+.rh-service-card p{ color:#555; }
+
+/* =========================
+   Corporativas
+   ========================= */
+.rh-corp{
+  background: var(--regis-primary); /* azul header */
+  color: #fff;
+}
+
+.rh-corp h2,
+.rh-corp p {
+  color: #fff; /* textos blancos */
+}
+
+.btn-whatsapp{
+  background:#25D366; border-color:#25D366; color:#0b1f10; border-radius:0;
+}
+.btn-whatsapp:hover,
+.btn-whatsapp:focus {
+  background:#1ebe5d;   /* un verde más oscuro, oficial de WhatsApp */
+  border-color:#1ebe5d;
+  color:#fff;           /* mejor contraste */
+}
+
+
+/* Botón e-mail en blanco */
+.rh-corp .btn-outline-light {
+  color:#fff;
+  border-color:#fff;
+  border-radius:0;
+}
+
+.rh-corp .btn-outline-light:hover,
+.rh-corp .btn-outline-light:focus {
+  background:#fff;
+  color: var(--regis-primary);
+}
+
+/* =========================
+   EXPERIENCIAS CERCA
+   ========================= */
+.rh-experiencias{
+  background: #fff; /* alternamos fondo blanco en esta sección */
+}
+
+.rh-exp-card{
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 0;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.rh-exp-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,.12);
+}
+
+.rh-exp-card .card-img-top{
+  height: 180px;
+  object-fit: cover;
+}
+
+.rh-exp-card .card-title{
+  font-weight: 700;
+  color: var(--regis-primary);
+}
+
+.rh-experiencias .btn-ir{
+  background: var(--regis-primary);   /* azul header/footer */
+  border: none;
+  color: #fff;
+  padding: 0.6rem 1.25rem;
+  border-radius: 0;
+  font-weight: 500;
+  transition: background .2s ease;
+  margin-top: .75rem;
+}
+
+.rh-experiencias .btn-ir:hover,
+.rh-experiencias .btn-ir:focus{
+  background:#0b2370;
+  color:#fff;
+}
+
+
+/* =========================
+   Experiencias
+   ========================= */
+.rh-experiences{
+  background: #fff;
+}
+.rh-exp-card{
+  border:1px solid rgba(0,0,0,.06); border-radius:0; overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.rh-exp-card:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,.12); }
+.rh-exp-card .card-img-top{ height:200px; object-fit:cover; }
+@media (min-width:992px){ .rh-exp-card .card-img-top{ height:220px; } }
+.rh-exp-card .card-title{ color:var(--regis-primary); font-weight:700; }
+.rh-exp-card .card-text{ color:#555; margin-bottom:.85rem; }
+
+/* =========================
+   Testimonios (tarjetas centrables)
+   ========================= */
+.rh-testimonials{
+  background: var(--regis-soft);
+}
+
+.rh-test-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:0;
+  padding:1.25rem;
+  height:100%;
+  position:relative;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.rh-test-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 26px rgba(0,0,0,.1);
+}
+
+.rh-test-quote{
+  color:var(--regis-accent);   /* color de comillas e íconos */
+  font-size:1.2rem;
+  margin-bottom:.5rem;
+}
+
+.rh-test-card p{
+  color:#333;
+}
+
+.rh-test-meta{
+  margin-top:.75rem;
+  color:#555;
+  font-size:.95rem;
+}
+
+.rh-test-meta .rh-flag,
+.rh-test-meta i {              /* íconos pequeños también en color acento */
+  color:var(--regis-accent);
+  margin-right:.35rem;
+  opacity:.9;                  /* un poco más suave */
+}
+
+
+/* =========================
+   Contacto + Mapa
+   ========================= */
+.rh-contact{
+  background:#fff;
+}
+
+.rh-form .form-control{
+  border-radius:0;
+}
+
+/* Labels en negrita */
+.rh-form .form-label{
+  font-weight:600;
+}
+
+.rh-contact-data a{
+  text-decoration:none;
+}
+.rh-contact-data a:hover{
+  text-decoration:underline;
+}
+
+/* Íconos en color acento (igual que testimonios) */
+.rh-contact-data i{
+  color:var(--regis-accent);
+  opacity:.9;
+}
+
+/* Mapa responsive */
+.rh-map-wrap{
+  position:relative;
+  width:100%;
+  padding-top:56.25%; /* 16:9 */
+}
+.rh-map-wrap iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+
+/* =========================
+   Footer (jerarquía + legibilidad)
+   ========================= */
+.rh-footer{
+  background: var(--regis-primary);
+  color:#fff;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+/* Enlaces generales del footer */
+.rh-footer a{ color: rgba(255,255,255,.92); text-decoration:none; }
+.rh-footer a:hover{ color: var(--regis-accent); text-decoration:none; }
+
+/* Brand: logo 40% más grande que header (y responsive) */
+.footer-brand img{
+  height: clamp(64px, 11.5vw, 120px); /* ↑ tamaño */
+  width:auto;
+  display:block;
+}
+
+/* Bajada de marca: itálica, +20% y con comillas */
+.footer-copy{
+  color:#d7def0;                /* más claro */
+  max-width: 60ch;
+  margin: .5rem 0 0;
+  font-style: italic;
+  font-size: 1.2rem;            /* +20% aprox */
+  line-height: 1.6;
+  position: relative;
+}
+.footer-copy::before,
+.footer-copy::after{
+  font-family: inherit;
+  color:#e4e9f7;                /* comillas más claritas */
+  font-size: 1.2em;
+  line-height: 0;
+}
+.footer-copy::before{ content: "“"; margin-right:.15em; }
+.footer-copy::after{ content: "”"; margin-left:.1em; }
+
+/* Redes sociales: bajar una línea extra */
+.footer-social{
+  margin-top: 1.25rem;          /* ↓ separadas de la bajada */
+}
+.footer-social a{
+  width:36px; height:36px;
+  display:inline-flex; align-items:center; justify-content:center;
+  background: rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.18);
+  opacity:.9; transition:opacity .2s ease, transform .2s ease;
+  border-radius:0;
+}
+.footer-social a i{ color:#fff; opacity:.85; font-size: .95rem; }
+.footer-social a:hover{ opacity:1; transform:translateY(-2px); }
+
+/* Títulos de columna */
+.footer-title{
+  font-size:1.1rem;
+  font-weight:700;
+  margin-bottom:.6rem;
+  color:#fff;
+}
+
+/* Subtítulos de lista (Argentina / Uruguay) en color acento */
+.footer-list h4{
+  font-size:.95rem;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  color: var(--regis-accent);
+  margin:.7rem 0 .35rem;
+}
+
+/* Listas: motitas (puntos) dorados en “Nuestros Hoteles” */
+.footer-list ul{ list-style:none; padding-left:0; margin:0 0 .6rem; }
+.footer-list li{ margin:.22rem 0; position:relative; padding-left: .9rem; }
+.footer-list li::before{
+  content:"";
+  position:absolute; left:0; top:.65em;
+  width:6px; height:6px; border-radius:50%;
+  background: var(--regis-accent);   /* “marroncito” de la marca */
+  opacity:.95;
+}
+
+/* Contacto + Legal */
+.footer-contact, .footer-legal{ list-style:none; padding-left:0; margin:0; }
+.footer-contact li, .footer-legal li{ margin:.25rem 0; }
+
+/* Íconos de contacto en color acento (consistente con testimonios) */
+.footer-contact i{
+  color: var(--regis-accent);
+  opacity: .95;
+}
+
+/* Textos de la sección Legal un poco más suaves */
+.footer-legal a{
+  color: rgba(255,255,255,.82);
+}
+.footer-legal a:hover{
+  color: var(--regis-accent);
+}
+
+/* Línea y pie final bien legible */
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.15);
+  padding: 1rem 0 0;
+  text-align:center;
+}
+.footer-bottom p{
+  color:#fff;            /* blanco pleno */
+  font-weight:300;       /* light */
+  opacity:1;             /* sin desvanecer */
+  letter-spacing:.01em;
+  margin-top:.6rem;
+}
+
+/* Responsive */
+@media (max-width: 991.98px){
+  .rh-footer .footer-brand,
+  .rh-footer .footer-copy,
+  .rh-footer .footer-social{
+    text-align: center;
+  }
+  .footer-social{ justify-content: center; }
+}
+
+
+/* =========================
+   Animaciones comunes
+   ========================= */
+.rh-anim{ opacity:0; transform:translateY(14px); animation: rhFadeUp .6s ease forwards; }
+.rh-anim:nth-child(1){ animation-delay:.05s; }
+.rh-anim:nth-child(2){ animation-delay:.1s; }
+.rh-anim:nth-child(3){ animation-delay:.15s; }
+.rh-anim:nth-child(4){ animation-delay:.2s; }
+@keyframes rhFadeUp{ to{ opacity:1; transform:translateY(0); } }
+@media (prefers-reduced-motion: reduce){
+  .rh-anim{ animation:none; opacity:1; transform:none; }
+}
+
+/* =========================
+   Flotantes (WhatsApp + Quick Links)
+   ========================= */
+.whatsapp-float{
+  position:fixed; right:18px; bottom:18px; z-index:1080;
+  width:54px; height:54px; background:#25D366; color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 22px rgba(0,0,0,.18); border:0; border-radius:50%;
+}
+.whatsapp-float i{ font-size:1.45rem; }
+
+/* Quick links laterales */
+.quick-links{
+  position:fixed; right:0; bottom: 96px; z-index:1079; /* no pisa WhatsApp */
+  display:flex; flex-direction:column; gap:8px;
+}
+/* Quick links laterales — FIX expandir y mostrar texto */
+.quick-links{
+  position:fixed; right:0; bottom:96px; z-index:1079;
+  display:flex; flex-direction:column; gap:8px;
+}
+
+.quick-links .ql-item{
+  display:flex; align-items:center; gap:8px;
+  background: var(--regis-primary); color:#fff;
+  padding:.55rem .6rem;
+  border-radius:12px 0 0 12px; /* si los querés rectos: poné 0 */
+  width:44px;                 /* estado contraído */
+  overflow:hidden;
+  white-space:nowrap;
+  text-decoration:none;
+  opacity:.95;
+  transition: width .25s ease, opacity .2s ease;
+}
+
+.quick-links .ql-item i{ width:18px; text-align:center; opacity:.95; }
+.quick-links .ql-item span{ opacity:0; transition:opacity .2s ease; }
+
+.quick-links .ql-item:hover,
+.quick-links .ql-item:focus,
+.quick-links .ql-item:focus-visible,
+.quick-links .ql-item:active{
+  width:220px;               /* estado expandido */
+  opacity:1;
+}
+
+.quick-links .ql-item:hover span,
+.quick-links .ql-item:focus span,
+.quick-links .ql-item:focus-visible span,
+.quick-links .ql-item:active span{
+  opacity:1;
+}
+
+/* Mobile: aún contraídos por defecto, pero se expanden al tocar (focus) */
+@media (max-width:575.98px){
+  .quick-links{ bottom:88px; }
+}
+
+/* =========================
+   HABITACIONES - Página
+   ========================= */
+
+/* HERO Habitaciones (mejor contraste) */
+.rh-hero-rooms{
+  position:relative; min-height:54vh; display:flex; align-items:center; background:#000;
+}
+.rh-hero-rooms .hero-video{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+}
+.rh-hero-rooms .video-overlay{
+  position:absolute; inset:0;
+  /* oscurece el video y tiñe en azul */
+  background: linear-gradient(180deg, rgba(5,21,77,.55), rgba(5,21,77,.65));
+}
+.rh-hero-rooms .hero-box{
+  position:relative; margin:0 auto; max-width:920px;
+  /* bloque azul translúcido */
+  background: rgba(5,21,77,.82);
+  color:#fff;
+  padding:1.6rem 1.25rem;
+  border:1px solid rgba(255,255,255,.12);
+}
+.rh-hero-rooms h1{ font-weight:700; color:#fff; margin-bottom:.35rem; }
+.rh-hero-rooms .lead{ color:#f1f4ff; opacity:1; }
+
+/* TIRA DE RESERVA apaisada */
+.rh-booking-strip{ background:var(--regis-soft); padding:1rem 0; }
+.booking-inline .form-label{ font-weight:600; }
+.booking-inline .form-control{ border-radius:0; }
+.btn-block-md{ width:100%; }
+@media (min-width:768px){ .btn-block-md{ width:auto; } }
+
+/* LISTA INTERCALADA (full-bleed + fondo alternado) */
+.rh-rooms-list{ background:#fff; padding:2.5rem 0 3rem; }
+
+/* Fila que estira su fondo a todo el viewport */
+.rh-room-row{
+  position:relative; padding:1.25rem 0;
+  /* full-bleed sin romper el container del contenido */
+  margin-left:calc(-50vw + 50%);
+  margin-right:calc(-50vw + 50%);
+  padding-left:calc(50vw - 50%);
+  padding-right:calc(50vw - 50%);
+  transition:background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+/* Alternar fondos: blanco / gris con degradé */
+.rh-room-row:nth-of-type(odd){ background:#fff; }
+.rh-room-row:nth-of-type(even){
+  background: linear-gradient(180deg, #f7f9fc 0%, #f2f4f7 100%);
+}
+
+/* Contenido interno sigue alineado al grid */
+.rh-room-row > .col-12,
+.rh-room-row > [class*="col-"]{
+  padding-left:.75rem; padding-right:.75rem;
+}
+
+/* Media */
+.rh-room-media img{
+  width:100%; height:360px; object-fit:cover; display:block;
+  border:1px solid rgba(0,0,0,.06);
+}
+@media (min-width:1200px){ .rh-room-media img{ height:420px; } }
+
+.rh-room-info .rh-room-title{ color:var(--regis-primary); font-weight:700; margin-bottom:.25rem; }
+.rh-room-info .rh-room-text{ color:#333; margin-bottom:.75rem; }
+
+/* Features con iconos acento */
+.rh-room-feats{ list-style:none; padding-left:0; margin:0 0 .9rem; columns:2; column-gap:2rem; }
+@media (max-width:575.98px){ .rh-room-feats{ columns:1; } }
+.rh-room-feats li{ break-inside:avoid; margin:.35rem 0; display:flex; align-items:baseline; gap:.5rem; color:#444; }
+.rh-room-feats i{ color:var(--regis-accent); opacity:.95; width:1.1rem; text-align:center; }
+
+/* CTA */
+.rh-room-cta{ display:flex; flex-wrap:wrap; gap:.5rem; }
+.rh-room-cta .btn{ border-radius:0; }
+
+/* =========================
+   SOLO FIX DROPDOWN (Bootstrap)
+   ========================= */
+
+/* Dejar que el dropdown flote fuera del header sin agrandarlo */
+.rh-header, .navbar{ overflow:visible; }
+
+/* El padre del dropdown posiciona el menú */
+.navbar .nav-item.dropdown{ position:relative; }
+
+/* Desktop: oculto por defecto y flotante */
+@media (min-width:992px){
+  .navbar .nav-item.dropdown .dropdown-menu{
+    position:absolute; top:100%; left:0;
+    display:none !important;           /* oculto de base */
+    min-width:220px; margin:0; border-radius:0;
+    background:#fff; border:1px solid rgba(0,0,0,.08);
+    box-shadow:0 10px 24px rgba(0,0,0,.15);
+    z-index:1300;
+  }
+  .navbar .nav-item.dropdown:hover > .dropdown-menu,
+  .navbar .nav-item.dropdown:focus-within > .dropdown-menu{
+    display:block !important;          /* mostrar solo al hover/focus */
+  }
+}
+
+/* Mobile (offcanvas): embebido y siempre visible */
+@media (max-width:991.98px){
+  .offcanvas .dropdown-menu{
+    display:block !important;
+    position:static !important;
+    float:none;
+    border:0; box-shadow:none; background:transparent;
+    padding:.25rem 0 .5rem;
+  }
+}
+
+/* Evitar que el video de la hero “robe” el hover/click del menú */
+.rh-hero-rooms .hero-video,
+.rh-hero-rooms .video-overlay{ pointer-events:none; }
+

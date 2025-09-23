@@ -8,62 +8,84 @@
   <!-- Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap 5.3.3 CSS (sin integrity) -->
+  <!-- Bootstrap 5.3.3 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Font Awesome 6.5.2 (sin integrity) -->
+
+  <!-- Font Awesome 6.5.2 -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
   <!-- Tu CSS -->
-  <link href="assets/css/styles.css" rel="stylesheet">
-
+  <link href="assets/css/styles-sub.css" rel="stylesheet">
 </head>
 
 <body>
-   <!-- Header (páginas internas) -->
-<!-- Header (páginas internas) -->
-<!-- Header (igual al index, menú custom) -->
-<header>
-  <div class="container header-container">
-    <div class="logo">
-      <a href="index.html" aria-label="Regis Hotel - Inicio">
-        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
+
+<!-- =========================
+     HEADER unificado
+     fixed-top + offcanvas
+   ========================= -->
+<header class="rh-header">
+  <nav class="navbar navbar-dark navbar-expand-lg fixed-top" style="background:#05154d;">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Inicio">
+        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel" style="height:56px;width:auto;">
       </a>
+
+      <!-- Toggler (abre offcanvas en mobile) -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="offcanvas" data-bs-target="#rhOffcanvas"
+              aria-controls="rhOffcanvas" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Offcanvas / Menú -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="rhOffcanvas" aria-labelledby="rhOffcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title visually-hidden" id="rhOffcanvasLabel">Menú</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+
+            <!-- Habitaciones: LINK REAL + submenu -->
+            <li class="nav-item dropdown rh-dropdown">
+              <!-- IMPORTANTE: sin 'dropdown-toggle' ni 'data-bs-toggle' para que sea clickeable -->
+              <!-- Asegurate de que el archivo exista y se llame exactamente 'habitaciones.html' -->
+              <a class="nav-link" href="habitaciones.html" id="habLink">Habitaciones</a>
+
+              <!-- Submenú -->
+              <!-- Saqué 'dropdown-menu-end' y 'dropdown-menu-lg-start' para que no se desplace mal -->
+              <ul class="dropdown-menu" aria-labelledby="habLink">
+                <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
+                <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
+                <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
+                <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
+                <li><a class="dropdown-item" href="habitacion-ejecutiva.html">Habitación Ejecutiva</a></li>
+              </ul>
+            </li>
+
+            <!-- Secciones (anclas a la home) -->
+            <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#corporativas">Corporativo</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Testimonios</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+
+            <!-- CTA Reservar (igual en todas las páginas) -->
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+              <a href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es"
+                 target="_blank" rel="noopener" class="btn btn-reservar">
+                <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
+                <span>Reservar</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
     </div>
-
-    <button class="mobile-menu-btn" aria-label="Abrir menú">
-      <i class="fas fa-bars" aria-hidden="true"></i>
-    </button>
-
-    <ul class="nav-menu">
-      <li><a href="index.html">Inicio</a></li>
-
-      <li class="menu-item-has-children">
-        <a href="Habitaciones.html">Habitaciones</a>
-        <ul class="submenu">
-          <li><a href="habitacion-simple.html">Habitación Simple</a></li>
-          <li><a href="habitacion-doble.html">Habitación Doble</a></li>
-          <li><a href="habitacion-triple.html">Habitación Triple</a></li>
-          <li><a href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
-          <li><a href="habitacion-ejecutiva.html">Habitación Ejecutiva</a></li>
-        </ul>
-      </li>
-
-      <li><a href="index.html#servicios">Servicios</a></li>
-      <li><a href="index.html#corporativas">Corporativo</a></li>
-      <li><a href="index.html#testimonios">Testimonios</a></li>
-      <li><a href="index.html#contacto">Contacto</a></li>
-
-      <!-- Botón Reservar (mismo estilo del index) -->
-      <li>
-        <a href="https://booking.roomcloud.net/be/se1/hotel.jsp?hotel=12269&lang=es"
-           target="_blank" rel="noopener" class="reserva-btn">
-          <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
-          Reservar
-        </a>
-      </li>
-    </ul>
-  </div>
+  </nav>
 </header>
 
 <!-- =========================
