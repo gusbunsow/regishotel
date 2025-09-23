@@ -1,14 +1,3 @@
-/* =========================================
-   Regis Hotel — styles.css (base ordenada)
-   Secciones incluidas:
-   - Variables globales
-   - Sistema tipográfico
-   - Enlaces y botones (global)
-   - Header (navbar/offcanvas + fix hover)
-   - Hero (video + banner reservas)
-   - Rooms (Nuestras Habitaciones)
-   ========================================= */
-
 /* =========================
    Variables globales
    ========================= */
@@ -121,18 +110,20 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
 /* Dropdown: quitar flecha del toggle */
 .rh-header .dropdown-toggle::after{ display:none !important; }
 
-/* Desktop (>=992px): submenú con hover/focus y transición suave */
+/* =========================
+   Dropdowns
+   ========================= */
+
+/* ❌ COMENTAR/REMOVER ESTE BLOQUE — causaba que el header se expanda en desktop */
+/*
 @media (min-width: 992px){
-  /* Estado inicial oculto */
   .rh-header .rh-dropdown .dropdown-menu {
-    display: block; /* necesario para poder animar */
+    display: block; 
     opacity: 0;
     visibility: hidden;
     transform: translateY(6px);
     transition: opacity .18s ease, transform .18s ease, visibility .18s;
   }
-
-  /* Estado visible al hover o focus */
   .rh-header .rh-dropdown:hover .dropdown-menu,
   .rh-header .rh-dropdown:focus-within .dropdown-menu {
     opacity: 1;
@@ -141,14 +132,30 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
     margin-top: .25rem;
   }
 }
+*/
 
-/* Estilo dropdown (desktop) */
-.rh-header .dropdown-menu{
-  background:#fff;
-  border:1px solid #e9ecef;
-  border-radius:0;
-  padding:.5rem;
+/* ✅ NUEVO: desktop flotante (no empuja el header) */
+.rh-header .nav-item.dropdown{ position: relative; }
+
+@media (min-width: 992px){
+  .rh-header .dropdown-menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;             /* oculto por defecto */
+    background:#fff;
+    border:1px solid #e9ecef;
+    border-radius:0;
+    padding:.5rem;
+    z-index: 1000;             /* sobre el header */
+  }
+  .rh-header .nav-item.dropdown:hover > .dropdown-menu,
+  .rh-header .nav-item.dropdown:focus-within > .dropdown-menu{
+    display: block;            /* mostrar al hover/focus */
+  }
 }
+
+/* Estilo de items (se mantiene) */
 .rh-header .dropdown-item{
   color: var(--regis-primary);
 }
@@ -157,21 +164,22 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   color: var(--regis-primary);
 }
 
-/* Mobile (<992px): submenú siempre visible y más suave que el padre */
+/* ✅ Mobile (<992px): submenú dentro del offcanvas, siempre visible */
 @media (max-width: 991.98px){
   .rh-header .rh-dropdown > .dropdown-menu{
     display:block !important;
-    position:static;
+    position:static !important;
     float:none;
     border:none;
     background:transparent;
     padding:.25rem 0 0 0;
     margin:.25rem 0 0 0;
+    box-shadow:none;
   }
   .rh-header .rh-dropdown > .dropdown-menu .dropdown-item{
     background: transparent;
-    color: #e7eaf3;                  /* más claro que el padre */
-    padding:.4rem 1rem .4rem 1.5rem; /* indentado */
+    color: #e7eaf3;
+    padding:.4rem 1rem .4rem 1.5rem;
     opacity:.95;
   }
   .rh-header .rh-dropdown > .dropdown-menu .dropdown-item:hover{
@@ -180,43 +188,40 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   }
   .rh-header .rh-dropdown > .nav-link{
     color: #fff;
-    font-weight: 600;                /* padre más intenso */
+    font-weight: 600;
   }
 }
 
 /* Navbar: sin subrayado en hover/focus (desktop y mobile) */
 .rh-header .nav-link,
 .rh-header .dropdown-item { text-decoration: none !important; }
-
 .rh-header .nav-link:hover,
 .rh-header .nav-link:focus,
 .rh-header .dropdown-item:hover,
 .rh-header .dropdown-item:focus {
   text-decoration: none !important;
-  color: var(--regis-accent); /* solo color alternativo */
+  color: var(--regis-accent);
 }
 
-/* --- Submenú de Habitaciones --- */
+/* --- Submenú alternativo (si usás .submenu en otra navegación) --- */
 .rh-header .submenu {
   position: absolute;
   top: 100%;
   left: 0;
   min-width: 220px;
-  display: none;                /* oculto por defecto */
+  display: none;
   background: #fff;
   border: 1px solid rgba(0,0,0,.08);
   box-shadow: 0 8px 24px rgba(0,0,0,.12);
   padding: .5rem 0;
   z-index: 1000;
-  max-height: none;             /* 🔑 permitir más ítems */
-  overflow: visible;            /* 🔑 no recortar */
+  max-height: none;
+  overflow: visible;
 }
-
 .rh-header .menu-item-has-children:hover > .submenu,
 .rh-header .menu-item-has-children:focus-within > .submenu {
-  display: block; /* mostrar submenú en desktop */
+  display: block;
 }
-
 .rh-header .submenu li { list-style: none; }
 .rh-header .submenu a {
   display: block;
@@ -228,29 +233,25 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   background: #f2f4f7;
   color: var(--regis-primary);
 }
-
-/* --- Mobile: submenú visible siempre en offcanvas --- */
+/* Mobile para .submenu “alternativa” */
 @media (max-width: 991.98px){
   .rh-header .submenu {
     position: static;
-    display: block;   /* todos visibles en mobile */
+    display: block;
     background: transparent;
     border: 0;
     box-shadow: none;
     padding: 0;
   }
-  .rh-header .submenu a {
-    padding: .4rem 0 .4rem 1rem; /* sangría */
-  }
+  .rh-header .submenu a { padding: .4rem 0 .4rem 1rem; }
 }
 
-/* Offcanvas (mobile): lo mismo */
+/* Offcanvas (mobile): hover color */
 .rh-header .offcanvas .nav-link:hover,
 .rh-header .offcanvas .nav-link:focus {
   text-decoration: none !important;
   color: var(--regis-accent);
 }
-
 
 /* Por si tenés botón de WhatsApp flotante */
 .whatsapp-float{ z-index:1080; }
@@ -271,6 +272,7 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   width: 100%; height: 100%;
   object-fit: cover; object-position: center;
   z-index: -2;
+  pointer-events: none; /* 🔑 no intercepta hover/click del menú */
 }
 
 /* Capa para legibilidad */
@@ -278,6 +280,7 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.55) 100%);
   z-index: -1;
+  pointer-events: none; /* 🔑 igual que el video */
 }
 
 /* Copys */
@@ -319,6 +322,14 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
 @media (max-width: 991.98px){
   .rh-hero .rh-hero-copy{ margin-bottom: 1.25rem; }
 }
+
+/* === Compensación del header fijo (para que no tape hero/otras secciones) === */
+:root { --nav-h: 88px; } /* altura aprox. navbar en desktop */
+@media (max-width: 991.98px){
+  :root { --nav-h: 72px; } /* altura menor en mobile */
+}
+html { scroll-padding-top: var(--nav-h); } /* anclas (#servicios, etc.) no quedan tapadas */
+body { padding-top: var(--nav-h); }        /* empuja contenido debajo del header fijo */
 
 /* =========================
    ROOMS (Nuestras Habitaciones)
@@ -413,7 +424,6 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
 }
 
 /* ===== Anti-underline para botones y navegación ===== */
-/* Botones (incluye <a class="btn ...">) */
 .btn,
 .btn:link,
 .btn:visited,
@@ -423,7 +433,6 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   text-decoration: none !important;
 }
 
-/* Header: links del menú y dropdown */
 .rh-header .nav-link,
 .rh-header .nav-link:hover,
 .rh-header .nav-link:focus,
@@ -433,7 +442,6 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   text-decoration: none !important;
 }
 
-/* Tarjetas de habitaciones: cualquier link/botón dentro de la tarjeta */
 .rh-room-card .card-body a,
 .rh-room-card .card-body a:hover,
 .rh-room-card .card-body a:focus,
@@ -441,7 +449,6 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   text-decoration: none !important;
 }
 
-/* Accesibilidad: foco visible sin subrayado */
 .btn:focus-visible,
 .rh-header .nav-link:focus-visible,
 .rh-header .dropdown-item:focus-visible,
@@ -450,9 +457,6 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   outline-offset: 2px;
   text-decoration: none !important;
 }
-
-/* =========================================
-desde acá   ========================================= */
 
 /* =========================
    Servicios
@@ -864,46 +868,46 @@ desde acá   ========================================= */
 
 /* HERO Habitaciones (mejor contraste) */
 .rh-hero-rooms{
-  position:relative; min-height: 54vh; display:flex; align-items:center; background:#000;
+  position:relative; min-height:54vh; display:flex; align-items:center; background:#000;
 }
-.rh-hero-rooms .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.rh-hero-rooms .hero-video{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+}
 .rh-hero-rooms .video-overlay{
   position:absolute; inset:0;
   /* oscurece el video y tiñe en azul */
   background: linear-gradient(180deg, rgba(5,21,77,.55), rgba(5,21,77,.65));
 }
 .rh-hero-rooms .hero-box{
-  position:relative; margin: 0 auto; max-width: 920px;
+  position:relative; margin:0 auto; max-width:920px;
   /* bloque azul translúcido */
   background: rgba(5,21,77,.82);
   color:#fff;
-  padding: 1.6rem 1.25rem;
-  border: 1px solid rgba(255,255,255,.12);
+  padding:1.6rem 1.25rem;
+  border:1px solid rgba(255,255,255,.12);
 }
 .rh-hero-rooms h1{ font-weight:700; color:#fff; margin-bottom:.35rem; }
 .rh-hero-rooms .lead{ color:#f1f4ff; opacity:1; }
 
-
 /* TIRA DE RESERVA apaisada */
-.rh-booking-strip{ background: var(--regis-soft); padding: 1rem 0; }
+.rh-booking-strip{ background:var(--regis-soft); padding:1rem 0; }
 .booking-inline .form-label{ font-weight:600; }
 .booking-inline .form-control{ border-radius:0; }
 .btn-block-md{ width:100%; }
-@media (min-width: 768px){ .btn-block-md{ width:auto; } }
+@media (min-width:768px){ .btn-block-md{ width:auto; } }
 
 /* LISTA INTERCALADA (full-bleed + fondo alternado) */
-.rh-rooms-list{ background:#fff; padding: 2.5rem 0 3rem; }
+.rh-rooms-list{ background:#fff; padding:2.5rem 0 3rem; }
 
 /* Fila que estira su fondo a todo el viewport */
 .rh-room-row{
-  position: relative;
-  padding: 1.25rem 0;
+  position:relative; padding:1.25rem 0;
   /* full-bleed sin romper el container del contenido */
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding-left: calc(50vw - 50%);
-  padding-right: calc(50vw - 50%);
-  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+  margin-left:calc(-50vw + 50%);
+  margin-right:calc(-50vw + 50%);
+  padding-left:calc(50vw - 50%);
+  padding-right:calc(50vw - 50%);
+  transition:background .2s ease, box-shadow .2s ease, transform .2s ease;
 }
 /* Alternar fondos: blanco / gris con degradé */
 .rh-room-row:nth-of-type(odd){ background:#fff; }
@@ -914,444 +918,67 @@ desde acá   ========================================= */
 /* Contenido interno sigue alineado al grid */
 .rh-room-row > .col-12,
 .rh-room-row > [class*="col-"]{
-  padding-left: .75rem;
-  padding-right: .75rem;
+  padding-left:.75rem; padding-right:.75rem;
 }
 
 /* Media */
 .rh-room-media img{
-  width:100%; height: 360px; object-fit: cover; display:block;
+  width:100%; height:360px; object-fit:cover; display:block;
   border:1px solid rgba(0,0,0,.06);
 }
-@media (min-width:1200px){ .rh-room-media img{ height: 420px; } }
+@media (min-width:1200px){ .rh-room-media img{ height:420px; } }
 
-.rh-room-info .rh-room-title{ color: var(--regis-primary); font-weight: 700; margin-bottom:.25rem; }
+.rh-room-info .rh-room-title{ color:var(--regis-primary); font-weight:700; margin-bottom:.25rem; }
 .rh-room-info .rh-room-text{ color:#333; margin-bottom:.75rem; }
 
 /* Features con iconos acento */
-.rh-room-feats{ list-style:none; padding-left:0; margin: 0 0 .9rem; columns: 2; column-gap: 2rem; }
-@media (max-width: 575.98px){ .rh-room-feats{ columns:1; } }
-.rh-room-feats li{ break-inside: avoid; margin:.35rem 0; display:flex; align-items:baseline; gap:.5rem; color:#444; }
-.rh-room-feats i{ color: var(--regis-accent); opacity:.95; width: 1.1rem; text-align:center; }
+.rh-room-feats{ list-style:none; padding-left:0; margin:0 0 .9rem; columns:2; column-gap:2rem; }
+@media (max-width:575.98px){ .rh-room-feats{ columns:1; } }
+.rh-room-feats li{ break-inside:avoid; margin:.35rem 0; display:flex; align-items:baseline; gap:.5rem; color:#444; }
+.rh-room-feats i{ color:var(--regis-accent); opacity:.95; width:1.1rem; text-align:center; }
 
 /* CTA */
 .rh-room-cta{ display:flex; flex-wrap:wrap; gap:.5rem; }
 .rh-room-cta .btn{ border-radius:0; }
 
-/* ===== MENÚ MÓVIL (header simple) ===== */
-@media (max-width: 991.98px){
-  .mobile-menu-btn{ 
-    display:inline-flex; align-items:center; justify-content:center;
-    width:42px; height:42px; border:0; background:transparent; color:#fff; 
-    z-index: 2100; position: relative;
-  }
+/* =========================
+   SOLO FIX DROPDOWN (Bootstrap)
+   ========================= */
 
-  /* ===== hotfix raro) ===== */
-  @media (max-width: 991.98px){
-  .nav-menu{ position: fixed; top:0; right:-100%; width:80%; max-width:320px; height:100vh; background:#fff; padding:80px 16px 16px; box-shadow:-20px 0 40px rgba(0,0,0,.25); transition:right .25s; overflow-y:auto; z-index:2000; }
-  .nav-menu.active{ right:0; }
-}
-@media (min-width: 992px){
-  .nav-menu{ position: static; display:flex; background:transparent; height:auto; width:auto; padding:0; box-shadow:none; }
-}
+/* Dejar que el dropdown flote fuera del header sin agrandarlo */
+.rh-header, .navbar{ overflow:visible; }
 
+/* El padre del dropdown posiciona el menú */
+.navbar .nav-item.dropdown{ position:relative; }
 
-
-
-  .nav-menu{
-    position: fixed; top:0; right:-100%;
-    width: 80%; max-width: 320px; height: 100vh;
-    background:#fff;
-    padding: 80px 16px 16px;
-    box-shadow: -20px 0 40px rgba(0,0,0,.25);
-    transition: right .25s ease;
-    overflow-y: auto;
-    z-index: 2000;                 /* por encima del contenido */
-  }
-  .nav-menu.active{ right:0; }
-
-  /* enlaces dentro del panel */
-  .nav-menu > li{ margin-bottom:.25rem; }
-  .nav-menu a{ color:#111; display:block; padding:.5rem 0; }
-
-  /* submenú visible en mobile */
-  .nav-menu .submenu{
-    position: static; display:block; background:transparent; border:0; box-shadow:none; padding:0;
-  }
-  .nav-menu .submenu a{ padding:.4rem 0 .4rem 1rem; }
-}
-
-/* Desktop: ocultar botón hamburguesa si aplica */
-@media (min-width: 992px){
-  .mobile-menu-btn{ display:none; }
-}
-
-/* Asegurar que el header quede encima de videos/hero */
-header{ position: relative; z-index: 1500; }
-
-/* ===== FIX NAV MENU QUE TAPA LA PÁGINA ===== */
-
-/* Desktop: menú en línea, sin panel fijo */
-@media (min-width: 992px){
-  .nav-menu{
-    position: static !important;
-    display: flex !important;
-    height: auto !important;
-    width: auto !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    right: auto !important;
-    left: auto !important;
-    overflow: visible !important;
-  }
-  .nav-menu > li { margin-left: 1rem; }
-}
-
-/* Mobile: panel deslizante que empieza oculto */
-@media (max-width: 991.98px){
-  .nav-menu{
-    position: fixed !important;
-    top: 0; right: -100% !important;           /* oculto */
-    width: 80%; max-width: 320px; height: 100vh;
-    background: #fff;
-    padding: 80px 16px 16px;
-    box-shadow: -20px 0 40px rgba(0,0,0,.25);
-    transition: right .25s ease;
-    overflow-y: auto;
-    z-index: 2000;
-  }
-  .nav-menu.active{ right: 0 !important; }     /* visible al tocar hamburguesa */
-  .nav-menu a{ color:#111; display:block; padding:.5rem 0; }
-  .nav-menu .submenu{
-    position: static; display:block; background:transparent; border:0; box-shadow:none; padding:0;
-  }
-  .nav-menu .submenu a{ padding:.4rem 0 .4rem 1rem; }
-}
-
-/* Asegurar que el header quede por encima del hero/video */
-header.rh-header{ position: relative; z-index: 1500; }
-
-/* Quitar viñetas si quedaron heredadas de estilos viejos */
-.navbar-nav { list-style: none !important; }
-
-/* (Opcional) abrir dropdown al hover en desktop */
-@media (min-width: 992px){
-  .navbar .dropdown:hover .dropdown-menu{ display:block; }
-  .navbar .dropdown-toggle::after{ display:none; } /* sin flechita */
-}
-
-/* ====== Header sticky y compensación de anclas ====== */
-:root{ --nav-h: 72px; }               /* altura aprox del navbar */
-body{ scroll-padding-top: var(--nav-h); }
-
-/* Asegurar header por encima de hero/video */
-/* Header por encima del hero */
-.rh-header{ position:relative; z-index:1020; }
-
-/* Sticky REAL en la navbar */
-.navbar.sticky-top{
-  position: sticky;  /* deja que Bootstrap haga su trabajo */
-  top: 0;
-  z-index: 1020;
-}
-
-/* Por si algún padre tenía overflow que rompe el sticky */
-.rh-header{ overflow: visible; }
-
-/* Quitar subrayados y estilizar hover */
-.rh-header .nav-link,
-.rh-header .dropdown-item { text-decoration: none !important; }
-.rh-header .nav-link:hover,
-.rh-header .nav-link:focus,
-.rh-header .dropdown-item:hover,
-.rh-header .dropdown-item:focus {
-  color: var(--regis-accent, #CEB98D);
-  text-decoration: none !important;
-}
-
-/* Abrir submenu en desktop con hover/focus y que no se cierre "violento" */
-@media (min-width: 992px){
-  .rh-dropdown .dropdown-menu{
-    display:block; opacity:0; visibility:hidden; transform:translateY(8px);
-    transition: opacity .18s ease, transform .18s ease, visibility .18s;
-    margin-top:0; border-radius:0;
-  }
-  .rh-dropdown:hover .dropdown-menu,
-  .rh-dropdown:focus-within .dropdown-menu{
-    opacity:1; visibility:visible; transform:translateY(0);
-  }
-}
-/* Ocultar el caret ↓ del .dropdown-toggle (lo pediste sin flecha) */
-.rh-header .dropdown-toggle::after{ display:none; }
-
-/* Botón Reservar uniforme en todas las páginas */
-.btn-reservar{
-  background:#CEB98D; color:#fff; border:0; border-radius:0;
-  padding:.6rem 1.2rem; font-weight:600; display:inline-flex; align-items:center; gap:.4rem;
-}
-.btn-reservar:hover{ background:#b89f6e; color:#fff; }
-
-/* Videos/overlays del hero que no bloqueen clics */
-.hero-video, .video-overlay{ pointer-events:none; z-index:0; }
-
-/* --- Header fijo global --- */
-:root{ --nav-h: 72px; }              /* altura aproximada del navbar */
-body{ padding-top: var(--nav-h); }   /* empuja el contenido debajo del header fijo */
-
-/* Asegurar el z-index correcto del header fijo */
-.navbar.fixed-top{
-  position: fixed; top:0; left:0; right:0; z-index:1040;
-}
-
-/* Si tenías algo que forzaba .navbar a relative, lo anulamos */
-.navbar{ position: inherit; }  /* deja que .fixed-top mande */
-
-/* Por si el video/overlay del hero tapaba clics: */
-.hero-video, .video-overlay{ pointer-events:none; z-index:0; }
-
-/* ===== Header fijo y compensación global ===== */
-:root{ --nav-h: 72px; }                 /* altura aprox del header */
-body{ padding-top: var(--nav-h); }      /* que nada quede tapado */
-
-/* Botón Reservar (coherente en todas las páginas) */
-.btn-reservar{
-  background:#CEB98D; color:#fff; border:0; border-radius:0;
-  padding:.6rem 1.2rem; font-weight:600; display:inline-flex; align-items:center; gap:.4rem;
-}
-.btn-reservar:hover{ background:#b89f6e; color:#fff; }
-
-/* Links del header: sin subrayado + hover dorado */
-.rh-header .nav-link,
-.rh-header .dropdown-item{ text-decoration:none !important; }
-.rh-header .nav-link:hover,
-.rh-header .nav-link:focus,
-.rh-header .dropdown-item:hover,
-.rh-header .dropdown-item:focus{
-  color:#CEB98D; text-decoration:none !important;
-}
-
-/* Dropdown suave en desktop (hover/focus) */
-@media (min-width: 992px){
-  .rh-dropdown .dropdown-menu{
-    display:block; opacity:0; visibility:hidden; transform:translateY(8px);
-    transition:opacity .18s ease, transform .18s ease, visibility .18s;
-    margin-top:0; border-radius:0;
-  }
-  .rh-dropdown:hover .dropdown-menu,
-  .rh-dropdown:focus-within .dropdown-menu{
-    opacity:1; visibility:visible; transform:translateY(0);
-  }
-}
-/* Ocultar caret de dropdown */
-.rh-header .dropdown-toggle::after{ display:none; }
-
-/* Offcanvas: asegurar contraste y botón "X" blanco */
-.offcanvas.text-bg-dark{ background:#05154d; }
-.offcanvas .btn-close{ filter:none; }           /* por si algún reset la alteró */
-.btn-close-white{ opacity:.9; }                  /* un pelín más visible */
-.btn-close-white:hover{ opacity:1; }
-
-/* Evitar que videos/overlays del hero tapen clicks del header */
-.hero-video, .video-overlay{ pointer-events:none; z-index:0; }
-
-/* Anular reglas viejas que rompen el fixed-top */
-.navbar{ position:inherit; }   /* deja que .fixed-top aplique position:fixed */
-
-/* ===== Header fijo y compensación global ===== */
-:root{ --nav-h: 72px; }          /* altura aprox del header */
-body{ padding-top: var(--nav-h); }/* evita que el header tape el contenido */
-
-/* Anular reglas antiguas que rompen el fixed-top */
-.navbar{ position: inherit; }     /* deja que .fixed-top mande */
-
-/* Botón Reservar (coherente en todas las páginas) */
-.btn-reservar{
-  background:#CEB98D; color:#fff; border:0; border-radius:0;
-  padding:.6rem 1.2rem; font-weight:600; display:inline-flex; align-items:center; gap:.4rem;
-}
-.btn-reservar:hover{ background:#b89f6e; color:#fff; }
-
-/* Links del header: sin subrayado + hover dorado */
-.rh-header .nav-link,
-.rh-header .dropdown-item{ text-decoration:none !important; }
-.rh-header .nav-link:hover,
-.rh-header .nav-link:focus,
-.rh-header .dropdown-item:hover,
-.rh-header .dropdown-item:focus{
-  color:#CEB98D; text-decoration:none !important;
-}
-
-/* Dropdown suave en desktop (hover/focus) */
-@media (min-width: 992px){
-  .rh-dropdown .dropdown-menu{
-    display:block; opacity:0; visibility:hidden; transform:translateY(8px);
-    transition:opacity .18s ease, transform .18s ease, visibility .18s;
-    margin-top:0; border-radius:0;
-  }
-  .rh-dropdown:hover .dropdown-menu,
-  .rh-dropdown:focus-within .dropdown-menu{
-    opacity:1; visibility:visible; transform:translateY(0);
-  }
-}
-/* Ocultar caret del dropdown (sin flechita) */
-.rh-header .dropdown-toggle::after{ display:none; }
-
-/* Mobile (offcanvas): submenu expandido y legible */
-.offcanvas .dropdown-menu{
-  display:block !important;
-  position: static !important;
-  float:none;
-  opacity:1; visibility:visible; transform:none;
-  background:transparent; border:0; box-shadow:none; padding:.25rem 0 .5rem;
-}
-.offcanvas .dropdown-item{ padding:.35rem 0 .35rem 1rem; }
-
-/* Evitar que videos/overlays del hero tapen clicks del header */
-.hero-video, .video-overlay{ pointer-events:none; z-index:0; }
-
-/* ==== FIX NAV/DROPDOWN (forzar estado correcto) ==== */
-
-/* 1) El contenedor padre posiciona el submenú y el enlace principal mantiene clic */
-.nav-menu .menu-item-has-children { position: relative; }
-.nav-menu .menu-item-has-children > a { pointer-events: auto; }
-
-/* 2) Submenú oculto por defecto en desktop */
-.nav-menu .submenu{
-  display: none !important;       /* anula cualquier display:block previo */
-  position: absolute;             /* flota: no empuja el layout */
-  left: 0; top: 100%;
-  min-width: 220px;
-  background: #05154d;
-  padding: .25rem 0;
-  box-shadow: 0 10px 24px rgba(0,0,0,.18);
-  z-index: 1300;                  /* encima del video/hero */
-}
-
-/* Items del submenú */
-.nav-menu .submenu li a{
-  display: block;
-  padding: .55rem 1rem;
-  color: #fff;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.nav-menu .submenu li a:hover{
-  background: rgba(255,255,255,.08);
-  color: #CEB98D;
-}
-
-/* 3) Mostrar submenú en hover (sólo dispositivos con hover) */
-@media (hover:hover){
-  .nav-menu .menu-item-has-children:hover > .submenu{
-    display: block !important;
-  }
-}
-
-/* 4) Comportamiento en móvil: submenú embebido (si ya te funciona, lo respetamos) */
-@media (max-width: 991.98px){
-  .nav-menu .submenu{
-    position: static;
-    min-width: 0;
-    box-shadow: none;
-    background: transparent;
-    display: block !important;   /* en tu mobile ya lo mostrás expandido */
-  }
-}
-
-/* 5) Evitar que el video de la hero “robe” hover/click del menú */
-.hero .hero-video,
-.hero .video-overlay,
-.rh-hero-rooms .hero-video,
-.rh-hero-rooms .video-overlay { pointer-events: none; }
-
-/* 6) Asegurar header por encima de todo */
-header, .rh-header { position: sticky; top: 0; z-index: 1400; }
-
-/* ===== FIX ÚNICO: dropdown de “Habitaciones” queda desplegado ===== */
-
-/* 1) En desktop: el submenú debe estar oculto por defecto */
-.navbar .nav-item.dropdown .dropdown-menu{
-  display: none !important;           /* oculta por defecto (gana prioridad) */
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(6px);
-  transition: opacity .18s ease, transform .18s ease, visibility .18s;
-  z-index: 1300;
-}
-
-/* 2) Mostrarlo sólo al hover/focus del padre (desktop) */
-@media (hover:hover){
-  .navbar .nav-item.dropdown:hover   > .dropdown-menu,
-  .navbar .nav-item.dropdown:focus-within > .dropdown-menu{
-    display: block !important;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-}
-
-/* 3) El enlace “Habitaciones” debe seguir siendo clickeable */
-.navbar .nav-item.dropdown > .nav-link{ pointer-events: auto; }
-
-/* 4) En mobile (offcanvas): submenú expandido, sin posicionamiento absoluto */
-@media (max-width: 991.98px){
-  .offcanvas .dropdown-menu{
-    display: block !important;
-    position: static !important;
-    float: none;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    border: 0;
-    box-shadow: none;
-    background: transparent;
-    padding: .25rem 0 .5rem;
-  }
-}
-
-/* 5) Por si el video/overlay del hero estaba “robando” el hover */
-.hero-video, .video-overlay{ pointer-events: none; }
-
-/* ==== FIX: submenú no debe agrandar el header (desktop) ==== */
-
-/* Dejar que el dropdown pueda “salirse” del header sin recortarse */
-.rh-header, .navbar { overflow: visible; }
-
-/* El item padre posiciona el submenú */
-.navbar .nav-item.dropdown{ position: relative; }
-
-/* Desktop: el submenú flota, no ocupa altura */
-@media (min-width: 992px){
+/* Desktop: oculto por defecto y flotante */
+@media (min-width:992px){
   .navbar .nav-item.dropdown .dropdown-menu{
-    position: absolute;           /* clave: no empuja el header */
-    top: 100%;
-    left: 0;
-    display: none !important;     /* oculto por defecto */
-    min-width: 220px;
-    margin: 0;                    /* sin “salto” de margen */
-    border-radius: 0;
-    background: #fff;
-    border: 1px solid rgba(0,0,0,.08);
-    box-shadow: 0 10px 24px rgba(0,0,0,.15);
-    z-index: 1300;
+    position:absolute; top:100%; left:0;
+    display:none !important;           /* oculto de base */
+    min-width:220px; margin:0; border-radius:0;
+    background:#fff; border:1px solid rgba(0,0,0,.08);
+    box-shadow:0 10px 24px rgba(0,0,0,.15);
+    z-index:1300;
   }
-  .navbar .nav-item.dropdown:hover   > .dropdown-menu,
+  .navbar .nav-item.dropdown:hover > .dropdown-menu,
   .navbar .nav-item.dropdown:focus-within > .dropdown-menu{
-    display: block !important;     /* mostrar en hover/focus */
+    display:block !important;          /* mostrar solo al hover/focus */
   }
 }
 
-/* Mobile (offcanvas): que siga embebido */
-@media (max-width: 991.98px){
+/* Mobile (offcanvas): embebido y siempre visible */
+@media (max-width:991.98px){
   .offcanvas .dropdown-menu{
-    position: static !important;
-    display: block !important;
-    border: 0; box-shadow: none; background: transparent;
-    padding: .25rem 0 .5rem;
+    display:block !important;
+    position:static !important;
+    float:none;
+    border:0; box-shadow:none; background:transparent;
+    padding:.25rem 0 .5rem;
   }
 }
 
-/* Por si el video/overlay “roba” el hover/click */
-.hero-video, .video-overlay{ pointer-events: none; }
+/* Evitar que el video de la hero “robe” el hover/click del menú */
+.rh-hero-rooms .hero-video,
+.rh-hero-rooms .video-overlay{ pointer-events:none; }
 
