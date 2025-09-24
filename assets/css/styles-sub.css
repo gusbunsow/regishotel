@@ -887,46 +887,120 @@ body { padding-top: var(--nav-h); }        /* empuja contenido debajo del header
 .btn-block-md{ width:100%; }
 @media (min-width:768px){ .btn-block-md{ width:auto; } }
 
-/* LISTA INTERCALADA (full-bleed + fondo alternado) */
-.rh-rooms-list{ background:#fff; padding:2.5rem 0 3rem; }
+/* =========================
+   LISTA INTERCALADA (full-bleed + fondo alternado)
+   ========================= */
+.rh-rooms-list{
+  background:#fff;
+  padding: 2rem 0 3rem;
+}
 
-/* Fila que estira su fondo a todo el viewport */
+/* ====== Fila full-bleed + separación vertical ====== */
 .rh-room-row{
-  position:relative; padding:1.25rem 0;
+  position: relative;
+  padding: 2.5rem 0;                 /* ↑ aire arriba/abajo */
+
   /* full-bleed sin romper el container del contenido */
-  margin-left:calc(-50vw + 50%);
-  margin-right:calc(-50vw + 50%);
-  padding-left:calc(50vw - 50%);
-  padding-right:calc(50vw - 50%);
-  transition:background .2s ease, box-shadow .2s ease, transform .2s ease;
-}
-/* Alternar fondos: blanco / gris con degradé */
-.rh-room-row:nth-of-type(odd){ background:#fff; }
-.rh-room-row:nth-of-type(even){
-  background: linear-gradient(180deg, #f7f9fc 0%, #f2f4f7 100%);
+  margin-left:  calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left:  calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
 }
 
-/* Contenido interno sigue alineado al grid */
+/* Fondo alternado: blanco / gris suave */
+.rh-room-row:nth-of-type(even){
+  background: linear-gradient(180deg, #f2f2f2 0%, #e9ecef 100%);
+}
+
+
+/* Gutter interno para que el contenido no “pegue” contra el borde */
 .rh-room-row > .col-12,
 .rh-room-row > [class*="col-"]{
-  padding-left:.75rem; padding-right:.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-/* Media */
+
+/* Fila intercalada full-bleed */
+.rh-room-row{
+  position: relative;
+  display: flex;              /* clave para que funcione el zig-zag */
+  flex-wrap: wrap;            /* asegura responsividad */
+  align-items: center;        /* centra verticalmente imagen/texto */
+  padding: 2rem 0;
+
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+}
+
+/* ====== Imágenes de la habitación ====== */
 .rh-room-media img{
-  width:100%; height:360px; object-fit:cover; display:block;
-  border:1px solid rgba(0,0,0,.06);
+  display:block;
+  width:100%;
+  height: 420px;            /* altura base desktop */
+  object-fit: cover;        /* recorte elegante */
+  object-position: center;  /* centrado horizontal */
+  border: 1px solid rgba(0,0,0,.06);
 }
-@media (min-width:1200px){ .rh-room-media img{ height:420px; } }
 
-.rh-room-info .rh-room-title{ color:var(--regis-primary); font-weight:700; margin-bottom:.25rem; }
-.rh-room-info .rh-room-text{ color:#333; margin-bottom:.75rem; }
+/* Alturas responsivas para que no “aplasten” */
+@media (max-width: 1199.98px){
+  .rh-room-media img{ height: 380px; }
+}
+@media (max-width: 991.98px){
+  .rh-room-media img{ height: 320px; }
+}
+@media (max-width: 575.98px){
+  .rh-room-media img{ height: 260px; }
+}
 
-/* Features con iconos acento */
-.rh-room-feats{ list-style:none; padding-left:0; margin:0 0 .9rem; columns:2; column-gap:2rem; }
-@media (max-width:575.98px){ .rh-room-feats{ columns:1; } }
-.rh-room-feats li{ break-inside:avoid; margin:.35rem 0; display:flex; align-items:baseline; gap:.5rem; color:#444; }
-.rh-room-feats i{ color:var(--regis-accent); opacity:.95; width:1.1rem; text-align:center; }
+/* Aire bajo la imagen de la habitación */
+.rh-room-media{ 
+  margin-bottom: 1.25rem;     /* desktop/tablet */
+}
+
+@media (max-width: 991.98px){
+  .rh-room-media{ 
+    margin-bottom: 1.75rem;   /* más aire en mobile para que no se peguen los botones */
+  }
+}
+
+/* (opcional) un poco de aire encima de los botones por si hiciera falta */
+.rh-room-cta{ 
+  margin-top: .75rem;
+}
+@media (max-width: 575.98px){
+  .rh-room-cta{ margin-top: 1rem; }
+}
+
+
+/* ====== Lista de servicios (estilo columna clásica) ====== */
+.rh-room-feats{
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 .9rem;
+  columns: 2;
+  column-gap: 2rem;
+}
+@media (max-width:575.98px){
+  .rh-room-feats{ columns:1; }
+}
+.rh-room-feats li{
+  break-inside: avoid;
+  margin: .35rem 0;
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  color: #444;
+}
+.rh-room-feats i{
+  color: var(--regis-accent);
+  opacity: .95;
+  width: 1.1rem;
+  text-align: center;
+}
 
 /* CTA */
 .rh-room-cta{ display:flex; flex-wrap:wrap; gap:.5rem; }
@@ -973,3 +1047,93 @@ body { padding-top: var(--nav-h); }        /* empuja contenido debajo del header
 .rh-hero-rooms .hero-video,
 .rh-hero-rooms .video-overlay{ pointer-events:none; }
 
+/* ====== Habitación: galería ====== */
+.rh-carousel .carousel-inner img{
+  display:block; width:100%;
+  height: 420px;               /* ajustá si querés */
+  object-fit: cover;
+  object-position: center;
+  border:1px solid rgba(0,0,0,.06);
+}
+@media (max-width: 575.98px){
+  .rh-carousel .carousel-inner img{ height: 300px; }
+}
+
+/* Flechas finas */
+.rh-carousel-ctrl{
+  width:auto; background:transparent; border:0; opacity:.9;
+}
+.rh-carousel-ctrl .rh-arrow{
+  display:inline-block;
+  font-size: 2rem;             /* flecha sutil pero visible */
+  line-height: 1;
+  padding:.25rem .4rem;
+  color:#fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.45);
+}
+.rh-carousel-ctrl:hover .rh-arrow{ opacity:1; }
+
+/* Ocultar posibles indicadores (por si los agregaran) */
+.rh-carousel .carousel-indicators{ display:none !important; }
+
+/* ====== Servicios (pastillas autoajustadas) ====== */
+.rh-room-feats{
+  list-style: none;
+  margin: 1rem 0 1.25rem;
+  padding: 0;
+
+  display: flex;         /* en fila */
+  flex-wrap: wrap;       /* que bajen si no entran */
+  gap: .6rem .8rem;      /* separación filas/columnas */
+}
+
+.rh-room-feats li{
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+
+  background: #f4f6fa;   /* fondo sutil */
+  border: none;
+  border-radius: 8px;
+  padding: .35rem .70rem;
+
+  font-size: .8rem;      /* 20% más chico */
+  line-height: 1.2;
+  color: #2b2b2b;
+  opacity: .7;           /* 30% menos opacidad */
+  white-space: nowrap;   /* evita cortes raros */
+}
+
+.rh-room-feats i{
+  font-size: 1em;
+  color: var(--regis-accent);  /* dorado marca */
+  opacity: 1;                  /* ícono dorado pleno */
+  width: 1rem; text-align: center;
+}
+
+/* ====== Separadores (líneas finas)
+hr {
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,.12); /* línea gris muy fina */
+  margin: 1rem 0; /* espacio arriba/abajo */
+}
+ ====== */
+ 
+
+/* ====== Cards “También te puede interesar” ====== */
+.rh-related-title {
+  opacity: .5;
+  font-weight: 500;
+}
+
+.rh-related .card-img-top{
+  height: 180px; object-fit: cover;
+}
+.rh-related-card{
+  border-radius:0; border:1px solid rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.rh-related-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.12);
+}
