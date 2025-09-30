@@ -100,8 +100,9 @@
 
   <div class="container">
     <div class="hero-box text-center">
-      <h1 class="mb-2">Nuestras posibilidades de alojamiento</h1>
-      <p class="lead mb-0">Explorá nuestras distintas habitaciones y encontrá el espacio que se adapte a tus necesidades.</p>
+      <h1 class="mb-2">Nuestras Habitaciones</h1>
+      <p class="lead mb-0">Dormí en el centro de Buenos Aires, a pasos de todo. Todas equipadas con Wifi gratuito, TV, frigobar y aire acondicionado.<br>Pensadas para quienes viajan solos, en pareja o en grupo.
+      </p>
     </div>
   </div>
 </section>
@@ -146,31 +147,92 @@
 
 
 <!-- =========================
-     HABITACIÓN SIMPLE – CONTENIDO
+     HABITACIÓN Doble – CONTENIDO (con carrusel optimizado)
      ========================= -->
 <section class="rh-room-page py-5">
   <div class="container">
     <div class="row g-4 align-items-start">
+
       <!-- Galería -->
       <div class="col-12 col-lg-7">
         <div id="roomGallery" class="carousel slide rh-carousel" data-bs-ride="carousel" data-bs-interval="5000">
           <div class="carousel-inner">
-            <!-- Usamos siempre la misma imagen, 4 slides -->
+
+            <!-- Slide 1 (principal) -->
             <div class="carousel-item active">
-              <img src="assets/img/hab-ejecutiva-1600.webp" class="d-block w-100" alt="Habitación Simple - Foto 1">
+              <picture>
+                <source type="image/webp" srcset="
+                  assets/img/hab-doble-1-400.webp 400w,
+                  assets/img/hab-doble-1-800.webp 800w,
+                  assets/img/hab-doble-1-1200.webp 1200w,
+                  assets/img/hab-doble-1-1600.webp 1600w" sizes="100vw">
+                <img class="d-block w-100" alt="Habitación Doble - Foto 1"
+                  src="assets/img/hab-doble-1-1200.jpg" srcset="
+                  assets/img/hab-doble-1-400.jpg 400w,
+                  assets/img/hab-doble-1-800.jpg 800w,
+                  assets/img/hab-doble-1-1200.jpg 1200w,
+                  assets/img/hab-doble-1-1600.jpg 1600w" sizes="100vw"
+                  loading="lazy" decoding="async">
+              </picture>
             </div>
+
+            <!-- Slide 2 -->
             <div class="carousel-item">
-              <img src="assets/img/hab-ejecutiva-1600.webp" class="d-block w-100" alt="Habitación Simple - Foto 2">
+              <picture>
+                <source type="image/webp" srcset="
+                  assets/img/hab-doble-2-400.webp 400w,
+                  assets/img/hab-doble-2-800.webp 800w,
+                  assets/img/hab-doble-2-1200.webp 1200w,
+                  assets/img/hab-doble-2-1600.webp 1600w" sizes="100vw">
+                <img class="d-block w-100" alt="Habitación Doble - Foto 2"
+                  src="assets/img/hab-doble-2-1200.jpg" srcset="
+                  assets/img/hab-doble-2-400.jpg 400w,
+                  assets/img/hab-doble-2-800.jpg 800w,
+                  assets/img/hab-doble-2-1200.jpg 1200w,
+                  assets/img/hab-doble-2-1600.jpg 1600w" sizes="100vw"
+                  loading="lazy" decoding="async">
+              </picture>
             </div>
+
+            <!-- Slide 3 -->
             <div class="carousel-item">
-              <img src="assets/img/hab-ejecutiva-1600.webp" class="d-block w-100" alt="Habitación Simple - Foto 3">
+              <picture>
+                <source type="image/webp" srcset="
+                  assets/img/hab-doble-3-400.webp 400w,
+                  assets/img/hab-doble-3-800.webp 800w,
+                  assets/img/hab-doble-3-1200.webp 1200w,
+                  assets/img/hab-doble-3-1600.webp 1600w" sizes="100vw">
+                <img class="d-block w-100" alt="Habitación Doble - Foto 3"
+                  src="assets/img/hab-doble-3-1200.jpg" srcset="
+                  assets/img/hab-doble-3-400.jpg 400w,
+                  assets/img/hab-doble-3-800.jpg 800w,
+                  assets/img/hab-doble-3-1200.jpg 1200w,
+                  assets/img/hab-doble-3-1600.jpg 1600w" sizes="100vw"
+                  loading="lazy" decoding="async">
+              </picture>
             </div>
+
+            <!-- Slide 4 -->
             <div class="carousel-item">
-              <img src="assets/img/hab-ejecutiva-1600.webp" class="d-block w-100" alt="Habitación Simple - Foto 4">
+              <picture>
+                <source type="image/webp" srcset="
+                  assets/img/hab-doble-4-400.webp 400w,
+                  assets/img/hab-doble-4-800.webp 800w,
+                  assets/img/hab-doble-4-1200.webp 1200w,
+                  assets/img/hab-doble-4-1600.webp 1600w" sizes="100vw">
+                <img class="d-block w-100" alt="Habitación Doble - Foto 4"
+                  src="assets/img/hab-doble-4-1200.jpg" srcset="
+                  assets/img/hab-doble-4-400.jpg 400w,
+                  assets/img/hab-doble-4-800.jpg 800w,
+                  assets/img/hab-doble-4-1200.jpg 1200w,
+                  assets/img/hab-doble-4-1600.jpg 1600w" sizes="100vw"
+                  loading="lazy" decoding="async">
+              </picture>
             </div>
+
           </div>
 
-          <!-- Flechas finas (sin puntos/indicadores) -->
+          <!-- Flechas (sin indicadores) -->
           <button class="carousel-control-prev rh-carousel-ctrl" type="button" data-bs-target="#roomGallery" data-bs-slide="prev" aria-label="Anterior">
             <span class="rh-arrow" aria-hidden="true">‹</span>
           </button>
@@ -180,20 +242,21 @@
         </div>
       </div>
 
-      <!-- Info -->
+      <!-- Info (sin cambios) -->
       <div class="col-12 col-lg-5">
         <h2 class="mb-2">Habitación Doble</h2>
         <p class="rh-room-text">
-          Espaciosa y luminosa, con cama doble o dos individuales. Ideal para descansar en el centro de Buenos Aires.
+          Espaciosa habitación con tres camas individuales, perfecta para grupos pequeños o familias que viajan juntas. Con amplios espacios de almacenamiento y una decoración acogedora para hacer tu estadía más placentera.
         </p>
 
         <h3 class="h6 text-uppercase tracking-wider mt-4" style="letter-spacing:.04em; opacity:.9;">Servicios</h3>
         <ul class="list-unstyled rh-room-feats mb-4">
-          <li><i class="fa-solid fa-wifi"></i> Wi-Fi gratuito</li>
-          <li><i class="fa-solid fa-tv"></i> TV por cable</li>
-          <li><i class="fa-solid fa-shower"></i> Ducha</li>
-          <li><i class="fa-solid fa-toilet"></i> Baño privado</li>
-          <li><i class="fa-solid fa-user"></i> 1–3 Personas</li>
+          <li><i class="fa-solid fa-wifi"></i> Wi-Fi Gratuito</li>
+        <li><i class="fa-solid fa-tv"></i> TV por Cable</li>
+        <li><i class="fa-solid fa-snowflake"></i> Frigobar</li>
+        <li><i class="fa-solid fa-toilet"></i> Baño Privado</li>
+        <li><i class="fa-solid fa-vault"></i> Caja de Seguridad</li>
+        <li><i class="fa-solid fa-user-group"></i> 2 Personas</li>
         </ul>
 
         <div class="d-flex flex-wrap gap-2">
@@ -203,8 +266,10 @@
           </a>
         </div>
       </div>
+
     </div>
   </div>
+</section>
 
     <!-- Botón volver (aparte y centrado) -->
     <div class="container text-center mt-5 mb-5">
@@ -227,21 +292,32 @@
     </div>
 
     <div class="row g-4 justify-content-center">
-      <!-- Card 1 -->
+      <!-- Card 1: Simple -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="card rh-related-card h-100">
-          <img src="assets/img/hab-ejecutiva-1600.webp" class="card-img-top" alt="Habitación Doble">
+          <img src="assets/img/hab-simple-800.webp" class="card-img-top" alt="Habitación Simple">
+          <div class="card-body">
+            <h3 class="card-title h6 mb-2">Habitación Simple</h3>
+            <a class="btn btn-outline-primary btn-sm" href="habitacion-simple.html">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Doble 
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card rh-related-card h-100">
+          <img src="assets/img/hab-doble-800.webp" class="card-img-top" alt="Habitación Doble">
           <div class="card-body">
             <h3 class="card-title h6 mb-2">Habitación Doble</h3>
             <a class="btn btn-outline-primary btn-sm" href="habitacion-doble.html">Ver más</a>
           </div>
         </div>
       </div>
-
-      <!-- Card 2 -->
+    -->
+      <!-- Card 3: Triple -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="card rh-related-card h-100">
-          <img src="assets/img/hab-ejecutiva-1600.webp" class="card-img-top" alt="Habitación Triple">
+          <img src="assets/img/hab-triple-800.webp" class="card-img-top" alt="Habitación Triple">
           <div class="card-body">
             <h3 class="card-title h6 mb-2">Habitación Triple</h3>
             <a class="btn btn-outline-primary btn-sm" href="habitacion-triple.html">Ver más</a>
@@ -249,16 +325,29 @@
         </div>
       </div>
 
-      <!-- Card 3 -->
+      <!-- Card 4: Cuádruple -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="card rh-related-card h-100">
-          <img src="assets/img/hab-ejecutiva-1600.webp" class="card-img-top" alt="Habitación Ejecutiva">
+          <img src="assets/img/hab-cuadruple-800.webp" class="card-img-top" alt="Habitación Cuádruple">
+          <div class="card-body">
+            <h3 class="card-title h6 mb-2">Habitación Cuádruple</h3>
+            <a class="btn btn-outline-primary btn-sm" href="habitacion-cuadruple.html">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Ejecutiva -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card rh-related-card h-100">
+          <img src="assets/img/hab-ejecutiva-800.webp" class="card-img-top" alt="Habitación Ejecutiva">
           <div class="card-body">
             <h3 class="card-title h6 mb-2">Habitación Ejecutiva</h3>
             <a class="btn btn-outline-primary btn-sm" href="habitacion-ejecutiva.html">Ver más</a>
           </div>
         </div>
       </div>
+    </div>
+  </div>
     </div>
   </div>
 </section>
@@ -276,7 +365,7 @@
           <span class="visually-hidden">Hotel Regis</span>
         </a>
         <p class="footer-copy">
-          Alojate en el corazón de Buenos Aires, a pasos del Obelisco y los principales atractivos de la ciudad.
+          Alojate donde todo sucede. En el centro de Buenos Aires, a pasos del Obelisco y de los principales atractivos de la ciudad.
         </p>
         <div class="footer-social d-flex gap-2 mt-2">
           <a href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
