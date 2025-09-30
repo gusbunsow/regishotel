@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Página no encontrada · Hotel Regis</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Tu CSS principal -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- (Opcional) Font Awesome si ya lo usás en el sitio -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    /* Estilos mínimos específicos para 404 */
+    .rh-404 {
+      min-height: 100dvh; display:grid; place-items:center; padding:48px 16px;
+      background: var(--regis-bg, #fff);
+    }
+    .rh-404-card {
+      max-width: 720px; width:100%; text-align:center; padding:32px 24px;
+      background:#fff; box-shadow:0 12px 32px rgba(0,0,0,.08);
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .rh-404-logo {
+      width:96px; height:96px; margin:0 auto 16px;
+      border-radius:50%; display:grid; place-items:center;
+      background: var(--regis-primary, #0d6efd);
+    }
+    .rh-404-logo img { max-width:60%; height:auto; filter: brightness(0) invert(1); }
+    .rh-404-icon { font-size:40px; color: var(--regis-accent, #CEB98D); margin-bottom:8px; }
+    .rh-404-title { margin:6px 0 8px; font-size: clamp(22px, 3vw, 28px); }
+    .rh-404-text { color:#555; margin:0 auto 20px; max-width: 55ch; }
+    .rh-404-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .rh-btn { padding:.6rem 1rem; border:1px solid #222; background:#fff; color:#222; text-decoration:none; }
+    .rh-btn-primary { border:none; background: var(--regis-primary, #0d6efd); color:#fff; }
+    .rh-btn:hover { opacity:.9; }
+  </style>
+</head>
+<body>
+
+  <main class="rh-404">
+    <section class="rh-404-card">
+      <!-- Logo dentro de círculo azul -->
+      <div class="rh-404-logo">
+        <!-- Si tenés el logo, usalo aquí: -->
+        <img src="assets/img/logoregishoteloro.svg.svg" alt="Hotel Regis" onerror="this.style.display='none'">
+        <!-- Si no tenés logo, queda el círculo solo -->
+      </div>
+
+      <!-- Icono “roto” -->
+      <div class="rh-404-icon" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation"></i></div>
+
+      <h1 class="rh-404-title">Disculpe las molestias</h1>
+      <p class="rh-404-text">
+        Esta página no existe o se produjo un error. Podés regresar al sitio o reportar el problema para que lo revisemos.
+      </p>
+
+      <div class="rh-404-actions">
+        <a href="/" class="rh-btn" onclick="if(history.length>1){history.back();return false;}">Regresar</a>
+        <a class="rh-btn rh-btn-primary"
+           href="mailto:gusbunsow@gmail.com?subject=Error%20404%20en%20Hotel%20Regis&body=Hola%2C%20encontr%C3%A9%20un%20enlace%20roto.%20URL%3A%20%28peg%C3%A1%20aqu%C3%AD%20la%20direcci%C3%B3n%29">
+          Reportar error a desarrollo
+        </a>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

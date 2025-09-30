@@ -18,15 +18,24 @@
   <link href="assets/css/styles.css" rel="stylesheet">
 
 <!-- Favicon básico -->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
 
-<!-- Favicon PNG para navegadores modernos -->
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
+<!-- PNG Favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
 
-<!-- Apple Touch Icon (iOS) -->
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<!-- Para iOS/Apple -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PGYX32DM08"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PGYX32DM08');
+</script>
 
 </head>
 
@@ -934,5 +943,70 @@
 })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Banner de Cookies -->
+<div id="cookie-banner" class="rh-cookie-banner" aria-live="polite" role="dialog">
+  <div class="rh-cookie-inner">
+    <p class="rh-cookie-text">
+      Este sitio utiliza cookies para mejorar su experiencia y medir el uso (Google Analytics).
+      <a class="rh-cookie-link" href="politica-de-cookies.html">Más info</a>
+    </p>
+    <button id="cookie-accept" class="btn btn-primary rh-cookie-btn" type="button">
+      Aceptar
+    </button>
+  </div>
+</div>
+
+<!-- Script de Cookies + Google Analytics -->
+<script>
+(function(){
+  var KEY = 'cookies-accepted';
+  var banner = document.getElementById('cookie-banner');
+  var btn = document.getElementById('cookie-accept');
+
+  // Mostrar con animación si no hay preferencia
+  function showBanner(){
+    banner.style.display = 'block';      
+    setTimeout(() => banner.classList.add('show'), 10); 
+  }
+
+  // Activar Google Analytics (solo con consentimiento)
+  function activarAnalytics(){
+    var gaID = 'G-PGYX32DM08'; // GA4 del cliente
+    if (window.__gaLoaded__) return;
+    window.__gaLoaded__ = true;
+
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaID;
+    document.head.appendChild(gtagScript);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    gtag('js', new Date());
+    gtag('config', gaID);
+  }
+
+  // Botón aceptar
+  if (btn) {
+    btn.addEventListener('click', function(){
+      localStorage.setItem(KEY, 'true');
+      banner.classList.remove('show');   // animación de salida
+      setTimeout(() => banner.style.display = 'none', 500); 
+      activarAnalytics();
+    });
+  }
+
+  // Si ya aceptó antes, activar GA directo
+  if (localStorage.getItem(KEY)) {
+    activarAnalytics();
+  } else {
+    window.addEventListener('load', showBanner);
+  }
+})();
+</script>
+
 </body>
 </html>

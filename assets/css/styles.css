@@ -963,3 +963,74 @@ body { padding-top: var(--nav-h); }        /* empuja contenido debajo del header
 .rh-hero-rooms .hero-video,
 .rh-hero-rooms .video-overlay{ pointer-events:none; }
 
+/* =========================
+   Banner de Cookies (Regis)
+   ========================= */
+.rh-cookie-banner {
+  position: fixed;
+  inset: auto 0 0 0;           /* bottom:0; left:0; right:0 */
+  width: 100%;
+  background: #222;
+  color: #fff;
+  z-index: 1090;
+  display: none;               /* se activa por JS */
+  box-shadow: 0 -8px 24px rgba(0,0,0,.18);
+
+  /* Animación inicial */
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.rh-cookie-banner.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rh-cookie-inner {
+  max-width: 1120px;           
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rh-cookie-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #f1f1f1;
+}
+
+.rh-cookie-link {
+  color: var(--regis-accent, #CEB98D);
+  text-decoration: underline;
+}
+.rh-cookie-link:hover,
+.rh-cookie-link:focus {
+  opacity: .9;
+}
+
+.rh-cookie-btn {
+  border-radius: 0 !important;
+  white-space: nowrap;
+  padding: .45rem .9rem;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .rh-cookie-inner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 10px;
+    padding: 12px;
+  }
+  .rh-cookie-btn {
+    width: 100%;
+  }
+}
+
