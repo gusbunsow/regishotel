@@ -74,7 +74,7 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
   box-shadow: none;   /* ✅ sin sombra inferior indeseada */
 }
 
-/* Logo (doble aprox.) */
+/* Logo */
 .rh-header .navbar-brand img{
   height: clamp(48px, 8vw, 84px);
   width: auto;
@@ -522,6 +522,13 @@ body { padding-top: var(--nav-h); }        /* empuja contenido debajo del header
   color: var(--regis-primary);
 }
 
+.card-title small {
+  font-size: 0.85em;       /* un poco más chico que el texto principal */
+  font-weight: 300;        /* "light" (si la fuente lo soporta) */
+  color: #adb5bd;          /* tono gris suave, similar a .text-muted */
+}
+
+
 .rh-experiencias .btn-ir{
   background: var(--regis-primary);   /* azul header/footer */
   border: none;
@@ -666,25 +673,23 @@ body { padding-top: var(--nav-h); }        /* empuja contenido debajo del header
   display:block;
 }
 
-/* Bajada de marca: itálica, +20% y con comillas */
-.footer-copy{
-  color:#d7def0;                /* más claro */
+/* Bajada de marca (ajustada, sin comillas, más sobria) */
+.footer-copy {
+  color: #d7def0;
   max-width: 60ch;
-  margin: .5rem 0 0;
-  font-style: italic;
-  font-size: 1.2rem;            /* +20% aprox */
-  line-height: 1.6;
+  margin: 0.2rem 0 0;
+  font-style: light;    /* antes normal */
+  font-size: 0.8rem;       /* antes 1.2rem */
+  line-height: 1.5;
   position: relative;
+  text-align: left;
 }
+
+/* Elimina comillas */
 .footer-copy::before,
-.footer-copy::after{
-  font-family: inherit;
-  color:#e4e9f7;                /* comillas más claritas */
-  font-size: 1.2em;
-  line-height: 0;
+.footer-copy::after {
+  content: none;
 }
-.footer-copy::before{ content: "“"; margin-right:.15em; }
-.footer-copy::after{ content: "”"; margin-left:.1em; }
 
 /* Redes sociales: bajar una línea extra */
 .footer-social{
@@ -755,8 +760,9 @@ body { padding-top: var(--nav-h); }        /* empuja contenido debajo del header
 }
 .footer-bottom p{
   color:#fff;            /* blanco pleno */
+  font-size: x-small;
   font-weight:300;       /* light */
-  opacity:1;             /* sin desvanecer */
+  opacity:0.5;             /* sin desvanecer */
   letter-spacing:.01em;
   margin-top:.6rem;
 }
