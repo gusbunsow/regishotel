@@ -794,39 +794,47 @@
 </section>
 
 <!-- =========================
-     CONTACTO + UBICACIÓN
+     CONTÁCTENOS (respeta tu layout)
      ========================= -->
-<section class="rh-contact py-5" id="contacto">
+<section id="contacto" class="rh-contact py-5">
   <div class="container">
     <header class="text-center mb-4">
       <h2 class="rh-title">Contáctenos</h2>
       <p class="rh-subtitle mx-auto">Escríbanos su consulta. Le responderemos a la brevedad.</p>
     </header>
 
-    <div class="row g-4">
+    <div class="row g-4 align-items-start">
+      <!-- Columna: Formulario (izquierda) -->
       <div class="col-12 col-lg-6">
-        <!-- Form simple que abre el email del usuario -->
-        <form class="rh-form" onsubmit="window.location.href=`mailto:reservas@regishotel.com.ar?subject=Consulta%20Hotel%20Regis&body=Correo:%20${encodeURIComponent(document.getElementById('cEmail').value)}%0A%0AMensaje:%0A${encodeURIComponent(document.getElementById('cMsg').value)}`; return false;">
-          <div class="mb-3">
-            <label for="cEmail" class="form-label">Correo electrónico</label>
-            <input id="cEmail" type="email" class="form-control" placeholder="suemail@dominio.com" required>
+        <form action="enviar-contacto.php" method="post" class="row g-3" autocomplete="on" novalidate>
+          <div class="col-md-6">
+            <label for="c-nombre" class="form-label">Nombre</label>
+            <input type="text" id="c-nombre" name="nombre" class="form-control" required>
           </div>
-          <div class="mb-3">
-            <label for="cMsg" class="form-label">Mensaje</label>
-            <textarea id="cMsg" class="form-control" rows="5" placeholder="Escriba su mensaje…" required></textarea>
+          <div class="col-md-6">
+            <label for="c-email" class="form-label">Correo electrónico</label>
+            <input type="email" id="c-email" name="email" class="form-control" required>
           </div>
-          <button class="btn btn-primary">Enviar mensaje</button>
-        </form>
+          <div class="col-12">
+            <label for="c-telefono" class="form-label">Teléfono (opcional)</label>
+            <input type="tel" id="c-telefono" name="telefono" class="form-control">
+          </div>
+          <div class="col-12">
+            <label for="c-mensaje" class="form-label">Mensaje</label>
+            <textarea id="c-mensaje" name="mensaje" rows="4" class="form-control" required></textarea>
+          </div>
 
-        <div class="mt-4 rh-contact-data">
-          <p><i class="fa-solid fa-phone me-2"></i> Tel.: <a href="tel:+541143272605">+54 11 4327 2605</a></p>
-          <p><i class="fa-solid fa-envelope me-2"></i> E-mail: <a href="mailto:reservas@regishotel.com.ar">reservas@regishotel.com.ar</a></p>
-          <p><i class="fa-solid fa-location-dot me-2"></i> Lavalle 813, C1047AAQ, C.A.B.A., Argentina — <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir//Regis+Hotel+Lavalle+813+C1047+AAQ+Cdad.+Aut%C3%B3noma+de+Buenos+Aires/@-34.6022862,-58.378318,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x95bccacebb75ff79:0xdad638b89103db6b!2m2!1d-58.378318!2d-34.6022862?entry=ttu">Cómo llegar</a></p>
-        </div>
+          <!-- Honeypot anti-spam (oculto) -->
+          <input type="text" name="empresa" class="d-none" autocomplete="off" tabindex="-1" aria-hidden="true">
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary px-5">Enviar mensaje</button>
+          </div>
+        </form>
       </div>
 
+      <!-- Columna: Mapa (derecha) -->
       <div class="col-12 col-lg-6">
-        <!-- Mapa responsive -->
         <div class="rh-map-wrap">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.074335317239!2d-58.38089292350342!3d-34.602281757423654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccacebb75ff79%3A0xdad638b89103db6b!2sRegis%20Hotel!5e0!3m2!1ses!2sar!4v1758210031671!5m2!1ses!2sar"
@@ -835,8 +843,17 @@
         </div>
       </div>
     </div>
-  </div>
+          <!-- Datos de contacto al pie de la sección 
+          <div class="text-center mt-4">
+          <p class="mb-1">Tel.: <a href="tel:+541143272605">+54 11 4327 2605</a></p>
+          <p class="mb-1">E-mail: <a href="mailto:reservas@regishotel.com.ar">reservas@regishotel.com.ar</a></p>
+          <p class="mb-0">Lavalle 813, C1047AAQ, C.A.B.A., Argentina — 
+          <a href="https://www.google.com/maps?q=Hotel+Regis+Lavalle+813+C1047AAQ" target="_blank" rel="noopener">Cómo llegar</a>
+          </p>
+        </div>-->
+      </div>
 </section>
+
 
 <!-- =========================
      FOOTER
@@ -895,9 +912,9 @@
 
         <h3 class="footer-title mt-3">Legal</h3>
         <ul class="footer-legal">
-          <li><a href="#" rel="nofollow">Política de Privacidad</a></li>
-          <li><a href="#" rel="nofollow">Política de Cookies</a></li>
-          <li><a href="#" rel="nofollow">Términos y Condiciones</a></li>
+          <li><a href="politica-de-privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a></li>
+          <li><a href="politica-de-cookies.html" target="_blank" rel="noopener">Política de Cookies</a></li>
+          <li><a href="terminos-y-condiciones.html" target="_blank" rel="noopener">Términos y Condiciones</a></li>
           <li><a href="#" rel="nofollow">Libro de quejas</a></li>
         </ul>
       </div>
@@ -1008,6 +1025,37 @@
   }
 })();
 </script>
+<!-- Modal Gracias -->
+<div class="modal fade" id="graciasModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">¡Gracias!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        Tu mensaje fue enviado correctamente. Te responderemos a la brevedad.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- JS: abrir modal si vuelve con #gracias -->
+<script>
+  (function () {
+    if (window.location.hash === '#gracias') {
+      var modal = new bootstrap.Modal(document.getElementById('graciasModal'));
+      modal.show();
+      // Limpia el hash al cerrar (opcional)
+      document.getElementById('graciasModal').addEventListener('hidden.bs.modal', function () {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      });
+    }
+  })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
