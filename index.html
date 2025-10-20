@@ -112,15 +112,40 @@
 
 <!-- Hero Section -->
 <section class="rh-hero hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="assets/img/14907581-hd_1280_720_60fps.mp4" type="video/mp4">
-    Tu navegador no soporta videos HTML5.
+
+  <!-- Video de fondo -->
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    playsinline
+    loop
+    preload="metadata"
+    poster="assets/img/poster-hero.jpg"
+  >
+    <!-- WEBM (se carga primero si lo soporta el navegador) -->
+    <source src="assets/img/video-hero-1080p.webm" type="video/webm" media="(min-width: 1200px)">
+    <source src="assets/img/video-hero-720p.webm"  type="video/webm" media="(min-width: 768px)">
+    <source src="assets/img/video-hero-540p.webm"  type="video/webm" media="(min-width: 480px)">
+    <source src="assets/img/video-hero-360p.webm"  type="video/webm" media="(max-width: 479.98px)">
+
+    <!-- MP4 fallback -->
+    <source src="assets/img/video-hero-1080p.mp4" type="video/mp4" media="(min-width: 1200px)">
+    <source src="assets/img/video-hero-720p.mp4"  type="video/mp4" media="(min-width: 768px)">
+    <source src="assets/img/video-hero-540p.mp4"  type="video/mp4" media="(min-width: 480px)">
+    <source src="assets/img/video-hero-360p.mp4"  type="video/mp4" media="(max-width: 479.98px)">
+
+    <!-- Si el video no carga -->
+    <img src="assets/img/poster-hero.jpg" alt="Hotel Regis">
   </video>
 
-  <div class="video-overlay" aria-hidden="true"></div>
+  <!-- Capa de contraste (oscurece el video para que se lea el texto) -->
+  <div class="video-overlay"></div>
 
+  <!-- Contenido visible sobre el video -->
   <div class="container position-relative">
     <div class="row align-items-center">
+
       <!-- Texto hero -->
       <div class="col-12 col-lg-6 rh-hero-copy">
         <h1 class="mb-3">Alojate donde todo sucede</h1>
@@ -128,6 +153,7 @@
           En el centro de Buenos Aires, a pasos del Obelisco y de los principales atractivos de la ciudad.
         </p>
       </div>
+
 
       <!-- Banner / Formulario de reservas -->
       <div class="col-12 col-lg-5 ms-lg-auto">
