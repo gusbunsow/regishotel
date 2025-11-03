@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regis Hotel - Alojate en el corazón de Buenos Aires</title>
+
+  <!-- Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.2 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+  <!-- Tu CSS -->
+  <link href="assets/css/styles-sub.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PGYX32DM08"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PGYX32DM08');
+</script>
+
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER unificado
+     fixed-top + offcanvas
+   ========================= -->
+<header class="rh-header">
+  <nav class="navbar navbar-dark navbar-expand-lg fixed-top" style="background:#05154d;">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Inicio">
+        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel" >
+      </a>
+
+      <!-- Toggler (abre offcanvas en mobile) -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="offcanvas" data-bs-target="#rhOffcanvas"
+              aria-controls="rhOffcanvas" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Offcanvas / Menú -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="rhOffcanvas" aria-labelledby="rhOffcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title visually-hidden" id="rhOffcanvasLabel">Menú</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+
+            <!-- Habitaciones: LINK REAL + submenu -->
+            <li class="nav-item dropdown rh-dropdown">
+              <!-- IMPORTANTE: sin 'dropdown-toggle' ni 'data-bs-toggle' para que sea clickeable -->
+              <!-- Asegurate de que el archivo exista y se llame exactamente 'habitaciones.html' -->
+              <a class="nav-link" href="habitaciones.html" id="habLink">Habitaciones</a>
+
+              <!-- Submenú -->
+              <!-- Saqué 'dropdown-menu-end' y 'dropdown-menu-lg-start' para que no se desplace mal -->
+              <ul class="dropdown-menu" aria-labelledby="habLink">
+                <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
+                <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
+                <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
+                <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
+                <li><a class="dropdown-item" href="habitacion-ejecutiva.html">Habitación Ejecutiva</a></li>
+              </ul>
+            </li>
+
+            <!-- Secciones (anclas a la home) -->
+            <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#corporativas">Corporativo</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Testimonios</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+
+            <!-- CTA Reservar (igual en todas las páginas) -->
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+              <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es"
+                 target="_blank" rel="noopener" class="btn btn-reservar">
+                <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
+                <span>Reservar</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- =========================
+     HERO Habitaciones
+     ========================= 
+<section class="rh-hero-rooms">
+  <video autoplay muted loop class="hero-video">
+    <source src="assets/img/14907581-hd_1280_720_60fps.mp4" type="video/mp4">
+    Tu navegador no soporta videos HTML5.
+  </video>
+  <div class="video-overlay"></div>
+
+  <div class="container">
+    <div class="hero-box text-center">
+      <h1 class="mb-2">Nuestras Habitaciones</h1>
+      <p class="lead mb-0">Dormí en el centro de Buenos Aires, a pasos de todo. Todas equipadas con Wifi gratuito, TV, frigobar y aire acondicionado.<br>Pensadas para quienes viajan solos, en pareja o en grupo.
+      </p>
+    </div>
+  </div>
+</section>
+
+-->
+
+<!-- =========================
+     TIRA DE RESERVA (apaisada)
+     ========================= -->
+<section class="rh-booking-strip" aria-label="Búsqueda rápida de disponibilidad">
+  <div class="container">
+    <form class="booking-inline" action="https://booking.roomcloud.net/be/se2/hotel.jsp" method="get" target="_blank" rel="noopener">
+      <!-- hotel e idioma fijos -->
+      <input type="hidden" name="hotel" value="12269">
+      <input type="hidden" name="lang" value="es">
+      <!-- Si más adelante quieres pasar fechas/adultos/niños, sumamos campos -->
+
+      <div class="row g-2 align-items-end">
+        <div class="col-12 col-md">
+          <label class="form-label">Check-in</label>
+          <input type="date" class="form-control" name="checkin" min="" placeholder="dd/mm/aaaa">
+        </div>
+        <div class="col-12 col-md">
+          <label class="form-label">Check-out</label>
+          <input type="date" class="form-control" name="checkout" min="" placeholder="dd/mm/aaaa">
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label">Adultos</label>
+          <input type="number" class="form-control" name="adults" min="1" value="2">
+        </div>
+        <div class="col-6 col-md-2">
+          <label class="form-label">Niños</label>
+          <input type="number" class="form-control" name="children" min="0" value="0">
+        </div>
+        <div class="col-12 col-md-auto">
+          <button class="btn btn-primary btn-block-md" type="submit">
+            <i class="fa-solid fa-magnifying-glass me-1"></i> Reservar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+<!-- =========================
+     HABITACIÓN cuádruple – CONTENIDO
+     ========================= -->
+<section class="rh-room-page py-5">
+  <div class="container">
+    <div class="row g-4 align-items-start">
+      <!-- Galería -->
+      <div class="col-12 col-lg-7">
+        <div id="roomGallery" class="carousel slide rh-carousel" data-bs-ride="carousel" data-bs-interval="5000">
+          <div class="carousel-inner">
+  <!-- Foto 1 -->
+  <div class="carousel-item active">
+    <picture>
+      <source type="image/webp" 
+        srcset="
+          assets/img/hab-cuadruple-400.webp 400w,
+          assets/img/hab-cuadruple-800.webp 800w,
+          assets/img/hab-cuadruple-1200.webp 1200w,
+          assets/img/hab-cuadruple-1600.webp 1600w">
+      <img src="assets/img/hab-cuadruple-1200.jpg"
+        srcset="
+          assets/img/hab-cuadruple-400.jpg 400w,
+          assets/img/hab-cuadruple-800.jpg 800w,
+          assets/img/hab-cuadruple-1200.jpg 1200w,
+          assets/img/hab-cuadruple-1600.jpg 1600w"
+        sizes="(min-width:992px) 50vw, 100vw"
+        alt="Habitación Cuádruple - Foto 1"
+        class="d-block w-100 img-fluid"
+        loading="lazy" decoding="async">
+    </picture>
+  </div>
+
+  <!-- Foto 2 -->
+  <div class="carousel-item">
+    <picture>
+      <source type="image/webp" 
+        srcset="
+          assets/img/hab-cuadruple-detalle-400.webp 400w,
+          assets/img/hab-cuadruple-detalle-800.webp 800w,
+          assets/img/hab-cuadruple-detalle-1200.webp 1200w,
+          assets/img/hab-cuadruple-detalle-1600.webp 1600w">
+      <img src="assets/img/hab-cuadruple-detalle-1200.jpg"
+        srcset="
+          assets/img/hab-cuadruple-detalle-400.jpg 400w,
+          assets/img/hab-cuadruple-detalle-800.jpg 800w,
+          assets/img/hab-cuadruple-detalle-1200.jpg 1200w,
+          assets/img/hab-cuadruple-detalle-1600.jpg 1600w"
+        sizes="(min-width:992px) 50vw, 100vw"
+        alt="Habitación Cuádruple - Foto 2"
+        class="d-block w-100 img-fluid"
+        loading="lazy" decoding="async">
+    </picture>
+  </div>
+
+  <!-- Foto 3 -->
+  <div class="carousel-item">
+    <picture>
+      <source type="image/webp" 
+        srcset="
+          assets/img/hab-cuadruple-2-400.webp 400w,
+          assets/img/hab-cuadruple-2-800.webp 800w,
+          assets/img/hab-cuadruple-2-1200.webp 1200w,
+          assets/img/hab-cuadruple-2-1600.webp 1600w">
+      <img src="assets/img/hab-cuadruple-2-1200.jpg"
+        srcset="
+          assets/img/hab-cuadruple-2-400.jpg 400w,
+          assets/img/hab-cuadruple-2-800.jpg 800w,
+          assets/img/hab-cuadruple-2-1200.jpg 1200w,
+          assets/img/hab-cuadruple-2-1600.jpg 1600w"
+        sizes="(min-width:992px) 50vw, 100vw"
+        alt="Habitación Cuádruple - Foto 3"
+        class="d-block w-100 img-fluid"
+        loading="lazy" decoding="async">
+    </picture>
+  </div>
+
+  <!-- Foto 4 -->
+  <div class="carousel-item">
+    <picture>
+      <source type="image/webp" 
+        srcset="
+          assets/img/hab-cuadruple-3-400.webp 400w,
+          assets/img/hab-cuadruple-3-800.webp 800w,
+          assets/img/hab-cuadruple-3-1200.webp 1200w,
+          assets/img/hab-cuadruple-3-1600.webp 1600w">
+      <img src="assets/img/hab-cuadruple-3-1200.jpg"
+        srcset="
+          assets/img/hab-cuadruple-3-400.jpg 400w,
+          assets/img/hab-cuadruple-3-800.jpg 800w,
+          assets/img/hab-cuadruple-3-1200.jpg 1200w,
+          assets/img/hab-cuadruple-3-1600.jpg 1600w"
+        sizes="(min-width:992px) 50vw, 100vw"
+        alt="Habitación Cuádruple - Foto 4"
+        class="d-block w-100 img-fluid"
+        loading="lazy" decoding="async">
+    </picture>
+  </div>
+</div>
+
+          <!-- Flechas finas (sin puntos/indicadores) -->
+          <button class="carousel-control-prev rh-carousel-ctrl" type="button" data-bs-target="#roomGallery" data-bs-slide="prev" aria-label="Anterior">
+            <span class="rh-arrow" aria-hidden="true">‹</span>
+          </button>
+          <button class="carousel-control-next rh-carousel-ctrl" type="button" data-bs-target="#roomGallery" data-bs-slide="next" aria-label="Siguiente">
+            <span class="rh-arrow" aria-hidden="true">›</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="col-12 col-lg-5">
+        <h2 class="mb-2">Habitación Cuádruple</h2>
+        <p class="rh-room-text">
+          Equipada con cuatro camas individuales, es una opción funcional y cómoda para familias o grupos de amigos.
+        </p>
+
+        <h3 class="h6 text-uppercase tracking-wider mt-4" style="letter-spacing:.04em; opacity:.9;">Servicios</h3>
+        <ul class="list-unstyled rh-room-feats mb-4">
+        <li><i class="fa-solid fa-wifi"></i> Wi-Fi Gratuito</li>
+        <li><i class="fa-solid fa-tv"></i> TV por Cable</li>
+        <li><i class="fa-solid fa-snowflake"></i> Frigobar</li>
+        <li><i class="fa-solid fa-wind"></i> Aire Acondicionado</li>
+        <li><i class="fa-solid fa-toilet"></i> Baño Privado</li>
+        <li><i class="fa-solid fa-vault"></i> Caja de Seguridad</li>
+        <li><i class="fa-solid fa-user-group"></i> 4 Personas</li>
+        </ul>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a class="btn btn-primary" target="_blank" rel="noopener"
+             href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es">
+            <i class="fa-solid fa-calendar-check me-1"></i> Reservar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Botón volver (aparte y centrado) -->
+    <div class="container text-center mt-5 mb-5">
+    <a href="habitaciones.html" class="btn btn-primary">Volver</a>
+    </div>
+
+    <!-- Línea divisoria -->
+    <hr class="my-2">
+</div></section>
+
+<!-- =========================
+     TAMBIÉN TE PUEDE INTERESAR
+     ========================= -->
+<section class="py-5 rh-related">
+  <div class="container">
+    <div class="row justify-content-center mb-3">
+      <div class="col-12 col-lg-10">
+        <h2 class="h4 text-center mb-4 rh-related-title">También te puede interesar</h2>
+      </div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Card 1: Simple -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card rh-related-card h-100">
+          <img src="assets/img/hab-simple-800.webp" class="card-img-top" alt="Habitación Simple">
+          <div class="card-body">
+            <h3 class="card-title h6 mb-2">Habitación Simple</h3>
+            <a class="btn btn-outline-primary btn-sm" href="habitacion-simple.html">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Doble -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card rh-related-card h-100">
+          <img src="assets/img/hab-doble-800.webp" class="card-img-top" alt="Habitación Doble">
+          <div class="card-body">
+            <h3 class="card-title h6 mb-2">Habitación Doble</h3>
+            <a class="btn btn-outline-primary btn-sm" href="habitacion-doble.html">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Triple -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card rh-related-card h-100">
+          <img src="assets/img/hab-triple-800.webp" class="card-img-top" alt="Habitación Triple">
+          <div class="card-body">
+            <h3 class="card-title h6 mb-2">Habitación Triple</h3>
+            <a class="btn btn-outline-primary btn-sm" href="habitacion-triple.html">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Cuádruple 
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card rh-related-card h-100">
+          <img src="assets/img/hab-cuadruple-800.webp" class="card-img-top" alt="Habitación Cuádruple">
+          <div class="card-body">
+            <h3 class="card-title h6 mb-2">Habitación Cuádruple</h3>
+            <a class="btn btn-outline-primary btn-sm" href="habitacion-cuadruple.html">Ver más</a>
+          </div>
+        </div>
+      </div>
+    -->
+      <!-- Card 5: Ejecutiva -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card rh-related-card h-100">
+          <img src="assets/img/hab-ejecutiva-800.webp" class="card-img-top" alt="Habitación Ejecutiva">
+          <div class="card-body">
+            <h3 class="card-title h6 mb-2">Habitación Ejecutiva</h3>
+            <a class="btn btn-outline-primary btn-sm" href="habitacion-ejecutiva.html">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+    <!-- =========================
+     FOOTER
+     ========================= -->
+<footer class="rh-footer pt-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Col 1: brand -->
+      <div class="col-12 col-lg-4">
+        <a class="footer-brand d-inline-flex align-items-center gap-2 mb-3" href="#">
+          <img src="assets/img/logoregishoteloro.svg.svg" alt="Hotel Regis">
+          <span class="visually-hidden">Hotel Regis</span>
+        </a>
+        <p class="footer-copy">
+          Alojate donde todo sucede. En el centro de Buenos Aires, a pasos del Obelisco y de los principales atractivos de la ciudad.
+        </p>
+        <div class="footer-social d-flex gap-2 mt-2">
+          <a href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/hotel.regis/" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/hotelregis/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Nuestros Hoteles -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <h3 class="footer-title">Nuestros Hoteles</h3>
+        <div class="footer-list">
+          <h4>Argentina</h4>
+          <ul>
+            <li><a href="https://hotelayb.com.ar/" target="_blank" rel="noopener">Hotel A&amp;B</a></li>
+            <li><a href="https://hotelelcabildo.com/" target="_blank" rel="noopener">Hotel El Cabildo</a></li>
+            <li><a href="https://reina.buenosaireshotelsargentina.com/es/" target="_blank" rel="noopener">Hotel Reina</a></li>
+            <li><a href="https://www.tritonehotel.com.ar/" target="_blank" rel="noopener">Hotel Tritone</a></li>
+          </ul>
+          <h4>Uruguay</h4>
+          <ul>
+            <li><a href="https://www.hispanohotel.com.uy/" target="_blank" rel="noopener">Hotel Hispano</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Col 3: Contacto + Legal -->
+      <div class="col-12 col-sm-6 col-lg-4">
+        <h3 class="footer-title">Contacto</h3>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-phone me-2"></i> <a href="tel:+541143272605">+54 11 4327 2605</a></li>
+          <li><i class="fa-solid fa-envelope me-2"></i> <a href="mailto:reservas@regishotel.com.ar">reservas@regishotel.com.ar</a></li>
+          <li><i class="fa-solid fa-location-dot me-2"></i> Lavalle 813, C1047AAQ, C.A.B.A., Argentina</li>
+        </ul>
+
+        <h3 class="footer-title mt-3">Legal</h3>
+        <ul class="footer-legal">
+          <li><a href="politica-de-privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a></li>
+          <li><a href="politica-de-cookies.html" target="_blank" rel="noopener">Política de Cookies</a></li>
+          <li><a href="terminos-y-condiciones.html" target="_blank" rel="noopener">Términos y Condiciones</a></li>
+          <li><a href="#" rel="nofollow">Libro de quejas</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom mt-4">
+      <p class="small mb-0">© 2025 - Hotel Regis. Todos los derechos reservados. Capitana MKT</p>
+    </div>
+  </div>
+</footer>
+
+<!-- =========================
+     FLOTANTES: WhatsApp + Quick Links
+     ========================= -->
+<!-- WhatsApp flotante (completa número) -->
+<a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- Quick Links laterales (no pisan WhatsApp) -->
+<nav class="quick-links" aria-label="Accesos rápidos">
+  <a class="ql-item" href="#contacto"><i class="fa-solid fa-envelope"></i><span>Contacto</span></a>
+  <a class="ql-item" href="#contacto"><i class="fa-solid fa-location-dot"></i><span>Ubicación</span></a>
+  <a class="ql-item" href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
+  <a class="ql-item" href="https://www.instagram.com/hotel.regis/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
+  <a class="ql-item" href="https://www.linkedin.com/company/hotelregis/?viewAsMember=true" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
+</nav>
+
+
+    <script>
+(function(){
+  const btn = document.querySelector('.mobile-menu-btn');
+  const menu = document.querySelector('.nav-menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', ()=> menu.classList.toggle('active'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> menu.classList.remove('active')));
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
