@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-  <link href="/assets/css/styles-sub.css" rel="stylesheet">
+  <link href="../assets/css/styles-sub.css" rel="stylesheet">
 
   <!-- Indexation -->
   <meta name="robots" content="index, follow" />
@@ -46,7 +46,7 @@
     <div class="container">
       <!-- Logo -->
       <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Inicio">
-        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel" >
+        <img src="../assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel" >
       </a>
 
       <!-- Toggler (abre offcanvas en mobile) -->
@@ -70,31 +70,96 @@
             <li class="nav-item dropdown rh-dropdown">
               <!-- IMPORTANTE: sin 'dropdown-toggle' ni 'data-bs-toggle' para que sea clickeable -->
               <!-- Asegurate de que el archivo exista y se llame exactamente 'habitaciones.html' -->
-              <a class="nav-link" href="habitaciones.html" id="habLink">Habitaciones</a>
+              <a class="nav-link" href="rooms.html" id="habLink">Rooms</a>
 
               <!-- Submenú -->
               <!-- Saqué 'dropdown-menu-end' y 'dropdown-menu-lg-start' para que no se desplace mal -->
               <ul class="dropdown-menu" aria-labelledby="habLink">
-                <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
-                <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
-                <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
-                <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
-                <li><a class="dropdown-item" href="habitacion-ejecutiva.html">Habitación Ejecutiva</a></li>
+                <li><a class="dropdown-item" href="single-room.html">Single Room</a></li>
+                <li><a class="dropdown-item" href="double-room.html">Double Room</a></li>
+                <li><a class="dropdown-item" href="triple-room.html">Triple Room</a></li>
+                <li><a class="dropdown-item" href="quadruple-room.html">Quadruple Room</a></li>
+                <li><a class="dropdown-item" href="executive-room.html">Executive Room</a></li>
               </ul>
             </li>
 
             <!-- Secciones (anclas a la home) -->
-            <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.html#corporativas">Corporativo</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Testimonios</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#servicios">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#corporativas">Corporate</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Testimonials</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contact Us</a></li>
 
-            <!-- CTA Reservar (igual en todas las páginas) -->
+            
+            <!-- =========================
+                 Selector de idioma (ES/EN/PT)
+                 Funciona en desktop y en offcanvas (mobile)
+               ========================= -->
+            <li class="nav-item dropdown ms-lg-3 mt-2 mt-lg-0">
+              <!-- Botón del dropdown -->
+              <a class="nav-link dropdown-toggle" href="#" id="langDropdown"
+                 role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                 aria-label="Cambiar idioma">
+                🌐 <span id="current-lang">Language</span>
+              </a>
+
+              <!-- Opciones de idioma -->
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+                <!-- Usamos rutas desde la raíz para evitar problemas de paths -->
+                <li><a class="dropdown-item" href="/" data-lang-choice="es">Español</a></li>
+                <li><a class="dropdown-item" href="/en/" data-lang-choice="en">English</a></li>
+                <li><a class="dropdown-item" href="/pt/" data-lang-choice="pt">Português</a></li>
+              </ul>
+            </li>
+
+            <!-- =========================
+                 Script utilitario de idioma:
+                 - Muestra el idioma actual en el botón.
+                 - Cierra el offcanvas al elegir un idioma (mobile).
+                 - Ajusta el parámetro lang del botón "Reserve".
+               ========================= -->
+            <script>
+              (function () {
+                // 1) Detectar idioma actual
+                // Preferimos el atributo lang del <html>, que vos ya seteaste.
+                var docLang = (document.documentElement.getAttribute('lang') || 'es').toLowerCase();
+                var currentLabel = { es: 'Español', en: 'English', pt: 'Português' }[docLang] || 'Español';
+                var langSpan = document.getElementById('current-lang');
+                if (langSpan) langSpan.textContent = currentLabel;
+
+                // 2) Cerrar el offcanvas cuando elijo idioma (mejor UX mobile)
+                var offcanvasEl = document.getElementById('rhOffcanvas');
+                var offcanvasInstance = null;
+                if (offcanvasEl && bootstrap && bootstrap.Offcanvas) {
+                  offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasEl) || new bootstrap.Offcanvas(offcanvasEl);
+                }
+                document.querySelectorAll('[data-lang-choice]').forEach(function (a) {
+                  a.addEventListener('click', function () {
+                    if (offcanvasInstance) offcanvasInstance.hide();
+                  });
+                });
+
+                // 3) Ajustar automáticamente el idioma del CTA "Reserve" según la página
+                //    (si cambiás el ID del botón, actualizá el selector)
+                var reservarBtn = document.querySelector('.btn.btn-reservar');
+                if (reservarBtn && reservarBtn.href) {
+                  try {
+                    var u = new URL(reservarBtn.href);
+                    // Mapeo directo: 'es', 'en', 'pt' (si tu motor usa otro código, ajustalo acá)
+                    u.searchParams.set('lang', docLang === 'en' ? 'en' : (docLang === 'pt' ? 'pt' : 'es'));
+                    reservarBtn.href = u.toString();
+                  } catch (e) {
+                    // Si href es relativo no parsea como URL absoluta; en ese caso lo dejamos como está.
+                  }
+                }
+              })();
+            </script>
+
+            <!-- CTA Reserve (igual en todas las páginas) -->
             <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
               <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es"
                  target="_blank" rel="noopener" class="btn btn-reservar">
                 <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
-                <span>Reservar</span>
+                <span>Reserve</span>
               </a>
             </li>
 
@@ -147,16 +212,16 @@
           <input type="date" class="form-control" name="checkout" min="" placeholder="dd/mm/aaaa">
         </div>
         <div class="col-6 col-md-2">
-          <label class="form-label">Adultos</label>
+          <label class="form-label">Adults</label>
           <input type="number" class="form-control" name="adults" min="1" value="2">
         </div>
         <div class="col-6 col-md-2">
-          <label class="form-label">Niños</label>
+          <label class="form-label">Children</label>
           <input type="number" class="form-control" name="children" min="0" value="0">
         </div>
         <div class="col-12 col-md-auto">
           <button class="btn btn-primary btn-block-md" type="submit">
-            <i class="fa-solid fa-magnifying-glass me-1"></i> Reservar
+            <i class="fa-solid fa-magnifying-glass me-1"></i> Reserve
           </button>
         </div>
       </div>
@@ -179,20 +244,20 @@
         <source
           type="image/webp"
           srcset="
-            assets/img/hab-simple-400.webp 400w,
-            assets/img/hab-simple-800.webp 800w,
-            assets/img/hab-simple-1200.webp 1200w,
-            assets/img/hab-simple-1600.webp 1600w"
+            ../assets/img/hab-simple-400.webp 400w,
+            ../assets/img/hab-simple-800.webp 800w,
+            ../assets/img/hab-simple-1200.webp 1200w,
+            ../assets/img/hab-simple-1600.webp 1600w"
           sizes="(min-width:992px) 50vw, 100vw">
 
         <!-- JPG fallback -->
         <img
-          src="assets/img/hab-simple-1200.jpg"
+          src="../assets/img/hab-simple-1200.jpg"
           srcset="
-            assets/img/hab-simple-400.jpg 400w,
-            assets/img/hab-simple-800.jpg 800w,
-            assets/img/hab-simple-1200.jpg 1200w,
-            assets/img/hab-simple-1600.jpg 1600w"
+            ../assets/img/hab-simple-400.jpg 400w,
+            ../assets/img/hab-simple-800.jpg 800w,
+            ../assets/img/hab-simple-1200.jpg 1200w,
+            ../assets/img/hab-simple-1600.jpg 1600w"
           sizes="(min-width:992px) 50vw, 100vw"
           alt="Habitación Simple - Hotel Regis"
           class="img-fluid rounded-3 shadow-sm"
@@ -203,23 +268,23 @@
   </div>
   <div class="col-12 col-lg-6">
     <div class="rh-room-info">
-      <h2 class="rh-room-title">Habitación Simple</h2>
+      <h2 class="rh-room-title">Single Room</h2>
       <p class="rh-room-text">
-        Amplia y funcional, ideal para alojarte en el centro de Buenos Aires. 
-        Cuenta con cama matrimonial o dos camas individuales.
+        Spacious and functional, ideal for staying in downtown Buenos Aires.
+It has a double bed or two single beds.
       </p>
       <ul class="rh-room-feats">
-        <li><i class="fa-solid fa-wifi"></i> Wi-Fi Gratuito</li>
-        <li><i class="fa-solid fa-tv"></i> TV por Cable</li>
-        <li><i class="fa-solid fa-snowflake"></i> Frigobar</li>
-        <li><i class="fa-solid fa-shower"></i> Ducha</li>
-        <li><i class="fa-solid fa-toilet"></i> Baño Privado</li>
-        <li><i class="fa-solid fa-vault"></i> Caja de Seguridad</li>
-        <li><i class="fa-solid fa-user"></i> 1 Persona</li>
+        <li><i class="fa-solid fa-wifi"></i> Free Wi-Fi</li>
+        <li><i class="fa-solid fa-tv"></i> Cable TV</li>
+        <li><i class="fa-solid fa-snowflake"></i> Minibar</li>
+        <li><i class="fa-solid fa-shower"></i> Shower</li>
+        <li><i class="fa-solid fa-toilet"></i> private bathroom</li>
+        <li><i class="fa-solid fa-vault"></i> strongbox</li>
+        <li><i class="fa-solid fa-user"></i> 1 Person</li>
       </ul>
       <div class="rh-room-cta">
-        <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reservar</a>
-        <a class="btn btn-outline-primary" href="habitacion-simple.html">Más info</a>
+        <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reserve</a>
+        <a class="btn btn-outline-primary" href="single-room.html">More info</a>
       </div>
     </div>
   </div>
@@ -235,20 +300,20 @@
         <source
           type="image/webp"
           srcset="
-            assets/img/hab-doble-400.webp 400w,
-            assets/img/hab-doble-800.webp 800w,
-            assets/img/hab-doble-1200.webp 1200w,
-            assets/img/hab-doble-1600.webp 1600w"
+            ../assets/img/hab-doble-400.webp 400w,
+            ../assets/img/hab-doble-800.webp 800w,
+            ../assets/img/hab-doble-1200.webp 1200w,
+            ../assets/img/hab-doble-1600.webp 1600w"
           sizes="(min-width:992px) 50vw, 100vw">
 
         <!-- JPG fallback -->
         <img
           src="assets/img/hab-doble-1200.jpg"
           srcset="
-            assets/img/hab-doble-400.jpg 400w,
-            assets/img/hab-doble-800.jpg 800w,
-            assets/img/hab-doble-1200.jpg 1200w,
-            assets/img/hab-doble-1600.jpg 1600w"
+            ../assets/img/hab-doble-400.jpg 400w,
+            ../assets/img/hab-doble-800.jpg 800w,
+            ../assets/img/hab-doble-1200.jpg 1200w,
+            ../assets/img/hab-doble-1600.jpg 1600w"
           sizes="(min-width:992px) 50vw, 100vw"
           alt="Habitación Doble - Hotel Regis"
           class="img-fluid rounded-3 shadow-sm"
@@ -261,19 +326,20 @@
   <div class="col-12 col-lg-6 order-lg-1">
     <!-- (tu texto y botones quedan igual) -->
     <div class="rh-room-info">
-      <h2 class="rh-room-title">Habitación Doble</h2>
-      <p class="rh-room-text">Espaciosa habitación con tres camas individuales, perfecta para grupos pequeños o familias que viajan juntas. Con amplios espacios de almacenamiento y una decoración acogedora para hacer tu estadía más placentera.</p>
+      <h2 class="rh-room-title">Double Room</h2>
+      <p class="rh-room-text">Spacious room with three single beds, perfect for small groups or families traveling together. Features ample storage and a welcoming decor to make your stay more enjoyable.</p>
       <ul class="rh-room-feats">
-        <li><i class="fa-solid fa-wifi"></i> Wi-Fi Gratuito</li>
-        <li><i class="fa-solid fa-tv"></i> TV por Cable</li>
-        <li><i class="fa-solid fa-snowflake"></i> Frigobar</li>
-        <li><i class="fa-solid fa-toilet"></i> Baño Privado</li>
-        <li><i class="fa-solid fa-vault"></i> Caja de Seguridad</li>
-        <li><i class="fa-solid fa-user-group"></i> 2 Personas</li>
+        <li><i class="fa-solid fa-wifi"></i> Free Wi-Fi</li>
+        <li><i class="fa-solid fa-tv"></i> Cable TV</li>
+        <li><i class="fa-solid fa-snowflake"></i> Minibar</li>
+        <li><i class="fa-solid fa-shower"></i> Shower</li>
+        <li><i class="fa-solid fa-toilet"></i> private bathroom</li>
+        <li><i class="fa-solid fa-vault"></i> strongbox</li>
+        <li><i class="fa-solid fa-user"></i> 2 people</li>
       </ul>
       <div class="rh-room-cta">
-        <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reservar</a>
-        <a class="btn btn-outline-primary" href="habitacion-doble.html">Más info</a>
+        <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reserve</a>
+        <a class="btn btn-outline-primary" href="double-room.html">More Info</a>
       </div>
     </div>
   </div>
@@ -288,20 +354,20 @@
         <source
           type="image/webp"
           srcset="
-            assets/img/hab-triple-400.webp 400w,
-            assets/img/hab-triple-800.webp 800w,
-            assets/img/hab-triple-1200.webp 1200w,
-            assets/img/hab-triple-1600.webp 1600w"
+            ../assets/img/hab-triple-400.webp 400w,
+            ../assets/img/hab-triple-800.webp 800w,
+            ../assets/img/hab-triple-1200.webp 1200w,
+            ../assets/img/hab-triple-1600.webp 1600w"
           sizes="(min-width:992px) 50vw, 100vw">
 
         <!-- JPG fallback -->
         <img
-          src="assets/img/hab-triple-1200.jpg"
+          src="../assets/img/hab-triple-1200.jpg"
           srcset="
-            assets/img/hab-triple-400.jpg 400w,
-            assets/img/hab-triple-800.jpg 800w,
-            assets/img/hab-triple-1200.jpg 1200w,
-            assets/img/hab-triple-1600.jpg 1600w"
+            ../assets/img/hab-triple-400.jpg 400w,
+            ../assets/img/hab-triple-800.jpg 800w,
+            ../assets/img/hab-triple-1200.jpg 1200w,
+            ../assets/img/hab-triple-1600.jpg 1600w"
           sizes="(min-width:992px) 50vw, 100vw"
           alt="Habitación Triple - Hotel Regis"
           class="img-fluid rounded-3 shadow-sm"
@@ -312,20 +378,20 @@
   </div>
   <div class="col-12 col-lg-6">
     <div class="rh-room-info">
-      <h2 class="rh-room-title">Habitación Triple</h2>
-      <p class="rh-room-text">Con tres camas individuales o cama doble más individual, es ideal para familias o grupos pequeños. </p>
+      <h2 class="rh-room-title">Triple Room</h2>
+      <p class="rh-room-text">With three single beds or a double bed plus a single bed, it is ideal for families or small groups.</p>
       <ul class="rh-room-feats">
-        <li><i class="fa-solid fa-wifi"></i> Wi-Fi Gratuito</li>
-        <li><i class="fa-solid fa-tv"></i> TV por Cable</li>
-        <li><i class="fa-solid fa-snowflake"></i> Frigobar</li>
-        <li><i class="fa-solid fa-wind"></i> Aire Acondicionado</li>
-        <li><i class="fa-solid fa-toilet"></i> Baño Privado</li>
-        <li><i class="fa-solid fa-vault"></i> Caja de Seguridad</li>
-        <li><i class="fa-solid fa-user-group"></i> 3 Personas</li>
+        <li><i class="fa-solid fa-wifi"></i> Free Wi-Fi</li>
+        <li><i class="fa-solid fa-tv"></i> Cable TV</li>
+        <li><i class="fa-solid fa-snowflake"></i> Minibar</li>
+        <li><i class="fa-solid fa-wind"></i> Air Conditioner</li>
+                <li><i class="fa-solid fa-toilet"></i> private bathroom</li>
+        <li><i class="fa-solid fa-vault"></i> strongbox</li>
+        <li><i class="fa-solid fa-user-group"></i> 3 People</li>
       </ul>
       <div class="rh-room-cta">
-        <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reservar</a>
-        <a class="btn btn-outline-primary" href="habitacion-triple.html">Más info</a>
+        <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reserve</a>
+        <a class="btn btn-outline-primary" href="triple-room.html">More Info</a>
       </div>
     </div>
   </div>
@@ -341,20 +407,20 @@
         <source
           type="image/webp"
           srcset="
-            assets/img/hab-cuadruple-400.webp 400w,
-            assets/img/hab-cuadruple-800.webp 800w,
-            assets/img/hab-cuadruple-1200.webp 1200w,
-            assets/img/hab-cuadruple-1600.webp 1600w"
+            ../assets/img/hab-cuadruple-400.webp 400w,
+            ../assets/img/hab-cuadruple-800.webp 800w,
+            ../assets/img/hab-cuadruple-1200.webp 1200w,
+            ../assets/img/hab-cuadruple-1600.webp 1600w"
           sizes="(min-width:992px) 50vw, 100vw">
 
         <!-- JPG fallback -->
         <img
-          src="assets/img/hab-cuadruple-1200.jpg"
+          src="../assets/img/hab-cuadruple-1200.jpg"
           srcset="
-            assets/img/hab-cuadruple-400.jpg 400w,
-            assets/img/hab-cuadruple-800.jpg 800w,
-            assets/img/hab-cuadruple-1200.jpg 1200w,
-            assets/img/hab-cuadruple-1600.jpg 1600w"
+            ../assets/img/hab-cuadruple-400.jpg 400w,
+            ../assets/img/hab-cuadruple-800.jpg 800w,
+            ../assets/img/hab-cuadruple-1200.jpg 1200w,
+            ../assets/img/hab-cuadruple-1600.jpg 1600w"
           sizes="(min-width:992px) 50vw, 100vw"
           alt="Habitación Cuádruple - Hotel Regis"
           class="img-fluid rounded-3 shadow-sm"
@@ -366,20 +432,20 @@
 
   <div class="col-12 col-lg-6 order-lg-1">
     <div class="rh-room-info">
-      <h2 class="rh-room-title">Habitación Cuádruple</h2>
-      <p class="rh-room-text">Equipada con cuatro camas individuales, es una opción funcional y cómoda para familias o grupos de amigos.</p>
+      <h2 class="rh-room-title">Quadruple Room</h2>
+      <p class="rh-room-text">Equipped with four single beds, it is a functional and comfortable option for families or groups of friends.</p>
       <ul class="rh-room-feats">
-        <li><i class="fa-solid fa-wifi"></i> Wi-Fi Gratuito</li>
-        <li><i class="fa-solid fa-tv"></i> TV por Cable</li>
-        <li><i class="fa-solid fa-snowflake"></i> Frigobar</li>
-        <li><i class="fa-solid fa-wind"></i> Aire Acondicionado</li>
-        <li><i class="fa-solid fa-toilet"></i> Baño Privado</li>
-        <li><i class="fa-solid fa-vault"></i> Caja de Seguridad</li>
-        <li><i class="fa-solid fa-user-group"></i> 4 Personas</li>
+        <li><i class="fa-solid fa-wifi"></i> Free Wi-Fi</li>
+        <li><i class="fa-solid fa-tv"></i> Cable TV</li>
+        <li><i class="fa-solid fa-snowflake"></i> Minibar</li>
+        <li><i class="fa-solid fa-wind"></i> Air Conditioner</li>
+                <li><i class="fa-solid fa-toilet"></i> private bathroom</li>
+        <li><i class="fa-solid fa-vault"></i> strongbox</li>
+        <li><i class="fa-solid fa-user-group"></i> 4 People</li>
       </ul>
       <div class="rh-room-cta">
-        <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reservar</a>
-        <a class="btn btn-outline-primary" href="habitacion-cuadruple.html">Más info</a>
+        <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reserve</a>
+        <a class="btn btn-outline-primary" href="quadruple-room.html">More Info</a>
       </div>
     </div>
   </div>
@@ -394,20 +460,20 @@
         <source
           type="image/webp"
           srcset="
-            assets/img/hab-ejecutiva-400.webp 400w,
-            assets/img/hab-ejecutiva-800.webp 800w,
-            assets/img/hab-ejecutiva-1200.webp 1200w,
-            assets/img/hab-ejecutiva-1600.webp 1600w"
+            ../assets/img/hab-ejecutiva-400.webp 400w,
+            ../assets/img/hab-ejecutiva-800.webp 800w,
+            ../assets/img/hab-ejecutiva-1200.webp 1200w,
+            ../assets/img/hab-ejecutiva-1600.webp 1600w"
           sizes="(min-width:992px) 50vw, 100vw">
 
         <!-- JPG fallback -->
         <img
-          src="assets/img/hab-ejecutiva-1200.jpg"
+          src="../assets/img/hab-ejecutiva-1200.jpg"
           srcset="
-            assets/img/hab-ejecutiva-400.jpg 400w,
-            assets/img/hab-ejecutiva-800.jpg 800w,
-            assets/img/hab-ejecutiva-1200.jpg 1200w,
-            assets/img/hab-ejecutiva-1600.jpg 1600w"
+            ../assets/img/hab-ejecutiva-400.jpg 400w,
+            ../assets/img/hab-ejecutiva-800.jpg 800w,
+            ../assets/img/hab-ejecutiva-1200.jpg 1200w,
+            ../assets/img/hab-ejecutiva-1600.jpg 1600w"
           sizes="(min-width:992px) 50vw, 100vw"
           alt="Habitación Ejecutiva - Hotel Regis"
           class="img-fluid rounded-3 shadow-sm"
@@ -419,19 +485,20 @@
 
   <div class="col-12 col-lg-6">
     <div class="rh-room-info">
-      <h2 class="rh-room-title">Habitación Ejecutiva</h2>
-      <p class="rh-room-text">Pensada para viajes de trabajo o estadías prolongadas, combina funcionalidad y comodidad en una categoría superior.</p>
+      <h2 class="rh-room-title">Executive Room</h2>
+      <p class="rh-room-text">Designed for business trips or extended stays, it combines functionality and comfort in a superior category.</p>
       <ul class="rh-room-feats">
-        <li><i class="fa-solid fa-wifi"></i> Wi-Fi Gratuito</li>
-        <li><i class="fa-solid fa-tv"></i> TV por Cable</li>
-        <li><i class="fa-solid fa-wind"></i> Aire Acondicionado</li>
-        <li><i class="fa-solid fa-toilet"></i> Baño Privado</li>
-        <li><i class="fa-solid fa-vault"></i> Caja de Seguridad</li>
-        <li><i class="fa-solid fa-user-group"></i> Máx. 2 Personas</li>
+        <li><i class="fa-solid fa-wifi"></i> Free Wi-Fi</li>
+        <li><i class="fa-solid fa-tv"></i> Cable TV</li>
+        <li><i class="fa-solid fa-snowflake"></i> Minibar</li>
+        <li><i class="fa-solid fa-wind"></i> Air Conditioner</li>
+                <li><i class="fa-solid fa-toilet"></i> private bathroom</li>
+        <li><i class="fa-solid fa-vault"></i> strongbox</li>
+        <li><i class="fa-solid fa-user-group"></i> 2 People Max</li>
       </ul>
       <div class="rh-room-cta">
-        <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reservar</a>
-        <a class="btn btn-outline-primary" href="habitacion-ejecutiva.html">Más info</a>
+        <a class="btn btn-primary" href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es" target="_blank" rel="noopener">Reserve</a>
+        <a class="btn btn-outline-primary" href="executive-room.html">More Info</a>
       </div>
     </div>
   </div>
@@ -451,11 +518,11 @@
       <!-- Col 1: brand -->
       <div class="col-12 col-lg-4">
         <a class="footer-brand d-inline-flex align-items-center gap-2 mb-3" href="#">
-          <img src="assets/img/logoregishoteloro.svg.svg" alt="Hotel Regis">
+          <img src="../assets/img/logoregishoteloro.svg.svg" alt="Hotel Regis">
           <span class="visually-hidden">Hotel Regis</span>
         </a>
         <p class="footer-copy">
-          Alojate donde todo sucede. En el centro de Buenos Aires, a pasos del Obelisco y de los principales atractivos de la ciudad.
+                              Stay where everything happens — in downtown Buenos Aires, just steps from the Obelisk and main attractions.
         </p>
         <div class="footer-social d-flex gap-2 mt-2">
           <a href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
@@ -472,7 +539,7 @@
 
       <!-- Col 2: Nuestros Hoteles -->
       <div class="col-12 col-sm-6 col-lg-4">
-        <h3 class="footer-title">Nuestros Hoteles</h3>
+        <h3 class="footer-title">Our Hotels</h3>
         <div class="footer-list">
           <h4>Argentina</h4>
           <ul>
@@ -490,7 +557,7 @@
 
       <!-- Col 3: Contacto + Legal -->
       <div class="col-12 col-sm-6 col-lg-4">
-        <h3 class="footer-title">Contacto</h3>
+        <h3 class="footer-title">Contact Us</h3>
         <ul class="footer-contact">
           <li><i class="fa-solid fa-phone me-2"></i> <a href="tel:+541143272605">+54 11 4327 2605</a></li>
           <li><i class="fa-solid fa-envelope me-2"></i> <a href="mailto:reservas@regishotel.com.ar">reservas@regishotel.com.ar</a></li>
@@ -499,16 +566,16 @@
 
         <h3 class="footer-title mt-3">Legal</h3>
         <ul class="footer-legal">
-          <li><a href="politica-de-privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a></li>
-          <li><a href="politica-de-cookies.html" target="_blank" rel="noopener">Política de Cookies</a></li>
-          <li><a href="terminos-y-condiciones.html" target="_blank" rel="noopener">Términos y Condiciones</a></li>
-          <li><a href="#" rel="nofollow">Libro de quejas</a></li>
+          <li><a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
+          <li><a href="cookies-policy.html" target="_blank" rel="noopener">Cookie Policy</a></li>
+          <li><a href="terms-and-conditions.html" target="_blank" rel="noopener">Terms and Conditions</a></li>
+          <li><a href="#" rel="nofollow">Complaints Book</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom mt-4">
-      <p class="small mb-0">© 2025 - Hotel Regis. Todos los derechos reservados. Capitana MKT</p>
+      <p class="small mb-0">© 2025 - Hotel Regis. All rights reserved. Capitana MKT</p>
     </div>
   </div>
 </footer>
