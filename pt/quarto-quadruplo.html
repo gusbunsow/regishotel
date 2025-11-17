@@ -1,91 +1,127 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Regis Hotel - Alojate en el corazón de Buenos Aires</title>
 
-  <!-- Montserrat -->
+  <title>Hotel Regis - Hospede-se onde tudo acontece</title>
+  <meta name="description" content="Hotel Regis no centro de Buenos Aires, Argentina. Hospede-se onde tudo acontece. A poucos passos do Obelisco e das principais atrações da cidade." />
+
+  <!-- Canonical (PT) -->
+  <link rel="canonical" href="https://regishotel.com.ar/pt/" />
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="es" href="https://regishotel.com.ar/" />
+  <link rel="alternate" hreflang="en" href="https://regishotel.com.ar/en/" />
+  <link rel="alternate" hreflang="pt" href="https://regishotel.com.ar/pt/" />
+  <link rel="alternate" hreflang="x-default" href="https://regishotel.com.ar/" />
+
+  <!-- Fontes e CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap 5.3.3 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Font Awesome 6.5.2 -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="../assets/css/styles.css" rel="stylesheet">
 
-  <!-- Tu CSS -->
-  <link href="assets/css/styles-sub.css" rel="stylesheet">
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+
+  <!-- Indexação -->
+  <meta name="robots" content="index, follow" />
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PGYX32DM08"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-PGYX32DM08');
-</script>
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGYX32DM08"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PGYX32DM08');
+  </script>
 </head>
-
 <body>
-
-<!-- =========================
-     HEADER unificado
-     fixed-top + offcanvas
-   ========================= -->
 <header class="rh-header">
   <nav class="navbar navbar-dark navbar-expand-lg fixed-top" style="background:#05154d;">
     <div class="container">
-      <!-- Logo -->
-      <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Inicio">
-        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel" >
+      <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Início">
+        <img src="../assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
       </a>
 
-      <!-- Toggler (abre offcanvas en mobile) -->
       <button class="navbar-toggler" type="button"
               data-bs-toggle="offcanvas" data-bs-target="#rhOffcanvas"
-              aria-controls="rhOffcanvas" aria-label="Abrir menú">
+              aria-controls="rhOffcanvas" aria-label="Abrir menu">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Offcanvas / Menú -->
       <div class="offcanvas offcanvas-end" tabindex="-1" id="rhOffcanvas" aria-labelledby="rhOffcanvasLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title visually-hidden" id="rhOffcanvasLabel">Menú</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+          <h5 class="offcanvas-title visually-hidden" id="rhOffcanvasLabel">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
         </div>
 
         <div class="offcanvas-body">
           <ul class="navbar-nav ms-auto align-items-lg-center">
 
-            <!-- Habitaciones: LINK REAL + submenu -->
             <li class="nav-item dropdown rh-dropdown">
-              <!-- IMPORTANTE: sin 'dropdown-toggle' ni 'data-bs-toggle' para que sea clickeable -->
-              <!-- Asegurate de que el archivo exista y se llame exactamente 'habitaciones.html' -->
-              <a class="nav-link" href="habitaciones.html" id="habLink">Habitaciones</a>
-
-              <!-- Submenú -->
-              <!-- Saqué 'dropdown-menu-end' y 'dropdown-menu-lg-start' para que no se desplace mal -->
+              <a class="nav-link" href="quartos.html" id="habLink">Quartos</a>
               <ul class="dropdown-menu" aria-labelledby="habLink">
-                <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
-                <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
-                <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
-                <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
-                <li><a class="dropdown-item" href="habitacion-ejecutiva.html">Habitación Ejecutiva</a></li>
+                <li><a class="dropdown-item" href="quarto-simples.html">Quarto Individual</a></li>
+                <li><a class="dropdown-item" href="quarto-duplo.html">Quarto Duplo</a></li>
+                <li><a class="dropdown-item" href="quarto-triplo.html">Quarto Triplo</a></li>
+                <li><a class="dropdown-item" href="quarto-quadruplo.html">Quarto Quádruplo</a></li>
+                <li><a class="dropdown-item" href="quarto-executivo.html">Quarto Executivo</a></li>
               </ul>
             </li>
 
-            <!-- Secciones (anclas a la home) -->
-            <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.html#corporativas">Corporativo</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Testimonios</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#servicos">Serviços</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#corporativo">Corporativo</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Depoimentos</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contato">Contato</a></li>
 
-            <!-- CTA Reservar (igual en todas las páginas) -->
+            <li class="nav-item dropdown ms-lg-3 mt-2 mt-lg-0">
+              <a class="nav-link dropdown-toggle" href="#" id="langDropdown"
+                 role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                 aria-label="Alterar idioma">
+                🌐 <span id="current-lang">Idioma</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+                <li><a class="dropdown-item" href="/" data-lang-choice="es">Español</a></li>
+                <li><a class="dropdown-item" href="/en/" data-lang-choice="en">English</a></li>
+              </ul>
+            </li>
+
+            <script>
+              (function () {
+                var docLang = (document.documentElement.getAttribute('lang') || 'es').toLowerCase();
+                var currentLabel = { es: 'Español', en: 'English', pt: 'Português' }[docLang] || 'Español';
+                var langSpan = document.getElementById('current-lang');
+                if (langSpan) langSpan.textContent = currentLabel;
+
+                var offcanvasEl = document.getElementById('rhOffcanvas');
+                var offcanvasInstance = null;
+                if (offcanvasEl && bootstrap && bootstrap.Offcanvas) {
+                  offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasEl) || new bootstrap.Offcanvas(offcanvasEl);
+                }
+                document.querySelectorAll('[data-lang-choice]').forEach(function (a) {
+                  a.addEventListener('click', function () {
+                    if (offcanvasInstance) offcanvasInstance.hide();
+                  });
+                });
+
+                var reservarBtn = document.querySelector('.btn.btn-reservar');
+                if (reservarBtn && reservarBtn.href) {
+                  try {
+                    var u = new URL(reservarBtn.href);
+                    u.searchParams.set('lang', docLang === 'en' ? 'en' : (docLang === 'pt' ? 'pt' : 'es'));
+                    reservarBtn.href = u.toString();
+                  } catch (e) {}
+                }
+              })();
+            </script>
+
             <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-              <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es"
+              <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=pt"
                  target="_blank" rel="noopener" class="btn btn-reservar">
                 <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
                 <span>Reservar</span>
@@ -174,18 +210,18 @@
     <picture>
       <source type="image/webp" 
         srcset="
-          assets/img/hab-cuadruple-400.webp 400w,
-          assets/img/hab-cuadruple-800.webp 800w,
-          assets/img/hab-cuadruple-1200.webp 1200w,
-          assets/img/hab-cuadruple-1600.webp 1600w">
-      <img src="assets/img/hab-cuadruple-1200.jpg"
+          ../assets/img/hab-cuadruple-400.webp 400w,
+          ../assets/img/hab-cuadruple-800.webp 800w,
+          ../assets/img/hab-cuadruple-1200.webp 1200w,
+          ../assets/img/hab-cuadruple-1600.webp 1600w">
+      <img src="../assets/img/hab-cuadruple-1200.jpg"
         srcset="
-          assets/img/hab-cuadruple-400.jpg 400w,
-          assets/img/hab-cuadruple-800.jpg 800w,
-          assets/img/hab-cuadruple-1200.jpg 1200w,
-          assets/img/hab-cuadruple-1600.jpg 1600w"
+          ../assets/img/hab-cuadruple-400.jpg 400w,
+          ../assets/img/hab-cuadruple-800.jpg 800w,
+          ../assets/img/hab-cuadruple-1200.jpg 1200w,
+          ../assets/img/hab-cuadruple-1600.jpg 1600w"
         sizes="(min-width:992px) 50vw, 100vw"
-        alt="Habitación Cuádruple - Foto 1"
+        alt="Quarto Quádruplo - Foto 1"
         class="d-block w-100 img-fluid"
         loading="lazy" decoding="async">
     </picture>
@@ -196,18 +232,18 @@
     <picture>
       <source type="image/webp" 
         srcset="
-          assets/img/hab-cuadruple-detalle-400.webp 400w,
-          assets/img/hab-cuadruple-detalle-800.webp 800w,
-          assets/img/hab-cuadruple-detalle-1200.webp 1200w,
-          assets/img/hab-cuadruple-detalle-1600.webp 1600w">
-      <img src="assets/img/hab-cuadruple-detalle-1200.jpg"
+          ../assets/img/hab-cuadruple-detalle-400.webp 400w,
+          ../assets/img/hab-cuadruple-detalle-800.webp 800w,
+          ../assets/img/hab-cuadruple-detalle-1200.webp 1200w,
+          ../assets/img/hab-cuadruple-detalle-1600.webp 1600w">
+      <img src="../assets/img/hab-cuadruple-detalle-1200.jpg"
         srcset="
-          assets/img/hab-cuadruple-detalle-400.jpg 400w,
-          assets/img/hab-cuadruple-detalle-800.jpg 800w,
-          assets/img/hab-cuadruple-detalle-1200.jpg 1200w,
-          assets/img/hab-cuadruple-detalle-1600.jpg 1600w"
+          ../assets/img/hab-cuadruple-detalle-400.jpg 400w,
+          ../assets/img/hab-cuadruple-detalle-800.jpg 800w,
+          ../assets/img/hab-cuadruple-detalle-1200.jpg 1200w,
+          ../assets/img/hab-cuadruple-detalle-1600.jpg 1600w"
         sizes="(min-width:992px) 50vw, 100vw"
-        alt="Habitación Cuádruple - Foto 2"
+        alt="Quarto Quádruplo - Foto 2"
         class="d-block w-100 img-fluid"
         loading="lazy" decoding="async">
     </picture>
@@ -218,18 +254,18 @@
     <picture>
       <source type="image/webp" 
         srcset="
-          assets/img/hab-cuadruple-2-400.webp 400w,
-          assets/img/hab-cuadruple-2-800.webp 800w,
-          assets/img/hab-cuadruple-2-1200.webp 1200w,
-          assets/img/hab-cuadruple-2-1600.webp 1600w">
-      <img src="assets/img/hab-cuadruple-2-1200.jpg"
+          ../assets/img/hab-cuadruple-2-400.webp 400w,
+          ../assets/img/hab-cuadruple-2-800.webp 800w,
+          ../assets/img/hab-cuadruple-2-1200.webp 1200w,
+          ../assets/img/hab-cuadruple-2-1600.webp 1600w">
+      <img src="../assets/img/hab-cuadruple-2-1200.jpg"
         srcset="
-          assets/img/hab-cuadruple-2-400.jpg 400w,
-          assets/img/hab-cuadruple-2-800.jpg 800w,
-          assets/img/hab-cuadruple-2-1200.jpg 1200w,
-          assets/img/hab-cuadruple-2-1600.jpg 1600w"
+          ../assets/img/hab-cuadruple-2-400.jpg 400w,
+          ../assets/img/hab-cuadruple-2-800.jpg 800w,
+          ../assets/img/hab-cuadruple-2-1200.jpg 1200w,
+          ../assets/img/hab-cuadruple-2-1600.jpg 1600w"
         sizes="(min-width:992px) 50vw, 100vw"
-        alt="Habitación Cuádruple - Foto 3"
+        alt="Quarto Quádruplo - Foto 3"
         class="d-block w-100 img-fluid"
         loading="lazy" decoding="async">
     </picture>
@@ -240,18 +276,18 @@
     <picture>
       <source type="image/webp" 
         srcset="
-          assets/img/hab-cuadruple-3-400.webp 400w,
-          assets/img/hab-cuadruple-3-800.webp 800w,
-          assets/img/hab-cuadruple-3-1200.webp 1200w,
-          assets/img/hab-cuadruple-3-1600.webp 1600w">
-      <img src="assets/img/hab-cuadruple-3-1200.jpg"
+          ../assets/img/hab-cuadruple-3-400.webp 400w,
+          ../assets/img/hab-cuadruple-3-800.webp 800w,
+          ../assets/img/hab-cuadruple-3-1200.webp 1200w,
+          ../assets/img/hab-cuadruple-3-1600.webp 1600w">
+      <img src="../assets/img/hab-cuadruple-3-1200.jpg"
         srcset="
-          assets/img/hab-cuadruple-3-400.jpg 400w,
-          assets/img/hab-cuadruple-3-800.jpg 800w,
-          assets/img/hab-cuadruple-3-1200.jpg 1200w,
-          assets/img/hab-cuadruple-3-1600.jpg 1600w"
+          ../assets/img/hab-cuadruple-3-400.jpg 400w,
+          ../assets/img/hab-cuadruple-3-800.jpg 800w,
+          ../assets/img/hab-cuadruple-3-1200.jpg 1200w,
+          ../assets/img/hab-cuadruple-3-1600.jpg 1600w"
         sizes="(min-width:992px) 50vw, 100vw"
-        alt="Habitación Cuádruple - Foto 4"
+        alt="Quarto Quádruplo - Foto 4"
         class="d-block w-100 img-fluid"
         loading="lazy" decoding="async">
     </picture>
@@ -262,7 +298,7 @@
           <button class="carousel-control-prev rh-carousel-ctrl" type="button" data-bs-target="#roomGallery" data-bs-slide="prev" aria-label="Anterior">
             <span class="rh-arrow" aria-hidden="true">‹</span>
           </button>
-          <button class="carousel-control-next rh-carousel-ctrl" type="button" data-bs-target="#roomGallery" data-bs-slide="next" aria-label="Siguiente">
+          <button class="carousel-control-next rh-carousel-ctrl" type="button" data-bs-target="#roomGallery" data-bs-slide="next" aria-label="Próximo">
             <span class="rh-arrow" aria-hidden="true">›</span>
           </button>
         </div>
@@ -270,25 +306,25 @@
 
       <!-- Info -->
       <div class="col-12 col-lg-5">
-        <h2 class="mb-2">Habitación Cuádruple</h2>
+        <h2 class="mb-2">Quarto Quádruplo</h2>
         <p class="rh-room-text">
-          Equipada con cuatro camas individuales, es una opción funcional y cómoda para familias o grupos de amigos.
+          Equipado com quatro camas de solteiro ou uma cama de casal e duas de solteiro. Uma opção funcional e confortável para famílias ou grupos de amigos que desejam aproveitar uma excelente localização e ótimo custo-benefício.
         </p>
 
-        <h3 class="h6 text-uppercase tracking-wider mt-4" style="letter-spacing:.04em; opacity:.9;">Servicios</h3>
+        <h3 class="h6 text-uppercase tracking-wider mt-4" style="letter-spacing:.04em; opacity:.9;">Serviços</h3>
         <ul class="list-unstyled rh-room-feats mb-4">
-        <li><i class="fa-solid fa-wifi"></i> Wi-Fi Gratuito</li>
-        <li><i class="fa-solid fa-tv"></i> TV por Cable</li>
+        <li><i class="fa-solid fa-wifi"></i> Wi-Fi gratuito</li>
+        <li><i class="fa-solid fa-tv"></i> TV a cabo</li>
         <li><i class="fa-solid fa-snowflake"></i> Frigobar</li>
-        <li><i class="fa-solid fa-wind"></i> Aire Acondicionado</li>
-        <li><i class="fa-solid fa-toilet"></i> Baño Privado</li>
-        <li><i class="fa-solid fa-vault"></i> Caja de Seguridad</li>
-        <li><i class="fa-solid fa-user-group"></i> 4 Personas</li>
+        <li><i class="fa-solid fa-wind"></i> Ar-condicionado</li>
+        <li><i class="fa-solid fa-toilet"></i> Banheiro privativo</li>
+        <li><i class="fa-solid fa-vault"></i> Cofre</li>
+        <li><i class="fa-solid fa-user-group"></i> 4 pessoas</li>
         </ul>
 
         <div class="d-flex flex-wrap gap-2">
           <a class="btn btn-primary" target="_blank" rel="noopener"
-             href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es">
+             href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=pt">
             <i class="fa-solid fa-calendar-check me-1"></i> Reservar
           </a>
         </div>
@@ -298,7 +334,7 @@
 
     <!-- Botón volver (aparte y centrado) -->
     <div class="container text-center mt-5 mb-5">
-    <a href="habitaciones.html" class="btn btn-primary">Volver</a>
+    <a href="quartos.html" class="btn btn-primary">Voltar</a>
     </div>
 
     <!-- Línea divisoria -->
@@ -312,18 +348,18 @@
   <div class="container">
     <div class="row justify-content-center mb-3">
       <div class="col-12 col-lg-10">
-        <h2 class="h4 text-center mb-4 rh-related-title">También te puede interesar</h2>
+        <h2 class="h4 text-center mb-4 rh-related-title">Você também pode se interessar por</h2>
       </div>
     </div>
 
     <div class="row g-4 justify-content-center">
       <!-- Card 1: Simple -->
-      <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4">
         <div class="card rh-related-card h-100">
-          <img src="assets/img/hab-simple-800.webp" class="card-img-top" alt="Habitación Simple">
+          <img src="../assets/img/hab-simple-800.webp" class="card-img-top" alt="Quarto Individual">
           <div class="card-body">
-            <h3 class="card-title h6 mb-2">Habitación Simple</h3>
-            <a class="btn btn-outline-primary btn-sm" href="habitacion-simple.html">Ver más</a>
+            <h3 class="card-title h6 mb-2">Quarto Individual</h3>
+            <a class="btn btn-outline-primary btn-sm" href="quarto-simples.html">Mais</a>
           </div>
         </div>
       </div>
@@ -331,10 +367,10 @@
       <!-- Card 2: Doble -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="card rh-related-card h-100">
-          <img src="assets/img/hab-doble-800.webp" class="card-img-top" alt="Habitación Doble">
+          <img src="../assets/img/hab-doble-800.webp" class="card-img-top" alt="Quarto Duplo">
           <div class="card-body">
-            <h3 class="card-title h6 mb-2">Habitación Doble</h3>
-            <a class="btn btn-outline-primary btn-sm" href="habitacion-doble.html">Ver más</a>
+            <h3 class="card-title h6 mb-2">Quarto Duplo</h3>
+            <a class="btn btn-outline-primary btn-sm" href="quarto-duplo.html">Mais</a>
           </div>
         </div>
       </div>
@@ -342,32 +378,21 @@
       <!-- Card 3: Triple -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="card rh-related-card h-100">
-          <img src="assets/img/hab-triple-800.webp" class="card-img-top" alt="Habitación Triple">
+          <img src="../assets/img/hab-triple-800.webp" class="card-img-top" alt="Quarto Triplo">
           <div class="card-body">
-            <h3 class="card-title h6 mb-2">Habitación Triple</h3>
-            <a class="btn btn-outline-primary btn-sm" href="habitacion-triple.html">Ver más</a>
+            <h3 class="card-title h6 mb-2">Quarto Triplo</h3>
+            <a class="btn btn-outline-primary btn-sm" href="quarto-triplo.html">Mais</a>
           </div>
         </div>
       </div>
 
-      <!-- Card 4: Cuádruple 
-      <div class="col-12 col-sm-6 col-lg-4">
-        <div class="card rh-related-card h-100">
-          <img src="assets/img/hab-cuadruple-800.webp" class="card-img-top" alt="Habitación Cuádruple">
-          <div class="card-body">
-            <h3 class="card-title h6 mb-2">Habitación Cuádruple</h3>
-            <a class="btn btn-outline-primary btn-sm" href="habitacion-cuadruple.html">Ver más</a>
-          </div>
-        </div>
-      </div>
-    -->
       <!-- Card 5: Ejecutiva -->
       <div class="col-12 col-sm-6 col-lg-4">
         <div class="card rh-related-card h-100">
-          <img src="assets/img/hab-ejecutiva-800.webp" class="card-img-top" alt="Habitación Ejecutiva">
+          <img src="../assets/img/hab-ejecutiva-800.webp" class="card-img-top" alt="Quarto Executivo">
           <div class="card-body">
-            <h3 class="card-title h6 mb-2">Habitación Ejecutiva</h3>
-            <a class="btn btn-outline-primary btn-sm" href="habitacion-ejecutiva.html">Ver más</a>
+            <h3 class="card-title h6 mb-2">Quarto Executivo</h3>
+            <a class="btn btn-outline-primary btn-sm" href="quarto-executivo.html">Mais</a>
           </div>
         </div>
       </div>
@@ -376,21 +401,20 @@
     </div>
   </div>
 </section>
-
-    <!-- =========================
-     FOOTER
+<!-- =========================
+     RODAPÉ
      ========================= -->
 <footer class="rh-footer pt-5">
   <div class="container">
     <div class="row g-4">
-      <!-- Col 1: brand -->
+      <!-- Col 1: marca -->
       <div class="col-12 col-lg-4">
         <a class="footer-brand d-inline-flex align-items-center gap-2 mb-3" href="#">
-          <img src="assets/img/logoregishoteloro.svg.svg" alt="Hotel Regis">
+          <img src="../assets/img/logoregishoteloro.svg.svg" alt="Hotel Regis">
           <span class="visually-hidden">Hotel Regis</span>
         </a>
         <p class="footer-copy">
-          Alojate donde todo sucede. En el centro de Buenos Aires, a pasos del Obelisco y de los principales atractivos de la ciudad.
+          Hospede-se onde tudo acontece — no centro de Buenos Aires, a poucos passos do Obelisco e das principais atrações.
         </p>
         <div class="footer-social d-flex gap-2 mt-2">
           <a href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
@@ -405,9 +429,9 @@
         </div>
       </div>
 
-      <!-- Col 2: Nuestros Hoteles -->
+      <!-- Col 2: Nossos Hotéis -->
       <div class="col-12 col-sm-6 col-lg-4">
-        <h3 class="footer-title">Nuestros Hoteles</h3>
+        <h3 class="footer-title">Nossos Hotéis</h3>
         <div class="footer-list">
           <h4>Argentina</h4>
           <ul>
@@ -416,16 +440,16 @@
             <li><a href="https://reina.buenosaireshotelsargentina.com/es/" target="_blank" rel="noopener">Hotel Reina</a></li>
             <li><a href="https://www.tritonehotel.com.ar/" target="_blank" rel="noopener">Hotel Tritone</a></li>
           </ul>
-          <h4>Uruguay</h4>
+          <h4>Uruguai</h4>
           <ul>
             <li><a href="https://www.hispanohotel.com.uy/" target="_blank" rel="noopener">Hotel Hispano</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- Col 3: Contacto + Legal -->
+      <!-- Col 3: Contato + Legal -->
       <div class="col-12 col-sm-6 col-lg-4">
-        <h3 class="footer-title">Contacto</h3>
+        <h3 class="footer-title">Contato</h3>
         <ul class="footer-contact">
           <li><i class="fa-solid fa-phone me-2"></i> <a href="tel:+541143272605">+54 11 4327 2605</a></li>
           <li><i class="fa-solid fa-envelope me-2"></i> <a href="mailto:reservas@regishotel.com.ar">reservas@regishotel.com.ar</a></li>
@@ -434,49 +458,141 @@
 
         <h3 class="footer-title mt-3">Legal</h3>
         <ul class="footer-legal">
-          <li><a href="politica-de-privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a></li>
+          <li><a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a></li>
           <li><a href="politica-de-cookies.html" target="_blank" rel="noopener">Política de Cookies</a></li>
-          <li><a href="terminos-y-condiciones.html" target="_blank" rel="noopener">Términos y Condiciones</a></li>
-          <li><a href="#" rel="nofollow">Libro de quejas</a></li>
+          <li><a href="termos-e-condicoes.html" target="_blank" rel="noopener">Termos e Condições</a></li>
+          <li><a href="#" rel="nofollow">Livro de Reclamações</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom mt-4">
-      <p class="small mb-0">© 2025 - Hotel Regis. Todos los derechos reservados. Capitana MKT</p>
+      <p class="small mb-0">© 2025 - Hotel Regis. Todos os direitos reservados. Capitana MKT</p>
     </div>
   </div>
 </footer>
 
 <!-- =========================
-     FLOTANTES: WhatsApp + Quick Links
+     FLOTANTES: WhatsApp + Links Rápidos
      ========================= -->
-<!-- WhatsApp flotante (completa número) -->
-<a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/5491126294406" target="_blank" rel="noopener" aria-label="WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
-<!-- Quick Links laterales (no pisan WhatsApp) -->
-<nav class="quick-links" aria-label="Accesos rápidos">
-  <a class="ql-item" href="#contacto"><i class="fa-solid fa-envelope"></i><span>Contacto</span></a>
-  <a class="ql-item" href="#contacto"><i class="fa-solid fa-location-dot"></i><span>Ubicación</span></a>
+<nav class="quick-links" aria-label="Acessos rápidos">
+  <a class="ql-item" href="#contato"><i class="fa-solid fa-envelope"></i><span>Contato</span></a>
+  <a class="ql-item" href="#contato"><i class="fa-solid fa-location-dot"></i><span>Localização</span></a>
   <a class="ql-item" href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
   <a class="ql-item" href="https://www.instagram.com/hotel.regis/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
   <a class="ql-item" href="https://www.linkedin.com/company/hotelregis/?viewAsMember=true" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
 </nav>
 
-
-    <script>
+<script>
 (function(){
   const btn = document.querySelector('.mobile-menu-btn');
   const menu = document.querySelector('.nav-menu');
   if (!btn || !menu) return;
-  btn.addEventListener('click', ()=> menu.classList.toggle('active'));
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> menu.classList.remove('active')));
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => menu.classList.remove('active'));
+  });
 })();
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Banner de Cookies -->
+<div id="cookie-banner" class="rh-cookie-banner" aria-live="polite" role="dialog">
+  <div class="rh-cookie-inner">
+    <p class="rh-cookie-text">
+      Este site utiliza cookies para melhorar sua experiência e medir uso (Google Analytics).
+      <a class="rh-cookie-link" href="politica-de-cookies.html">Mais informações</a>
+    </p>
+    <button id="cookie-accept" class="btn btn-primary rh-cookie-btn" type="button">
+      Aceitar
+    </button>
+  </div>
+</div>
 
+<!-- Cookies + Google Analytics (consentimento) -->
+<script>
+(function(){
+  var KEY = 'cookies-accepted';
+  var banner = document.getElementById('cookie-banner');
+  var btn = document.getElementById('cookie-accept');
+
+  function showBanner(){
+    banner.style.display = 'block';
+    setTimeout(() => banner.classList.add('show'), 10);
+  }
+
+  function ativarAnalytics(){
+    var gaID = 'G-PGYX32DM08';
+    if (window.__gaLoaded__) return;
+    window.__gaLoaded__ = true;
+
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaID;
+    document.head.appendChild(gtagScript);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    gtag('js', new Date());
+    gtag('config', gaID);
+  }
+
+  if (btn) {
+    btn.addEventListener('click', function(){
+      localStorage.setItem(KEY, 'true');
+      banner.classList.remove('show');
+      setTimeout(() => banner.style.display = 'none', 500);
+      ativarAnalytics();
+    });
+  }
+
+  if (localStorage.getItem(KEY)) {
+    ativarAnalytics();
+  } else {
+    window.addEventListener('load', showBanner);
+  }
+})();
+</script>
+
+<!-- Modal Obrigado -->
+<div class="modal fade" id="obrigadoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Obrigado!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        Sua mensagem foi enviada com sucesso. Responderemos em breve.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JS: abrir modal se voltar com #obrigado -->
+<script>
+  (function () {
+    if (window.location.hash === '#obrigado') {
+      var modal = new bootstrap.Modal(document.getElementById('obrigadoModal'));
+      modal.show();
+      document.getElementById('obrigadoModal').addEventListener('hidden.bs.modal', function () {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      });
+    }
+  })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

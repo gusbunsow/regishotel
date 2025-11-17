@@ -247,6 +247,26 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
 /* Por si tenés botón de WhatsApp flotante */
 .whatsapp-float{ z-index:1080; }
 
+
+/* Mobile: idiomas no activos en Regis Accent */
+@media (max-width: 991.98px){
+  .rh-header .dropdown-menu[aria-labelledby="langDropdown"] .dropdown-item {
+    color: var(--regis-accent) !important;  /* dorado Regis */
+    font-size: 0.8rem;
+  }
+  .rh-header .dropdown-menu[aria-labelledby="langDropdown"] .dropdown-item:hover,
+  .rh-header .dropdown-menu[aria-labelledby="langDropdown"] .dropdown-item:focus {
+    color: #fff !important;                  /* blanco al pasar el dedo/mouse */
+    background: transparent;
+  }
+  .rh-header .dropdown-menu[aria-labelledby="langDropdown"] .dropdown-item.active,
+  .rh-header .dropdown-menu[aria-labelledby="langDropdown"] .dropdown-item[aria-current="true"] {
+    color: #fff !important;                  /* idioma activo */
+    font-weight: 500;
+  }
+}
+
+
 /* =========================
    HERO (video + reservas)
    ========================= */

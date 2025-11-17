@@ -237,6 +237,25 @@ a:hover, a:focus{ color: var(--regis-accent); text-decoration: underline; }
 /* Por si tenés botón de WhatsApp flotante */
 .whatsapp-float{ z-index:1080; }
 
+/* Mobile: idiomas no activos en Regis Accent */
+@media (max-width: 991.98px){
+  .rh-header .dropdown-menu[aria-labelledby="langDropdown"] .dropdown-item {
+    color: var(--regis-accent) !important;  /* dorado Regis */
+    font-size: 0.8rem;
+  }
+  .rh-header .dropdown-menu[aria-labelledby="langDropdown"] .dropdown-item:hover,
+  .rh-header .dropdown-menu[aria-labelledby="langDropdown"] .dropdown-item:focus {
+    color: #fff !important;                  /* blanco al pasar el dedo/mouse */
+    background: transparent;
+  }
+  .rh-header .dropdown-menu[aria-labelledby="langDropdown"] .dropdown-item.active,
+  .rh-header .dropdown-menu[aria-labelledby="langDropdown"] .dropdown-item[aria-current="true"] {
+    color: #fff !important;                  /* idioma activo */
+    font-weight: 500;
+  }
+}
+
+
 /* =========================
    HERO (video + reservas)
    ========================= */
@@ -1044,4 +1063,84 @@ body { padding-top: var(--nav-h); }        /* empuja contenido debajo del header
     width: 100%;
   }
 }
+
+/* ==== Popup Promo WhatsApp ==== */
+.promo-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s ease;
+}
+.promo-popup.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.promo-popup-content {
+  background: #051543;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 14px;
+  padding: 2rem 1.8rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  position: relative;
+}
+
+.promo-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  color: #fff;
+  font-size: 32px;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  opacity: .8;
+}
+
+.promo-text {
+  color: #fff;          /* <-- ESTO SE TE ESTABA PERDIENDO */
+  font-size: 1.15rem;
+  line-height: 1.4;
+  margin-bottom: 1.2rem;
+}
+.wa {
+  color: #25D366;
+}
+
+.promo-logo {
+  width: 85%;
+  max-width: 240px;
+  margin: 0 auto 1.5rem;
+  display: block;
+}
+
+.promo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: #25D366;
+  color: #fff;
+  padding: .75rem 1.6rem;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+
+.promo-btn .wa-icon {
+  width: 22px;
+  height: 22px;
+}
+
 

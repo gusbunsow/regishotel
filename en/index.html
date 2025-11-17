@@ -23,10 +23,10 @@
   <link href="../assets/css/styles.css" rel="stylesheet">
 
   <!-- Favicons -->
-  <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+  <link rel="icon" href="../assets/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
 
   <!-- Indexación -->
   <meta name="robots" content="index, follow" />
@@ -113,7 +113,6 @@
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
                 <!-- Usamos rutas desde la raíz para evitar problemas de paths -->
                 <li><a class="dropdown-item" href="/" data-lang-choice="es">Español</a></li>
-                <li><a class="dropdown-item" href="/en/" data-lang-choice="en">English</a></li>
                 <li><a class="dropdown-item" href="/pt/" data-lang-choice="pt">Português</a></li>
               </ul>
             </li>
@@ -1151,5 +1150,45 @@
   })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ===== Popup Promoción WhatsApp ===== -->
+<div id="promoPopup" class="promo-popup">
+  <div class="promo-popup-content">
+
+    <button class="promo-close" id="promoClose">&times;</button>
+
+    <p class="promo-text">
+      <strong>Booking through <span class="wa">WhatsApp</span></strong><br>
+  you get breakfast <strong>included</strong> at
+    </p>
+
+    <img src="assets/img/losinmortaleslogo.svg" 
+         alt="Los Inmortales - Café Pizza & Restaurant" 
+         class="promo-logo">
+
+    <a href="https://wa.me/5491126294406?text=Hola%20quiero%20reservar%20en%20Hotel%20Regis"
+       class="promo-btn" target="_blank">
+      <img src="assets/img/whatsappicon1.svg" alt="" class="wa-icon">
+      Reservar
+    </a>
+
+  </div>
+</div>
+<!-- ===== Fin Popup ===== -->
+
+<script>
+  // Mostrar popup después de 2.5 segundos
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.getElementById("promoPopup").classList.add("active");
+    }, 2500);
+  });
+
+  // Cerrar popup
+  document.getElementById("promoClose").addEventListener("click", () => {
+    document.getElementById("promoPopup").classList.remove("active");
+  });
+</script>
+
 </body>
 </html>

@@ -40,100 +40,64 @@
     gtag('config', 'G-PGYX32DM08');
   </script>
 </head>
-
-
 <body>
-
-<!-- =========================
-     HEADER unificado
-     fixed-top + offcanvas
-   ========================= -->
 <header class="rh-header">
   <nav class="navbar navbar-dark navbar-expand-lg fixed-top" style="background:#05154d;">
     <div class="container">
-      <!-- Logo -->
-      <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Inicio">
-        <img src="assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel" >
+      <a class="navbar-brand" href="index.html" aria-label="Regis Hotel - Início">
+        <img src="../assets/img/logoregishoteloro.svg.svg" alt="Regis Hotel">
       </a>
 
-      <!-- Toggler (abre offcanvas en mobile) -->
       <button class="navbar-toggler" type="button"
               data-bs-toggle="offcanvas" data-bs-target="#rhOffcanvas"
-              aria-controls="rhOffcanvas" aria-label="Abrir menú">
+              aria-controls="rhOffcanvas" aria-label="Abrir menu">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Offcanvas / Menú -->
       <div class="offcanvas offcanvas-end" tabindex="-1" id="rhOffcanvas" aria-labelledby="rhOffcanvasLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title visually-hidden" id="rhOffcanvasLabel">Menú</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+          <h5 class="offcanvas-title visually-hidden" id="rhOffcanvasLabel">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
         </div>
 
         <div class="offcanvas-body">
           <ul class="navbar-nav ms-auto align-items-lg-center">
 
-            <!-- Habitaciones: LINK REAL + submenu -->
             <li class="nav-item dropdown rh-dropdown">
-              <!-- IMPORTANTE: sin 'dropdown-toggle' ni 'data-bs-toggle' para que sea clickeable -->
-              <!-- Asegurate de que el archivo exista y se llame exactamente 'habitaciones.html' -->
-              <a class="nav-link" href="habitaciones.html" id="habLink">Habitaciones</a>
-
-              <!-- Submenú -->
-              <!-- Saqué 'dropdown-menu-end' y 'dropdown-menu-lg-start' para que no se desplace mal -->
+              <a class="nav-link" href="quartos.html" id="habLink">Quartos</a>
               <ul class="dropdown-menu" aria-labelledby="habLink">
-                <li><a class="dropdown-item" href="habitacion-simple.html">Habitación Simple</a></li>
-                <li><a class="dropdown-item" href="habitacion-doble.html">Habitación Doble</a></li>
-                <li><a class="dropdown-item" href="habitacion-triple.html">Habitación Triple</a></li>
-                <li><a class="dropdown-item" href="habitacion-cuadruple.html">Habitación Cuádruple</a></li>
-                <li><a class="dropdown-item" href="habitacion-ejecutiva.html">Habitación Ejecutiva</a></li>
+                <li><a class="dropdown-item" href="quarto-simples.html">Quarto Individual</a></li>
+                <li><a class="dropdown-item" href="quarto-duplo.html">Quarto Duplo</a></li>
+                <li><a class="dropdown-item" href="quarto-triplo.html">Quarto Triplo</a></li>
+                <li><a class="dropdown-item" href="quarto-quadruplo.html">Quarto Quádruplo</a></li>
+                <li><a class="dropdown-item" href="quarto-executivo.html">Quarto Executivo</a></li>
               </ul>
             </li>
 
-            <!-- Secciones (anclas a la home) -->
-            <li class="nav-item"><a class="nav-link" href="index.html#servicios">Servicios</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.html#corporativas">Corporativo</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Testimonios</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#servicos">Serviços</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#corporativo">Corporativo</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#testimonios">Depoimentos</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contato">Contato</a></li>
 
-
-            <!-- =========================
-                 Selector de idioma (ES/EN/PT)
-                 Funciona en desktop y en offcanvas (mobile)
-               ========================= -->
             <li class="nav-item dropdown ms-lg-3 mt-2 mt-lg-0">
-              <!-- Botón del dropdown -->
               <a class="nav-link dropdown-toggle" href="#" id="langDropdown"
                  role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                 aria-label="Cambiar idioma">
+                 aria-label="Alterar idioma">
                 🌐 <span id="current-lang">Idioma</span>
               </a>
-
-              <!-- Opciones de idioma -->
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
-                <!-- Usamos rutas desde la raíz para evitar problemas de paths -->
                 <li><a class="dropdown-item" href="/" data-lang-choice="es">Español</a></li>
                 <li><a class="dropdown-item" href="/en/" data-lang-choice="en">English</a></li>
-                <li><a class="dropdown-item" href="/pt/" data-lang-choice="pt">Português</a></li>
               </ul>
             </li>
 
-            <!-- =========================
-                 Script utilitario de idioma:
-                 - Muestra el idioma actual en el botón.
-                 - Cierra el offcanvas al elegir un idioma (mobile).
-                 - Ajusta el parámetro lang del botón "Reservar".
-               ========================= -->
             <script>
               (function () {
-                // 1) Detectar idioma actual
-                // Preferimos el atributo lang del <html>, que vos ya seteaste.
                 var docLang = (document.documentElement.getAttribute('lang') || 'es').toLowerCase();
                 var currentLabel = { es: 'Español', en: 'English', pt: 'Português' }[docLang] || 'Español';
                 var langSpan = document.getElementById('current-lang');
                 if (langSpan) langSpan.textContent = currentLabel;
 
-                // 2) Cerrar el offcanvas cuando elijo idioma (mejor UX mobile)
                 var offcanvasEl = document.getElementById('rhOffcanvas');
                 var offcanvasInstance = null;
                 if (offcanvasEl && bootstrap && bootstrap.Offcanvas) {
@@ -145,26 +109,19 @@
                   });
                 });
 
-                // 3) Ajustar automáticamente el idioma del CTA "Reservar" según la página
-                //    (si cambiás el ID del botón, actualizá el selector)
                 var reservarBtn = document.querySelector('.btn.btn-reservar');
                 if (reservarBtn && reservarBtn.href) {
                   try {
                     var u = new URL(reservarBtn.href);
-                    // Mapeo directo: 'es', 'en', 'pt' (si tu motor usa otro código, ajustalo acá)
                     u.searchParams.set('lang', docLang === 'en' ? 'en' : (docLang === 'pt' ? 'pt' : 'es'));
                     reservarBtn.href = u.toString();
-                  } catch (e) {
-                    // Si href es relativo no parsea como URL absoluta; en ese caso lo dejamos como está.
-                  }
+                  } catch (e) {}
                 }
               })();
             </script>
 
-
-            <!-- CTA Reservar (igual en todas las páginas) -->
             <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-              <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es"
+              <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=pt"
                  target="_blank" rel="noopener" class="btn btn-reservar">
                 <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>
                 <span>Reservar</span>
@@ -177,11 +134,7 @@
     </div>
   </nav>
 </header>
-
-<!-- Hero Section -->
 <section class="rh-hero hero">
-
-  <!-- Video de fondo -->
   <video
     class="hero-video"
     autoplay
@@ -189,43 +142,31 @@
     playsinline
     loop
     preload="metadata"
-    poster="assets/img/poster-hero.jpg"
-  >
-    <!-- WEBM (se carga primero si lo soporta el navegador) -->
-    <source src="assets/img/video-hero-1080p.webm" type="video/webm" media="(min-width: 1200px)">
-    <source src="assets/img/video-hero-720p.webm"  type="video/webm" media="(min-width: 768px)">
-    <source src="assets/img/video-hero-540p.webm"  type="video/webm" media="(min-width: 480px)">
-    <source src="assets/img/video-hero-360p.webm"  type="video/webm" media="(max-width: 479.98px)">
-
-    <!-- MP4 fallback -->
-    <source src="assets/img/video-hero-1080p.mp4" type="video/mp4" media="(min-width: 1200px)">
-    <source src="assets/img/video-hero-720p.mp4"  type="video/mp4" media="(min-width: 768px)">
-    <source src="assets/img/video-hero-540p.mp4"  type="video/mp4" media="(min-width: 480px)">
-    <source src="assets/img/video-hero-360p.mp4"  type="video/mp4" media="(max-width: 479.98px)">
-
-    <!-- Si el video no carga -->
-    <img src="assets/img/poster-hero.jpg" alt="Hotel Regis">
+    poster="../assets/img/poster-hero.jpg">
+    <source src="../assets/img/video-hero-1080p.webm" type="video/webm" media="(min-width: 1200px)">
+    <source src="../assets/img/video-hero-720p.webm"  type="video/webm" media="(min-width: 768px)">
+    <source src="../assets/img/video-hero-540p.webm"  type="video/webm" media="(min-width: 480px)">
+    <source src="../assets/img/video-hero-360p.webm"  type="video/webm" media="(max-width: 479.98px)">
+    <source src="../assets/img/video-hero-1080p.mp4" type="video/mp4" media="(min-width: 1200px)">
+    <source src="../assets/img/video-hero-720p.mp4"  type="video/mp4" media="(min-width: 768px)">
+    <source src="../assets/img/video-hero-540p.mp4"  type="video/mp4" media="(min-width: 480px)">
+    <source src="../assets/img/video-hero-360p.mp4"  type="video/mp4" media="(max-width: 479.98px)">
+    <img src="../assets/img/poster-hero.jpg" alt="Hotel Regis">
   </video>
 
-  <!-- Capa de contraste (oscurece el video para que se lea el texto) -->
   <div class="video-overlay"></div>
 
-  <!-- Contenido visible sobre el video -->
   <div class="container position-relative">
     <div class="row align-items-center">
-
-      <!-- Texto hero -->
       <div class="col-12 col-lg-6 rh-hero-copy">
-        <h1 class="mb-3">Alojate donde todo sucede</h1>
+        <h1 class="mb-3">Hospede-se onde tudo acontece</h1>
         <p class="lead mb-0">
-          En el centro de Buenos Aires, a pasos del Obelisco y de los principales atractivos de la ciudad.
+          No coração de Buenos Aires, a poucos passos do Obelisco e das principais atrações da cidade.
         </p>
       </div>
 
-
-      <!-- Banner / Formulario de reservas -->
       <div class="col-12 col-lg-5 ms-lg-auto">
-        <form id="heroForm" class="booking-card" aria-label="Buscador de reservas">
+        <form id="heroForm" class="booking-card" aria-label="Busca de reservas">
           <div class="row g-2">
             <div class="col-6">
               <label for="checkin" class="form-label">Check-in</label>
@@ -240,7 +181,7 @@
               <input id="adults" type="number" class="form-control" min="1" value="2" inputmode="numeric">
             </div>
             <div class="col-6">
-              <label for="children" class="form-label">Niños</label>
+              <label for="children" class="form-label">Crianças</label>
               <input id="children" type="number" class="form-control" min="0" value="0" inputmode="numeric">
             </div>
             <div class="col-12 d-grid">
@@ -252,27 +193,18 @@
     </div>
   </div>
 
-  <!-- Mini-script: fechas mínimas (siempre desde hoy) -->
   <script>
     (function(){
       const $in  = document.getElementById('checkin');
       const $out = document.getElementById('checkout');
-
-      // hoy en YYYY-MM-DD
       const pad = n => String(n).padStart(2,'0');
       const fmt = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-
       const today = new Date();
       const tomorrow = new Date(); tomorrow.setDate(today.getDate()+1);
-
       $in.min  = fmt(today);
       $out.min = fmt(tomorrow);
-
-      // valores por defecto
       if(!$in.value)  $in.value  = fmt(today);
       if(!$out.value) $out.value = fmt(tomorrow);
-
-      // cuando cambia check-in, forzar min de check-out
       $in.addEventListener('change', () => {
         const ci = new Date($in.value);
         const coMin = new Date(ci); coMin.setDate(ci.getDate()+1);
@@ -282,293 +214,269 @@
     })();
   </script>
 
-  <!-- Script conexion-->
-<script>
-  // ===== Conexión Hero -> RoomCloud =====
-  const HOTEL_ID = '12269';
-  const BASE_URL = 'https://booking.roomcloud.net/be/se2/hotel.jsp';
-  const DEFAULT_LANG = 'es';
-
-  // util para partir "YYYY-MM-DD"
-  function splitYMD(val){
-    const [y,m,d] = val.split('-').map(Number);
-    return { y, m, d };
-  }
-  // suma días a una fecha YYYY-MM-DD -> YYYY-MM-DD
-  function addDays(ymd, days){
-    const dt = new Date(ymd);
-    dt.setDate(dt.getDate() + days);
-    const pad = n => String(n).padStart(2,'0');
-    return `${dt.getFullYear()}-${pad(dt.getMonth()+1)}-${pad(dt.getDate())}`;
-  }
-
-  document.getElementById('heroForm').addEventListener('submit', function(e){
-    e.preventDefault();
-
-    let ciVal = document.getElementById('checkin').value;   // YYYY-MM-DD
-    let coVal = document.getElementById('checkout').value;  // YYYY-MM-DD
-    const ad   = document.getElementById('adults').value || 2;
-    const ch   = document.getElementById('children').value || 0;
-
-    // seguridad: si checkout <= checkin, forzar +1 noche
-    if (new Date(coVal) <= new Date(ciVal)) {
-      coVal = addDays(ciVal, 1);
-      document.getElementById('checkout').value = coVal; // opcional: reflejar en UI
+  <script>
+    const HOTEL_ID = '12269';
+    const BASE_URL = 'https://booking.roomcloud.net/be/se2/hotel.jsp';
+    const DEFAULT_LANG = 'pt';
+    function splitYMD(val){
+      const [y,m,d] = val.split('-').map(Number);
+      return { y, m, d };
     }
-
-    const ci = splitYMD(ciVal);
-    const co = splitYMD(coVal);
-
-    // Construimos URL con el esquema probado (start_day/month/year, end_*)
-    const params = new URLSearchParams({
-      hotel: HOTEL_ID,
-      lang: DEFAULT_LANG,
-      adults: ad,
-      children: ch,
-      start_day:  String(ci.d).padStart(2,'0'),
-      start_month:String(ci.m).padStart(2,'0'),
-      start_year: ci.y,
-      end_day:    String(co.d).padStart(2,'0'),
-      end_month:  String(co.m).padStart(2,'0'),
-      end_year:   co.y,
-      // flags “seguros” (como en tu URL funcional)
-      a: 1, d: 1, f: 1, h: 1, l: 1, m: 0, n: 1, p: 1, t: 1, showCrossed: 'false'
+    function addDays(ymd, days){
+      const dt = new Date(ymd);
+      dt.setDate(dt.getDate() + days);
+      const pad = n => String(n).padStart(2,'0');
+      return `${dt.getFullYear()}-${pad(dt.getMonth()+1)}-${pad(dt.getDate())}`;
+    }
+    document.getElementById('heroForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      let ciVal = document.getElementById('checkin').value;
+      let coVal = document.getElementById('checkout').value;
+      const ad   = document.getElementById('adults').value || 2;
+      const ch   = document.getElementById('children').value || 0;
+      if (new Date(coVal) <= new Date(ciVal)) {
+        coVal = addDays(ciVal, 1);
+        document.getElementById('checkout').value = coVal;
+      }
+      const ci = splitYMD(ciVal);
+      const co = splitYMD(coVal);
+      const params = new URLSearchParams({
+        hotel: HOTEL_ID,
+        lang: DEFAULT_LANG,
+        adults: ad,
+        children: ch,
+        start_day:  String(ci.d).padStart(2,'0'),
+        start_month:String(ci.m).padStart(2,'0'),
+        start_year: ci.y,
+        end_day:    String(co.d).padStart(2,'0'),
+        end_month:  String(co.m).padStart(2,'0'),
+        end_year:   co.y,
+        a: 1, d: 1, f: 1, h: 1, l: 1, m: 0, n: 1, p: 1, t: 1, showCrossed: 'false'
+      });
+      window.location.href = `${BASE_URL}?${params.toString()}`;
     });
-
-    // Redirigir en la misma pestaña
-    window.location.href = `${BASE_URL}?${params.toString()}`;
-    // Si preferís nueva pestaña: window.open(`${BASE_URL}?${params}`, '_blank');
-  });
-</script>
-
-
+  </script>
 </section>
 
-<!-- Nuestras Habitaciones -->
+
+
+<!-- Nossas Acomodações -->
 <section class="rh-rooms py-5" id="habitaciones">
   <div class="container">
     <header class="text-center mb-4">
-      <h2 class="rh-title">Nuestras Habitaciones</h2>
+      <h2 class="rh-title">Nossos Quartos</h2>
       <p class="rh-subtitle mx-auto">
-        Dormí en el centro de Buenos Aires, a pasos de todo. Todas equipadas con Wifi gratuito, TV, frigobar y aire acondicionado. Pensadas para quienes viajan solos, en pareja o en grupo.
+        Durma no centro de Buenos Aires, a poucos passos de tudo. Todos os quartos contam com Wi-Fi grátis, TV, frigobar e ar-condicionado. Pensados para viajantes solo, casais ou grupos.
       </p>
     </header>
 
     <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 justify-content-center">
 
-      <!-- Habitación Simple -->
-<div class="col-12 col-md-6 col-lg-3">
-  <article class="card rh-room-card rh-anim">
-    <picture>
-      <!-- WebP -->
-      <source 
-        type="image/webp"
-        srcset="
-          assets/img/hab-simple-400.webp 400w,
-          assets/img/hab-simple-800.webp 800w,
-          assets/img/hab-simple-1200.webp 1200w,
-          assets/img/hab-simple-1600.webp 1600w"
-        sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw">
-
-      <!-- JPG fallback -->
-      <img 
-        class="card-img-top"
-        src="assets/img/hab-simple-800.jpg"
-        srcset="
-          assets/img/hab-simple-400.jpg 400w,
-          assets/img/hab-simple-800.jpg 800w,
-          assets/img/hab-simple-1200.jpg 1200w,
-          assets/img/hab-simple-1600.jpg 1600w"
-        sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw"
-        alt="Habitación Simple - Hotel Regis"
-        loading="lazy" decoding="async"
-        width="1600" height="1067">
-    </picture>
-
-    <div class="card-body text-center">
-      <h3 class="card-title">Habitación Simple</h3>
-      <!--<p class="card-text">Confort esencial para una estadía práctica y tranquila.</p>-->
-      <div class="mb-3"></div>   <!-- agrega margen-bottom (espacio) -->
-      <div class="mt-4"></div>   <!-- agrega margen-top (espacio) -->
-      <div class="d-flex justify-content-center gap-2">
-        <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es"
-          class="btn btn-primary btn-sm"
-          target="_blank" rel="noopener">
-          Reservar
-        </a>
-
-        <a href="habitacion-simple.html" class="btn btn-outline-primary btn-sm">Más info</a>
-      </div>
-    </div>
-  </article>
-</div>
-
-<!-- Habitación Doble -->
-<div class="col-12 col-md-6 col-lg-3">
-  <article class="card rh-room-card rh-anim">
-    <picture>
-      <!-- WebP -->
-      <source
-        type="image/webp"
-        srcset="
-          assets/img/hab-doble-400.webp 400w,
-          assets/img/hab-doble-800.webp 800w,
-          assets/img/hab-doble-1200.webp 1200w,
-          assets/img/hab-doble-1600.webp 1600w"
-        sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw">
-
-      <!-- JPG fallback -->
-      <img
-        class="card-img-top"
-        src="assets/img/hab-doble-800.jpg"
-        srcset="
-          assets/img/hab-doble-400.jpg 400w,
-          assets/img/hab-doble-800.jpg 800w,
-          assets/img/hab-doble-1200.jpg 1200w,
-          assets/img/hab-doble-1600.jpg 1600w"
-        sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw"
-        alt="Habitación Doble - Hotel Regis"
-        loading="lazy" decoding="async"
-        width="1600" height="1067">
-    </picture>
-
-    <div class="card-body text-center">
-      <h3 class="card-title">Habitación Doble</h3>
-      <!--<p class="card-text">Espaciosa y luminosa, ideal para dos personas en pleno centro de Buenos Aires.</p>-->
-      <div class="mb-3"></div>   <!-- agrega margen-bottom (espacio) -->
-      <div class="mt-4"></div>   <!-- agrega margen-top (espacio) -->
-      <div class="d-flex justify-content-center gap-2">
-        <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es"
-          class="btn btn-primary btn-sm"
-          target="_blank" rel="noopener">
-          Reservar
-        </a>
-        <a href="habitacion-doble.html" class="btn btn-outline-primary btn-sm">Más info</a>
-      </div>
-    </div>
-  </article>
-</div>
-
-<!-- Habitación Triple -->
-<div class="col-12 col-md-6 col-lg-3">
-  <article class="card rh-room-card rh-anim">
-    <picture>
-      <!-- WebP -->
-      <source
-        type="image/webp"
-        srcset="
-          assets/img/hab-triple-15-400.webp 400w,
-          assets/img/hab-triple-15-800.webp 800w,
-          assets/img/hab-triple-15-1200.webp 1200w,
-          assets/img/hab-triple-15-1600.webp 1600w"
-        sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw">
-
-      <!-- JPG fallback -->
-      <img
-        class="card-img-top"
-        src="assets/img/hab-triple-15-800.jpg"
-        srcset="
-          assets/img/hab-triple-15-400.jpg 400w,
-          assets/img/hab-triple-15-800.jpg 800w,
-          assets/img/hab-triple-15-1200.jpg 1200w,
-          assets/img/hab-triple-15-1600.jpg 1600w"
-        sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw"
-        alt="Habitación Triple - Hotel Regis"
-        loading="lazy" decoding="async"
-        width="1600" height="1067">
-    </picture>
-
-    <div class="card-body text-center">
-      <h3 class="card-title">Habitación Triple</h3>
-      <!--<p class="card-text">Comodidad para grupos o familias pequeñas, sin resignar confort.</p>-->
-      <div class="mb-3"></div>   <!-- agrega margen-bottom (espacio) -->
-      <div class="mt-4"></div>   <!-- agrega margen-top (espacio) -->
-      <div class="d-flex justify-content-center gap-2">
-        <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es"
-          class="btn btn-primary btn-sm"
-          target="_blank" rel="noopener">
-          Reservar
-        </a>
-        <a href="habitacion-triple.html" class="btn btn-outline-primary btn-sm">Más info</a>
-      </div>
-    </div>
-  </article>
-</div>
-
-<!-- Habitación Cuádruple -->
-<div class="col-12 col-md-6 col-lg-3">
-  <article class="card rh-room-card rh-anim">
-    <picture>
-      <!-- WebP -->
-      <source
-        type="image/webp"
-        srcset="
-          assets/img/hab-cuad-4-400.webp 400w,
-          assets/img/hab-cuad-4-800.webp 800w,
-          assets/img/hab-cuad-4-1200.webp 1200w,
-          assets/img/hab-cuad-4-1600.webp 1600w"
-        sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw">
-
-      <!-- JPG fallback -->
-      <img
-        class="card-img-top"
-        src="assets/img/hab-cuad-4-800.jpg"
-        srcset="
-          assets/img/hab-cuad-4-400.jpg 400w,
-          assets/img/hab-cuad-4-800.jpg 800w,
-          assets/img/hab-cuad-4-1200.jpg 1200w,
-          assets/img/hab-cuad-4-1600.jpg 1600w"
-        sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw"
-        alt="Habitación Cuádruple - Hotel Regis"
-        loading="lazy" decoding="async"
-        width="1600" height="1067">
-    </picture>
-
-    <div class="card-body text-center">
-      <h3 class="card-title">Habitación Cuádruple</h3>
-      <!--<p class="card-text">Ambientes amplios para compartir y descansar después de la ciudad.</p>-->
-      <div class="mb-3"></div>   <!-- agrega margen-bottom (espacio) -->
-      <div class="mt-4"></div>   <!-- agrega margen-top (espacio) -->
-      <div class="d-flex justify-content-center gap-2">
-        <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es"
-          class="btn btn-primary btn-sm"
-          target="_blank" rel="noopener">
-          Reservar
-        </a>
-        <a href="habitacion-cuadruple.html" class="btn btn-outline-primary btn-sm">Más info</a>
-      </div>
-    </div>
-  </article>
-</div>
-
-
-      <!-- Habitación Ejecutiva (nueva) -->
+      <!-- Quarto Individual -->
       <div class="col-12 col-md-6 col-lg-3">
         <article class="card rh-room-card rh-anim">
-          <!-- Usa las imágenes optimizadas que te pasé -->
+          <picture>
+            <!-- WebP -->
+            <source 
+              type="image/webp"
+              srcset="
+                ../assets/img/hab-simple-400.webp 400w,
+                ../assets/img/hab-simple-800.webp 800w,
+                ../assets/img/hab-simple-1200.webp 1200w,
+                ../assets/img/hab-simple-1600.webp 1600w"
+              sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw">
+
+            <!-- JPG fallback -->
+            <img 
+              class="card-img-top"
+              src="../assets/img/hab-simple-800.jpg"
+              srcset="
+                ../assets/img/hab-simple-400.jpg 400w,
+                ../assets/img/hab-simple-800.jpg 800w,
+                ../assets/img/hab-simple-1200.jpg 1200w,
+                ../assets/img/hab-simple-1600.jpg 1600w"
+              sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw"
+              alt="Quarto Individual - Hotel Regis"
+              loading="lazy" decoding="async"
+              width="1600" height="1067">
+          </picture>
+
+          <div class="card-body text-center">
+            <h3 class="card-title">Quarto Individual</h3>
+            <div class="mb-3"></div>
+            <div class="mt-4"></div>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=pt"
+                 class="btn btn-primary btn-sm"
+                 target="_blank" rel="noopener">
+                Reservar
+              </a>
+              <a href="quarto-simples.html" class="btn btn-outline-primary btn-sm">Info</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Quarto Duplo -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <article class="card rh-room-card rh-anim">
+          <picture>
+            <!-- WebP -->
+            <source
+              type="image/webp"
+              srcset="
+                ../assets/img/hab-doble-400.webp 400w,
+                ../assets/img/hab-doble-800.webp 800w,
+                ../assets/img/hab-doble-1200.webp 1200w,
+                ../assets/img/hab-doble-1600.webp 1600w"
+              sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw">
+
+            <!-- JPG fallback -->
+            <img
+              class="card-img-top"
+              src="../assets/img/hab-doble-800.jpg"
+              srcset="
+                ../assets/img/hab-doble-400.jpg 400w,
+                ../assets/img/hab-doble-800.jpg 800w,
+                ../assets/img/hab-doble-1200.jpg 1200w,
+                ../assets/img/hab-doble-1600.jpg 1600w"
+              sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw"
+              alt="Quarto Duplo - Hotel Regis"
+              loading="lazy" decoding="async"
+              width="1600" height="1067">
+          </picture>
+
+          <div class="card-body text-center">
+            <h3 class="card-title">Quarto Duplo</h3>
+            <div class="mb-3"></div>
+            <div class="mt-4"></div>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=pt"
+                 class="btn btn-primary btn-sm"
+                 target="_blank" rel="noopener">
+                Reservar
+              </a>
+              <a href="quarto-duplo.html" class="btn btn-outline-primary btn-sm">Info</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Quarto Triplo -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <article class="card rh-room-card rh-anim">
+          <picture>
+            <!-- WebP -->
+            <source
+              type="image/webp"
+              srcset="
+                ../assets/img/hab-triple-15-400.webp 400w,
+                ../assets/img/hab-triple-15-800.webp 800w,
+                ../assets/img/hab-triple-15-1200.webp 1200w,
+                ../assets/img/hab-triple-15-1600.webp 1600w"
+              sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw">
+
+            <!-- JPG fallback -->
+            <img
+              class="card-img-top"
+              src="../assets/img/hab-triple-15-800.jpg"
+              srcset="
+                ../assets/img/hab-triple-15-400.jpg 400w,
+                ../assets/img/hab-triple-15-800.jpg 800w,
+                ../assets/img/hab-triple-15-1200.jpg 1200w,
+                ../assets/img/hab-triple-15-1600.jpg 1600w"
+              sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw"
+              alt="Quarto Triplo - Hotel Regis"
+              loading="lazy" decoding="async"
+              width="1600" height="1067">
+          </picture>
+
+          <div class="card-body text-center">
+            <h3 class="card-title">Quarto Triplo</h3>
+            <div class="mb-3"></div>
+            <div class="mt-4"></div>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=pt"
+                 class="btn btn-primary btn-sm"
+                 target="_blank" rel="noopener">
+                Reservar
+              </a>
+              <a href="quarto-triplo.html" class="btn btn-outline-primary btn-sm">Info</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Quarto Quádruplo -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <article class="card rh-room-card rh-anim">
+          <picture>
+            <!-- WebP -->
+            <source
+              type="image/webp"
+              srcset="
+                ../assets/img/hab-cuad-4-400.webp 400w,
+                ../assets/img/hab-cuad-4-800.webp 800w,
+                ../assets/img/hab-cuad-4-1200.webp 1200w,
+                ../assets/img/hab-cuad-4-1600.webp 1600w"
+              sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw">
+
+            <!-- JPG fallback -->
+            <img
+              class="card-img-top"
+              src="../assets/img/hab-cuad-4-800.jpg"
+              srcset="
+                ../assets/img/hab-cuad-4-400.jpg 400w,
+                ../assets/img/hab-cuad-4-800.jpg 800w,
+                ../assets/img/hab-cuad-4-1200.jpg 1200w,
+                ../assets/img/hab-cuad-4-1600.jpg 1600w"
+              sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw"
+              alt="Quarto Quádruplo - Hotel Regis"
+              loading="lazy" decoding="async"
+              width="1600" height="1067">
+          </picture>
+
+          <div class="card-body text-center">
+            <h3 class="card-title">Quarto Quádruplo</h3>
+            <div class="mb-3"></div>
+            <div class="mt-4"></div>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=pt"
+                 class="btn btn-primary btn-sm"
+                 target="_blank" rel="noopener">
+                Reservar
+              </a>
+              <a href="quarto-quadruplo.html" class="btn btn-outline-primary btn-sm">Info</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Quarto Executivo -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <article class="card rh-room-card rh-anim">
           <img
             class="card-img-top"
-            src="assets/img/hab-ejecutiva-800.webp"
+            src="../assets/img/hab-ejecutiva-800.webp"
             srcset="
-              assets/img/hab-ejecutiva-400.webp 400w,
-              assets/img/hab-ejecutiva-800.webp 800w,
-              assets/img/hab-ejecutiva-1200.webp 1200w,
-              assets/img/hab-ejecutiva-1600.webp 1600w"
+              ../assets/img/hab-ejecutiva-400.webp 400w,
+              ../assets/img/hab-ejecutiva-800.webp 800w,
+              ../assets/img/hab-ejecutiva-1200.webp 1200w,
+              ../assets/img/hab-ejecutiva-1600.webp 1600w"
             sizes="(min-width:992px) 20vw, (min-width:576px) 50vw, 100vw"
-            alt="Habitación Ejecutiva del Hotel Regis">
+            alt="Quarto Executivo - Hotel Regis">
           <div class="card-body text-center">
-            <h3 class="card-title">Habitación Ejecutiva</h3>
-            <!--<p class="card-text">Más espacio, escritorio y detalles premium para viajes de trabajo o estadías largas.</p>-->
-            <div class="mb-3"></div>   <!-- agrega margen-bottom (espacio) -->
-            <div class="mt-4"></div>   <!-- agrega margen-top (espacio) -->
-              <div class="d-flex justify-content-center gap-2">
-        <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=es"
-          class="btn btn-primary btn-sm"
-          target="_blank" rel="noopener">
-          Reservar
-        </a>
-        <a href="habitacion-ejecutiva.html" class="btn btn-outline-primary btn-sm">Más info</a>
-      </div>
+            <h3 class="card-title">Quarto Executivo</h3>
+            <div class="mb-3"></div>
+            <div class="mt-4"></div>
+            <div class="d-flex justify-content-center gap-2">
+              <a href="https://booking.roomcloud.net/be/se2/hotel.jsp?hotel=12269&lang=pt"
+                 class="btn btn-primary btn-sm"
+                 target="_blank" rel="noopener">
+                Reservar
+              </a>
+              <a href="quarto-executivo.html" class="btn btn-outline-primary btn-sm">Info</a>
+            </div>
           </div>
         </article>
       </div>
@@ -576,67 +484,65 @@
     </div>
   </div>
 </section>
-
-<!-- Bootstrap 5 bundle (sin integrity) -->
+<!-- Bootstrap 5 bundle (sem integrity) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- =========================
-     NUESTROS SERVICIOS
+     NOSSOS SERVIÇOS
      ========================= -->
-<section id="servicios" class="rh-services py-5">
+<section id="servicos" class="rh-services py-5">
   <div class="container">
     <header class="text-center mb-4">
-      <h2 class="rh-title">Nuestros Servicios</h2>
-      <p class="rh-subtitle mx-auto">En el Hotel Regis cuidamos cada detalle para que su estadía sea única.</p>
+      <h2 class="rh-title">Nossos Serviços</h2>
+      <p class="rh-subtitle mx-auto">No Hotel Regis cuidamos de cada detalhe para tornar sua estadia única.</p>
     </header>
 
     <div class="row g-4">
-      <!-- Servicio -->
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="rh-service-card rh-anim">
-          <img src="assets/img/icono-recepcion.svg" alt="Recepción 24hs" class="rh-service-icon">
-          <h3 class="h5">Recepción 24hs</h3>
-          <p>Recepción y conserjería disponibles las 24 horas, para brindarle asistencia en todo momento.</p>
+          <img src="../assets/img/icono-recepcion.svg" alt="Recepção 24 horas" class="rh-service-icon">
+          <h3 class="h5">Recepção 24 horas</h3>
+          <p>Serviço de recepção e concierge disponível 24 horas para atendê-lo a qualquer momento.</p>
         </article>
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="rh-service-card rh-anim">
-          <img src="assets/img/icono-desayuno.svg" alt="Desayuno Porteño" class="rh-service-icon">
-          <h3 class="h5">Desayuno Porteño</h3>
-          <p>Comience el día en el clásico restaurante “Los Inmortales”.</p>
+          <img src="../assets/img/icono-desayuno.svg" alt="Café da manhã portenho" class="rh-service-icon">
+          <h3 class="h5">Café da manhã portenho</h3>
+          <p>Comece o dia no restaurante clássico “Los Inmortales”.</p>
         </article>
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="rh-service-card rh-anim">
-          <img src="assets/img/icono-wifi.svg" alt="Wi-Fi" class="rh-service-icon">
+          <img src="../assets/img/icono-wifi.svg" alt="Wi-Fi" class="rh-service-icon">
           <h3 class="h5">Wi-Fi</h3>
-          <p>Conexión en todas las áreas del hotel, ideal para trabajar, estudiar y mantenerse conectado.</p>
+          <p>Conexão em todo o hotel — ideal para trabalhar, estudar e se manter conectado.</p>
         </article>
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="rh-service-card rh-anim">
-          <img src="assets/img/iconoequipaje.svg" alt="Guarda de equipaje" class="rh-service-icon">
-          <h3 class="h5">Guarda de equipaje sin cargo</h3>
-          <p>Antes del check-in o después del check-out, guarde su equipaje y aproveche su estadía en la ciudad.</p>
+          <img src="../assets/img/iconoequipaje.svg" alt="Depósito de bagagem gratuito" class="rh-service-icon">
+          <h3 class="h5">Depósito de bagagem gratuito</h3>
+          <p>Antes do check-in ou após o check-out, guarde sua bagagem e aproveite melhor seu tempo na cidade.</p>
         </article>
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="rh-service-card rh-anim">
-          <img src="assets/img/icono-limpieza.svg" alt="Servicio de Limpieza" class="rh-service-icon">
-          <h3 class="h5">Servicio de Limpieza</h3>
-          <p>Limpieza completa de la habitación y espacios comunes para su máximo confort.</p>
+          <img src="../assets/img/icono-limpieza.svg" alt="Serviço de limpeza" class="rh-service-icon">
+          <h3 class="h5">Serviço de limpeza</h3>
+          <p>Limpeza completa dos quartos e áreas comuns para seu máximo conforto.</p>
         </article>
       </div>
 
       <div class="col-12 col-sm-6 col-lg-4">
         <article class="rh-service-card rh-anim">
-          <img src="assets/img/habitaciones.svg" alt="Habitaciones Conectadas" class="rh-service-icon">
-          <h3 class="h5">Habitaciones Conectadas</h3>
-          <p>Conecte hasta tres habitaciones: ideal para familias o grupos que desean cercanía y privacidad.</p>
+          <img src="../assets/img/habitaciones.svg" alt="Quartos conectados" class="rh-service-icon">
+          <h3 class="h5">Quartos conectados</h3>
+          <p>Conecte até três quartos — ideal para famílias ou grupos que desejam proximidade e privacidade.</p>
         </article>
       </div>
     </div>
@@ -646,53 +552,47 @@
 <!-- =========================
      RESERVAS CORPORATIVAS
      ========================= -->
-<section class="rh-corp py-5" id="corporativas">
+<section class="rh-corp py-5" id="corporativo">
   <div class="container">
     <div class="row g-4 align-items-center">
       <div class="col-12 col-lg-7">
         <h2 class="rh-title mb-2">Reservas Corporativas</h2>
         <p class="lead mb-3">
-          Ofrecemos tarifas preferenciales para empresas y grupos, con beneficios exclusivos para viajes de trabajo o estadías prolongadas. Contáctenos para obtener más información sobre tarifas especiales y condiciones personalizadas.
+          Oferecemos tarifas preferenciais para empresas e grupos, com benefícios exclusivos para viagens de negócios ou estadias longas. Entre em contato para mais informações sobre tarifas especiais e condições personalizadas.
         </p>
       </div>
       <div class="col-12 col-lg-5">
         <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
-          <!-- WhatsApp (completa tu número en el href cuando lo tengas) -->
           <a class="btn btn-whatsapp" href="https://wa.me/5491126294406" target="+5491126294406" rel="noopener">
-            <i class="fa-brands fa-whatsapp me-2" aria-hidden="true"></i> Consulte ahora
+            <i class="fa-brands fa-whatsapp me-2" aria-hidden="true"></i> Consultar agora
           </a>
-          <!-- Email -->
-         <a class="btn btn-outline-light" 
-   href="mailto:reservas@regishotel.com.ar?subject=Consulta%20corporativa%20Hotel%20Regis">
-  <i class="fa-solid fa-envelope me-2" aria-hidden="true"></i> Enviar e-mail
-</a>
+          <a class="btn btn-outline-light" 
+             href="mailto:reservas@regishotel.com.ar?subject=Consulta%20corporativa%20Hotel%20Regis">
+            <i class="fa-solid fa-envelope me-2" aria-hidden="true"></i> Enviar e-mail
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- =========================
-     EXPERIENCIAS CERCA
-     ========================= -->
 <section class="rh-experiencias py-5" id="experiencias">
   <div class="container">
     <header class="text-center mb-4">
-      <h2 class="rh-title">Experiencias Cercanas</h2>
+      <h2 class="rh-title">Experiências por Perto</h2>
       <p class="rh-subtitle mx-auto">
-        Desde el Hotel Regis, podés recorrer a pie los principales atractivos turísticos, culturales y comerciales de Buenos Aires. Estás en el centro, donde todo queda cerca y siempre hay una manera distinta de vivir la ciudad.
+        Do Hotel Regis, você pode ir a pé às principais atrações turísticas, culturais e comerciais de Buenos Aires. Você está no centro, onde tudo fica perto e sempre há uma nova forma de vivenciar a cidade.
       </p>
     </header>
 
     <div class="row g-4">
-
-      <!-- Florida -->
       <div class="col-12 col-md-6 col-lg-4">
         <article class="card rh-exp-card rh-anim h-100">
           <img class="card-img-top" src="https://resizer.glanacion.com/resizer/v2/ciudad-autonoma-de-buenos-aires-buenos-aires-WN5QYCNKA5BTZPRJVHMIQF7QJ4.jpg?auth=537d27a4c8f68b831aae192fe185aabe7f9eb199940ae7d331cb5de57aaff205&width=1280&height=854&quality=70&smart=true" alt="Calle Florida">
           <div class="card-body d-flex flex-column text-center">
-            <h3 class="card-title">Calle Florida <small class="text-muted">· 200 m</small></h3>
-            <p class="card-text flex-grow-1">A solo dos minutos del <strong>Hotel Regis</strong>, la peatonal Florida invita a recorrer tiendas, librerías, artistas callejeros y las Galerías Pacífico, uno de los centros comerciales más emblemáticos de Buenos Aires. Es ideal para quienes disfrutan de las compras, la cultura y el ritmo del centro porteño en su máxima expresión.</p>
+            <h3 class="card-title">Rua Florida <small class="text-muted">· 200 m</small></h3>
+            <p class="card-text flex-grow-1">A apenas dois minutos do <strong>Hotel Regis</strong>, a rua de pedestres Florida convida a explorar suas lojas, livrarias, artistas de rua e a icônica Galerías Pacífico, um dos shoppings mais famosos de Buenos Aires. Perfeita para quem curte compras, cultura e a energia vibrante do centro.</p>
             <div class="text-center">
               <a href="https://turismo.buenosaires.gob.ar/es/otros-establecimientos/calle-florida" target="_blank" class="btn btn-ir">Ir</a>
             </div>
@@ -700,13 +600,12 @@
         </article>
       </div>
 
-      <!-- Corrientes -->
       <div class="col-12 col-md-6 col-lg-4">
         <article class="card rh-exp-card rh-anim h-100">
           <img class="card-img-top" src="https://images.adsttc.com/media/images/5ab5/018c/f197/cc29/0200/00ea/slideshow/Obelisco-desde_Corrientes-TM.jpg?1521811844" alt="Avenida Corrientes">
           <div class="card-body d-flex flex-column text-center">
             <h3 class="card-title">Avenida Corrientes <small class="text-muted">· 100 m</small></h3>
-            <p class="card-text flex-grow-1">A una cuadra del <strong>Hotel Regis</strong>, la Avenida Corrientes vibra con teatros, librerías, pizzerías y luces que nunca se apagan. Es el corazón cultural de Buenos Aires, donde conviven los clásicos del teatro porteño, las pizzas de mostrador y las librerías abiertas hasta tarde. Un paseo imprescindible para vivir la ciudad a pleno.</p>
+            <p class="card-text flex-grow-1">A uma quadra do <strong>Hotel Regis</strong>, a Avenida Corrientes é o coração cultural de Buenos Aires, cheia de teatros, livrarias, pizzarias e luzes que nunca se apagam. De peças lendárias a pizza em fatias e livrarias noturnas, é parada obrigatória para viver a cidade ao máximo.</p>
             <div class="text-center">
               <a href="https://turismo.buenosaires.gob.ar/es/article/paseo-de-los-artistas" target="_blank" class="btn btn-ir">Ir</a>
             </div>
@@ -714,13 +613,13 @@
         </article>
       </div>
 
-      <!-- La Ideal -->
       <div class="col-12 col-md-6 col-lg-4">
         <article class="card rh-exp-card rh-anim h-100">
-          <img class="card-img-top" src="https://laideal.ar/img/carrousel_2.jpg" alt="Confitería La Ideal">
+          <img class="card-img-top" src="https://laideal.ar/img/carrousel_2.jpg" alt="Confiteria La Ideal">
           <div class="card-body d-flex flex-column text-center">
-            <h3 class="card-title">Confitería La Ideal <small class="text-muted">· 250 m</small></h3>
-            <p class="card-text flex-grow-1">Fundada en 1912, la Confitería La Ideal es una joya arquitectónica restaurada que conserva su encanto original: vitrales, mármoles y arañas centenarias. Por sus mesas pasaron Gardel, Borges y hasta Madonna. Hoy sigue viva como café notable y pastelería de autor, un refugio porteño donde el té se toma entre historia y vitraux.</p>
+            <h3 class="card-title">Cafeteria La Ideal <small class="text-muted">· 250 m</small></h3>
+            <p class="card-text flex-grow-1">Inaugurada em 1912, a Confitería La Ideal é uma joia arquitetônica que mantém o charme de antigamente: vitrais, mármores e lustres de outro século. Já recebeu figuras como Gardel, Borges e até Madonna! Hoje continua firme como um café histórico e confeitaria artesanal — um cantinho clássico pra tomar um chá ou café cercado de história e beleza.
+</p>
             <div class="text-center">
               <a href="https://laideal.ar/index.html" target="_blank" class="btn btn-ir">Ir</a>
             </div>
@@ -728,13 +627,12 @@
         </article>
       </div>
 
-      <!-- Obelisco -->
       <div class="col-12 col-md-6 col-lg-4">
         <article class="card rh-exp-card rh-anim h-100">
           <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/0/00/ObeliscoBA2015.2.jpg" alt="Obelisco de Buenos Aires">
           <div class="card-body d-flex flex-column text-center">
             <h3 class="card-title">Obelisco <small class="text-muted">· 450 m</small></h3>
-            <p class="card-text flex-grow-1">El Obelisco de Buenos Aires, sobre la emblemática Avenida 9 de Julio, es una de las postales más reconocidas de la ciudad. A pasos del Hotel Regis, es el punto perfecto para quienes buscan alojamiento en el centro y desean explorar teatros, cafés y la vida porteña desde su corazón.</p>
+            <p class="card-text flex-grow-1">O Obelisco de Buenos Aires, na famosa Avenida 9 de Julio, é um dos cartões-postais mais conhecidos da cidade. Fica pertinho do Hotel Regis e é parada obrigatória pra quem está hospedado no centro e quer explorar teatros, cafés e o melhor do coração portenho.</p>
             <div class="text-center">
               <a href="https://turismo.buenosaires.gob.ar/es/otros-establecimientos/obelisco" target="_blank" class="btn btn-ir">Ir</a>
             </div>
@@ -742,13 +640,12 @@
         </article>
       </div>
 
-      <!-- Teatro Colón -->
       <div class="col-12 col-md-6 col-lg-4">
         <article class="card rh-exp-card rh-anim h-100">
           <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Fachada_del_Teatro_Col%C3%B3n_en_Buenos_Aires%2C_Argentina.jpg/1200px-Fachada_del_Teatro_Col%C3%B3n_en_Buenos_Aires%2C_Argentina.jpg" alt="Teatro Colón">
           <div class="card-body d-flex flex-column text-center">
             <h3 class="card-title">Teatro Colón <small class="text-muted">· 600 m</small></h3>
-            <p class="card-text flex-grow-1">El Teatro Colón es uno de los templos de la ópera más prestigiosos del mundo, reconocido por su acústica perfecta y su arquitectura majestuosa. A pocas cuadras del Hotel Regis, se pueden realizar visitas guiadas todos los días de 10 a 17 horas, ideales para descubrir sus salones, su historia y la magia que lo distingue.</p>
+            <p class="card-text flex-grow-1">O Teatro Colón é um dos teatros de ópera mais importantes do mundo, conhecido pela acústica perfeita e pela arquitetura deslumbrante. A poucas quadras do Hotel Regis, dá pra fazer visitas guiadas todos os dias, das 10h às 17h, e conhecer seus salões, bastidores e histórias que encantam qualquer visitante.</p>
             <div class="text-center">
               <a href="https://teatrocolon.org.ar/" target="_blank" class="btn btn-ir">Ir</a>
             </div>
@@ -756,13 +653,12 @@
         </article>
       </div>
 
-      <!-- Puerto Madero -->
       <div class="col-12 col-md-6 col-lg-4">
         <article class="card rh-exp-card rh-anim h-100">
           <img class="card-img-top" src="https://turismo.buenosaires.gob.ar/sites/turismo/files/panoramica-puerto-madero-1500x610.jpg" alt="Puerto Madero">
           <div class="card-body d-flex flex-column text-center">
             <h3 class="card-title">Puerto Madero <small class="text-muted">· 700 m</small></h3>
-            <p class="card-text flex-grow-1">El moderno barrio de Puerto Madero combina arquitectura contemporánea, paseos junto al río y una amplia oferta gastronómica. A solo unos minutos del Hotel Regis, es perfecto para caminar por sus diques, cruzar el Puente de la Mujer y disfrutar de restaurantes y bares con vistas únicas, tanto de día como de noche.</p>
+            <p class="card-text flex-grow-1">O bairro moderno de Puerto Madero é um dos mais charmosos de Buenos Aires. À beira do rio, combina arquitetura moderna, pontes famosas como a Puente de la Mujer e vários bares e restaurantes incríveis. A poucos minutos do Hotel Regis, é o lugar ideal pra caminhar, jantar e curtir a vista — de dia ou à noite.</p>
             <div class="text-center">
               <a href="https://turismo.buenosaires.gob.ar/es/recorrido/puerto-madero" target="_blank" class="btn btn-ir">Ir</a>
             </div>
@@ -770,13 +666,12 @@
         </article>
       </div>
 
-      <!-- Palacio Barolo -->
       <div class="col-12 col-md-6 col-lg-4">
         <article class="card rh-exp-card rh-anim h-100">
           <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Palacio_Barolo_visto_de_frente.jpg" alt="Palacio Barolo">
-          <div class="card-body d-flex flex-column text-center">
-            <h3 class="card-title">Palacio Barolo <small class="text-muted">· 1 km</small></h3>
-            <p class="card-text flex-grow-1">El Palacio Barolo es una joya arquitectónica inspirada en La Divina Comedia. Diseñado por Mario Palanti, este edificio de 22 pisos y 100 metros de altura propone un recorrido simbólico por el infierno, el purgatorio y el paraíso de Dante. Restaurado en 2009, su faro se enciende cada noche a las 22:00, iluminando el cielo porteño.</p>
+        <div class="card-body d-flex flex-column text-center">
+            <h3 class="card-title">Palácio Barolo <small class="text-muted">· 1 km</small></h3>
+            <p class="card-text flex-grow-1">O Palacio Barolo é uma das construções mais impressionantes de Buenos Aires, inspirado na Divina Comédia de Dante Alighieri. Com 22 andares e 100 metros de altura, o prédio simboliza a viagem pelo inferno, purgatório e paraíso. Restaurado em 2009, o farol no topo acende todas as noites às 22h, iluminando o céu portenho.</p>
             <div class="text-center">
               <a href="https://palaciobarolotours.com.ar/" target="_blank" class="btn btn-ir">Ir</a>
             </div>
@@ -784,13 +679,13 @@
         </article>
       </div>
 
-      <!-- Plaza de Mayo -->
       <div class="col-12 col-md-6 col-lg-4">
         <article class="card rh-exp-card rh-anim h-100">
           <img class="card-img-top" src="https://turismo.buenosaires.gob.ar/sites/turismo/files/plaza-mayo-sol-1500x610-24.jpg" alt="Plaza de Mayo">
           <div class="card-body d-flex flex-column text-center">
-            <h3 class="card-title">Plaza de Mayo <small class="text-muted">· 1 km</small></h3>
-            <p class="card-text flex-grow-1">A solo 1 km del Hotel Regis, la Plaza de Mayo es el corazón histórico y político de Buenos Aires. Desde el hotel podés llegar caminando o en subte y recorrer este espacio emblemático, escenario de los grandes acontecimientos del país. Ideal para disfrutar la historia, la arquitectura y la energía del centro porteño.</p>
+            <h3 class="card-title">Praça de Maio <small class="text-muted">· 1 km</small></h3>
+            <p class="card-text flex-grow-1">A Praça de Maio fica a apenas 1 km do Hotel Regis e é o coração histórico e político de Buenos Aires. Dá pra chegar caminhando ou de metrô e conhecer os prédios mais importantes da cidade. É o ponto perfeito pra sentir o ritmo portenho, tirar fotos e mergulhar na história da Argentina.
+</p>
             <div class="text-center">
               <a href="https://turismo.buenosaires.gob.ar/es/otros-establecimientos/museo-de-la-casa-rosada" target="_blank" class="btn btn-ir">Ir</a>
             </div>
@@ -798,13 +693,13 @@
         </article>
       </div>
 
-      <!-- Casa Rosada -->
       <div class="col-12 col-md-6 col-lg-4">
         <article class="card rh-exp-card rh-anim h-100">
           <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Casa_Rosada_Buenos_Aires.JPG" alt="Casa Rosada">
           <div class="card-body d-flex flex-column text-center">
             <h3 class="card-title">Casa Rosada <small class="text-muted">· 1 km</small></h3>
-            <p class="card-text flex-grow-1">La Casa Rosada, sede del Poder Ejecutivo Nacional, se encuentra frente a la Plaza de Mayo y es uno de los símbolos más reconocibles de Buenos Aires. A tan solo 1 km del Hotel Regis, su imponente fachada color rosado y su valor histórico la convierten en una visita obligada para quienes exploran el casco histórico de la ciudad.</p>
+            <p class="card-text flex-grow-1">A Casa Rosada, sede do Governo Argentino, é um dos símbolos mais conhecidos de Buenos Aires. A apenas 1 km do Hotel Regis, sua fachada rosa e sua história política fazem dela uma parada obrigatória pra quem visita a Praça de Maio e o centro histórico. Um verdadeiro ícone da cidade!
+</p>
             <div class="text-center">
               <a href="https://maps.app.goo.gl/Un4J9AzavwNsca6a8" target="_blank" class="btn btn-ir">Ir</a>
             </div>
@@ -816,26 +711,21 @@
   </div>
 </section>
 
-
-<!-- =========================
-     TESTIMONIOS
-     ========================= -->
 <section class="rh-testimonials py-5" id="testimonios">
   <div class="container">
     <header class="text-center mb-4">
-      <h2 class="rh-title">Testimonios</h2>
-      <p class="rh-subtitle mx-auto">Opiniones reales de huéspedes que eligieron vivir Buenos Aires desde el Regis.</p>
+      <h2 class="rh-title">Depoimentos</h2>
+      <p class="rh-subtitle mx-auto">Opiniões reais de hóspedes que escolheram viver Buenos Aires a partir do Regis.</p>
     </header>
 
     <div class="row g-4 justify-content-center">
-      <!-- Tarjeta -->
       <div class="col-12 col-md-6 col-lg-4">
         <article class="rh-test-card rh-anim">
           <div class="rh-test-quote"><i class="fa-solid fa-quote-left"></i></div>
-          <p>“The room had a fridge, a large bed, was spacious and airy with a nice big window. The aircon worked perfectly and the staff were lovely...”</p>
+          <p>“O quarto tinha geladeira, cama grande, era amplo e arejado com uma janela bem grande. O ar-condicionado funcionou perfeitamente e a equipe foi adorável…”</p>
           <div class="rh-test-meta">
             <span class="rh-flag"><i class="fa-solid fa-umbrella-beach"></i></span>
-            <strong>Kiah</strong> · United States · Vacaciones
+            <strong>Kiah</strong> · Estados Unidos · Férias
           </div>
         </article>
       </div>
@@ -843,10 +733,10 @@
       <div class="col-12 col-md-6 col-lg-4">
         <article class="rh-test-card rh-anim">
           <div class="rh-test-quote"><i class="fa-solid fa-quote-left"></i></div>
-          <p>“Excelente ubicación, instalaciones cómodas e impecables. Excelente la atención y amabilidad del personal!!”</p>
+          <p>“Excelente localização, instalações confortáveis e impecáveis. A equipe foi extremamente atenciosa!!”</p>
           <div class="rh-test-meta">
             <span class="rh-flag"><i class="fa-solid fa-briefcase"></i></span>
-            <strong>María</strong> · Uruguay · Trabajo
+            <strong>María</strong> · Uruguai · Trabalho
           </div>
         </article>
       </div>
@@ -854,10 +744,10 @@
       <div class="col-12 col-md-6 col-lg-4">
         <article class="rh-test-card rh-anim">
           <div class="rh-test-quote"><i class="fa-solid fa-quote-left"></i></div>
-          <p>“Lo mejor de todo fue la limpieza y la atención del personal… Espacios grandes y cómodos.”</p>
+          <p>“O melhor foi a limpeza e a atenção da equipe… Espaços amplos e confortáveis.”</p>
           <div class="rh-test-meta">
             <span class="rh-flag"><i class="fa-solid fa-people-group"></i></span>
-            <strong>Natalia</strong> · Argentina · Turismo familiar
+            <strong>Natalia</strong> · Argentina · Viagem em família
           </div>
         </article>
       </div>
@@ -865,10 +755,10 @@
       <div class="col-12 col-md-6 col-lg-4">
         <article class="rh-test-card rh-anim">
           <div class="rh-test-quote"><i class="fa-solid fa-quote-left"></i></div>
-          <p>“Excellent location. Good price and nice staff. Very clean.”</p>
+          <p>“Localização excelente. Bom preço e equipe simpática. Muito limpo.”</p>
           <div class="rh-test-meta">
             <span class="rh-flag"><i class="fa-solid fa-briefcase"></i></span>
-            <strong>Eleonora</strong> · Canadá · Trabajo
+            <strong>Eleonora</strong> · Canadá · Trabalho
           </div>
         </article>
       </div>
@@ -876,7 +766,7 @@
       <div class="col-12 col-md-6 col-lg-4">
         <article class="rh-test-card rh-anim">
           <div class="rh-test-quote"><i class="fa-solid fa-quote-left"></i></div>
-          <p>“Son muy amables, el hotel es hermoso, cómodo y muy bien ubicado. Voy a volver.”</p>
+          <p>“São muito gentis, o hotel é lindo, confortável e muito bem localizado. Voltarei.”</p>
           <div class="rh-test-meta">
             <span class="rh-flag"><i class="fa-solid fa-umbrella-beach"></i></span>
             <strong>María</strong> · Argentina · Turismo
@@ -886,35 +776,36 @@
     </div>
   </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- =========================
-     CONTÁCTENOS (respeta tu layout)
+     CONTATO
      ========================= -->
-<section id="contacto" class="rh-contact py-5">
+<section id="contato" class="rh-contact py-5">
   <div class="container">
     <header class="text-center mb-4">
-      <h2 class="rh-title">Contáctenos</h2>
-      <p class="rh-subtitle mx-auto">Escríbanos su consulta. Le responderemos a la brevedad.</p>
+      <h2 class="rh-title">Contacte-nos</h2>
+      <p class="rh-subtitle mx-auto">Envie sua mensagem — responderemos em breve.</p>
     </header>
 
     <div class="row g-4 align-items-start">
-      <!-- Columna: Formulario (izquierda) -->
+      <!-- Formulário -->
       <div class="col-12 col-lg-6">
         <form action="enviar-contacto.php" method="post" class="row g-3" autocomplete="on" novalidate>
           <div class="col-md-6">
-            <label for="c-nombre" class="form-label">Nombre</label>
+            <label for="c-nombre" class="form-label">Nome</label>
             <input type="text" id="c-nombre" name="nombre" class="form-control" required>
           </div>
           <div class="col-md-6">
-            <label for="c-email" class="form-label">Correo electrónico</label>
+            <label for="c-email" class="form-label">E-mail</label>
             <input type="email" id="c-email" name="email" class="form-control" required>
           </div>
           <div class="col-12">
-            <label for="c-telefono" class="form-label">Teléfono (opcional)</label>
+            <label for="c-telefono" class="form-label">Telefone (opcional)</label>
             <input type="tel" id="c-telefono" name="telefono" class="form-control">
           </div>
           <div class="col-12">
-            <label for="c-mensaje" class="form-label">Mensaje</label>
+            <label for="c-mensaje" class="form-label">Mensagem</label>
             <textarea id="c-mensaje" name="mensaje" rows="4" class="form-control" required></textarea>
           </div>
 
@@ -922,12 +813,12 @@
           <input type="text" name="empresa" class="d-none" autocomplete="off" tabindex="-1" aria-hidden="true">
 
           <div class="col-12">
-            <button type="submit" class="btn btn-primary px-5">Enviar mensaje</button>
+            <button type="submit" class="btn btn-primary px-5">Enviar</button>
           </div>
         </form>
       </div>
 
-      <!-- Columna: Mapa (derecha) -->
+      <!-- Mapa -->
       <div class="col-12 col-lg-6">
         <div class="rh-map-wrap">
           <iframe
@@ -937,32 +828,23 @@
         </div>
       </div>
     </div>
-          <!-- Datos de contacto al pie de la sección 
-          <div class="text-center mt-4">
-          <p class="mb-1">Tel.: <a href="tel:+541143272605">+54 11 4327 2605</a></p>
-          <p class="mb-1">E-mail: <a href="mailto:reservas@regishotel.com.ar">reservas@regishotel.com.ar</a></p>
-          <p class="mb-0">Lavalle 813, C1047AAQ, C.A.B.A., Argentina — 
-          <a href="https://www.google.com/maps?q=Hotel+Regis+Lavalle+813+C1047AAQ" target="_blank" rel="noopener">Cómo llegar</a>
-          </p>
-        </div>-->
-      </div>
+  </div>
 </section>
 
-
 <!-- =========================
-     FOOTER
+     RODAPÉ
      ========================= -->
 <footer class="rh-footer pt-5">
   <div class="container">
     <div class="row g-4">
-      <!-- Col 1: brand -->
+      <!-- Col 1: marca -->
       <div class="col-12 col-lg-4">
         <a class="footer-brand d-inline-flex align-items-center gap-2 mb-3" href="#">
-          <img src="assets/img/logoregishoteloro.svg.svg" alt="Hotel Regis">
+          <img src="../assets/img/logoregishoteloro.svg.svg" alt="Hotel Regis">
           <span class="visually-hidden">Hotel Regis</span>
         </a>
         <p class="footer-copy">
-          Alojate donde todo sucede. En el centro de Buenos Aires, a pasos del Obelisco y de los principales atractivos de la ciudad.
+          Hospede-se onde tudo acontece — no centro de Buenos Aires, a poucos passos do Obelisco e das principais atrações.
         </p>
         <div class="footer-social d-flex gap-2 mt-2">
           <a href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
@@ -977,9 +859,9 @@
         </div>
       </div>
 
-      <!-- Col 2: Nuestros Hoteles -->
+      <!-- Col 2: Nossos Hotéis -->
       <div class="col-12 col-sm-6 col-lg-4">
-        <h3 class="footer-title">Nuestros Hoteles</h3>
+        <h3 class="footer-title">Nossos Hotéis</h3>
         <div class="footer-list">
           <h4>Argentina</h4>
           <ul>
@@ -988,16 +870,16 @@
             <li><a href="https://reina.buenosaireshotelsargentina.com/es/" target="_blank" rel="noopener">Hotel Reina</a></li>
             <li><a href="https://www.tritonehotel.com.ar/" target="_blank" rel="noopener">Hotel Tritone</a></li>
           </ul>
-          <h4>Uruguay</h4>
+          <h4>Uruguai</h4>
           <ul>
             <li><a href="https://www.hispanohotel.com.uy/" target="_blank" rel="noopener">Hotel Hispano</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- Col 3: Contacto + Legal -->
+      <!-- Col 3: Contato + Legal -->
       <div class="col-12 col-sm-6 col-lg-4">
-        <h3 class="footer-title">Contacto</h3>
+        <h3 class="footer-title">Contato</h3>
         <ul class="footer-contact">
           <li><i class="fa-solid fa-phone me-2"></i> <a href="tel:+541143272605">+54 11 4327 2605</a></li>
           <li><i class="fa-solid fa-envelope me-2"></i> <a href="mailto:reservas@regishotel.com.ar">reservas@regishotel.com.ar</a></li>
@@ -1006,39 +888,36 @@
 
         <h3 class="footer-title mt-3">Legal</h3>
         <ul class="footer-legal">
-          <li><a href="politica-de-privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a></li>
+          <li><a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a></li>
           <li><a href="politica-de-cookies.html" target="_blank" rel="noopener">Política de Cookies</a></li>
-          <li><a href="terminos-y-condiciones.html" target="_blank" rel="noopener">Términos y Condiciones</a></li>
-          <li><a href="#" rel="nofollow">Libro de quejas</a></li>
+          <li><a href="termos-e-condicoes.html" target="_blank" rel="noopener">Termos e Condições</a></li>
+          <li><a href="#" rel="nofollow">Livro de Reclamações</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom mt-4">
-      <p class="small mb-0">© 2025 - Hotel Regis. Todos los derechos reservados. Capitana MKT</p>
+      <p class="small mb-0">© 2025 - Hotel Regis. Todos os direitos reservados. Capitana MKT</p>
     </div>
   </div>
 </footer>
 
 <!-- =========================
-     FLOTANTES: WhatsApp + Quick Links
+     FLOTANTES: WhatsApp + Links Rápidos
      ========================= -->
-<!-- WhatsApp flotante (completa número) -->
 <a class="whatsapp-float" href="https://wa.me/5491126294406" target="_blank" rel="noopener" aria-label="WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
-<!-- Quick Links laterales (no pisan WhatsApp) -->
-<nav class="quick-links" aria-label="Accesos rápidos">
-  <a class="ql-item" href="#contacto"><i class="fa-solid fa-envelope"></i><span>Contacto</span></a>
-  <a class="ql-item" href="#contacto"><i class="fa-solid fa-location-dot"></i><span>Ubicación</span></a>
+<nav class="quick-links" aria-label="Acessos rápidos">
+  <a class="ql-item" href="#contato"><i class="fa-solid fa-envelope"></i><span>Contato</span></a>
+  <a class="ql-item" href="#contato"><i class="fa-solid fa-location-dot"></i><span>Localização</span></a>
   <a class="ql-item" href="https://www.facebook.com/RegisHotelbuenosaires?mibextid=wwXIfr&rdid=ASBLGVsBYjHnbvPG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FJeBQMmNA%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i><span>Facebook</span></a>
   <a class="ql-item" href="https://www.instagram.com/hotel.regis/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
   <a class="ql-item" href="https://www.linkedin.com/company/hotelregis/?viewAsMember=true" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
 </nav>
 
 <script>
-// Abrir/cerrar menú móvil
 (function(){
   const btn = document.querySelector('.mobile-menu-btn');
   const menu = document.querySelector('.nav-menu');
@@ -1048,43 +927,39 @@
     menu.classList.toggle('active');
   });
 
-  // Cerrar al hacer click en un link
   menu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => menu.classList.remove('active'));
   });
 })();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Banner de Cookies -->
 <div id="cookie-banner" class="rh-cookie-banner" aria-live="polite" role="dialog">
   <div class="rh-cookie-inner">
     <p class="rh-cookie-text">
-      Este sitio utiliza cookies para mejorar su experiencia y medir el uso (Google Analytics).
-      <a class="rh-cookie-link" href="politica-de-cookies.html">Más info</a>
+      Este site utiliza cookies para melhorar sua experiência e medir uso (Google Analytics).
+      <a class="rh-cookie-link" href="politica-de-cookies.html">Mais informações</a>
     </p>
     <button id="cookie-accept" class="btn btn-primary rh-cookie-btn" type="button">
-      Aceptar
+      Aceitar
     </button>
   </div>
 </div>
 
-<!-- Script de Cookies + Google Analytics -->
+<!-- Cookies + Google Analytics (consentimento) -->
 <script>
 (function(){
   var KEY = 'cookies-accepted';
   var banner = document.getElementById('cookie-banner');
   var btn = document.getElementById('cookie-accept');
 
-  // Mostrar con animación si no hay preferencia
   function showBanner(){
-    banner.style.display = 'block';      
-    setTimeout(() => banner.classList.add('show'), 10); 
+    banner.style.display = 'block';
+    setTimeout(() => banner.classList.add('show'), 10);
   }
 
-  // Activar Google Analytics (solo con consentimiento)
-  function activarAnalytics(){
-    var gaID = 'G-PGYX32DM08'; // GA4 del cliente
+  function ativarAnalytics(){
+    var gaID = 'G-PGYX32DM08';
     if (window.__gaLoaded__) return;
     window.__gaLoaded__ = true;
 
@@ -1101,55 +976,93 @@
     gtag('config', gaID);
   }
 
-  // Botón aceptar
   if (btn) {
     btn.addEventListener('click', function(){
       localStorage.setItem(KEY, 'true');
-      banner.classList.remove('show');   // animación de salida
-      setTimeout(() => banner.style.display = 'none', 500); 
-      activarAnalytics();
+      banner.classList.remove('show');
+      setTimeout(() => banner.style.display = 'none', 500);
+      ativarAnalytics();
     });
   }
 
-  // Si ya aceptó antes, activar GA directo
   if (localStorage.getItem(KEY)) {
-    activarAnalytics();
+    ativarAnalytics();
   } else {
     window.addEventListener('load', showBanner);
   }
 })();
 </script>
-<!-- Modal Gracias -->
-<div class="modal fade" id="graciasModal" tabindex="-1" aria-hidden="true">
+
+<!-- Modal Obrigado -->
+<div class="modal fade" id="obrigadoModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">¡Gracias!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <h5 class="modal-title">Obrigado!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
       </div>
       <div class="modal-body">
-        Tu mensaje fue enviado correctamente. Te responderemos a la brevedad.
+        Sua mensagem foi enviada com sucesso. Responderemos em breve.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- JS: abrir modal si vuelve con #gracias -->
+<!-- JS: abrir modal se voltar com #obrigado -->
 <script>
   (function () {
-    if (window.location.hash === '#gracias') {
-      var modal = new bootstrap.Modal(document.getElementById('graciasModal'));
+    if (window.location.hash === '#obrigado') {
+      var modal = new bootstrap.Modal(document.getElementById('obrigadoModal'));
       modal.show();
-      // Limpia el hash al cerrar (opcional)
-      document.getElementById('graciasModal').addEventListener('hidden.bs.modal', function () {
+      document.getElementById('obrigadoModal').addEventListener('hidden.bs.modal', function () {
         history.replaceState(null, '', window.location.pathname + window.location.search);
       });
     }
   })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ===== Popup Promoción WhatsApp ===== -->
+<div id="promoPopup" class="promo-popup">
+  <div class="promo-popup-content">
+
+    <button class="promo-close" id="promoClose">&times;</button>
+
+    <p class="promo-text">
+      <strong>Reservando pelo <span class="wa">WhatsApp</span></strong><br>
+  você tem o café da manhã <strong>incluído</strong> no
+    </p>
+
+    <img src="assets/img/losinmortaleslogo.svg" 
+         alt="Los Inmortales - Café Pizza & Restaurant" 
+         class="promo-logo">
+
+    <a href="https://wa.me/5491126294406?text=Hola%20quiero%20reservar%20en%20Hotel%20Regis"
+       class="promo-btn" target="_blank">
+      <img src="assets/img/whatsappicon1.svg" alt="" class="wa-icon">
+      Reservar
+    </a>
+
+  </div>
+</div>
+<!-- ===== Fin Popup ===== -->
+
+<script>
+  // Mostrar popup después de 2.5 segundos
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.getElementById("promoPopup").classList.add("active");
+    }, 2500);
+  });
+
+  // Cerrar popup
+  document.getElementById("promoClose").addEventListener("click", () => {
+    document.getElementById("promoPopup").classList.remove("active");
+  });
+</script>
+
 </body>
 </html>
